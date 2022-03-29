@@ -1,0 +1,30 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+ 
+.title {
+    font-size: 4;
+    font-weight:bold;
+    text-align:center;
+    padding-bottom: 2%;
+}
+.menu li {
+    background-color:#012F4B;
+    color:#fff;
+    padding:5% 10%;
+    text-align:center;
+}
+
+.contents {
+    background-color:#F7F7F7;
+    color: #337ab7;
+    font-weight: bold;
+    padding: 10% 5%;
+    box-sizing: border-box;
+    border: solid 10px white;
+}
+.container {
+    margin-top:20px;
+    padding-bottom: 100px;
+}
