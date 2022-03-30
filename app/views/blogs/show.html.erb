@@ -5,5 +5,13 @@
   <%= @blog.detail %>
 </p>
 
+<p>コメント一覧</p>
+
+  <div id="comments_area">
+    <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+  </div>
+
+  <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
