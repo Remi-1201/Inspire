@@ -1,6 +1,5 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
-  before_action :authenticate_user! #追加
 
   # GET /blogs or /blogs.json
   def index
@@ -25,7 +24,7 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
-
+    @blog.user_id = current_user.id
     respond_to do |format|
       if @blog.save
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
