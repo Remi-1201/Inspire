@@ -12,6 +12,11 @@
   </head>
 
   <body>
+  <% if current_user.try(:admin?) %>
+    <h1>Blogs_admin</h1>
+  <% else %>
+    <h1>Blogs</h1>
+  <% end %>
   
     <%= yield %>
  
