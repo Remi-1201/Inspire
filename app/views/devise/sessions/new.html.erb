@@ -1,4 +1,6 @@
 <div class="contents row">
+  <%= link_to 'Guest login', users_sign_in_guest_path, method: :post %></li>
+
   <h2>Log in</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

@@ -12,7 +12,19 @@ class Users::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
+  # def guest
+  #   user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+  #   user.password = SecureRandom.urlsafe_base64
+  #   end
+  #   sign_in user
+  #   redirect_to blogs_path, notice: 'You have successfully logged in as guest user.'
+  # end
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to blogs_path, notice: 'You have successfully logged in as guest user.'
+  end
   # DELETE /resource/sign_out
   # def destroy
   #   super
