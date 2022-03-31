@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
-
+  <select id="voice-select"></select>
 <p>
   <strong>Detail:</strong>
-  <%= @blog.detail %>
+  <textarea rows="3" cols="40" id="text"><%= @blog.detail %></textarea>
 </p>
+<button id="speak-btn">speak</button>
+<button id="stop-btn">stop</button>
+<br>
+<br>
+<div class="record">
+<div id="Control">
+  <button id="MicOn">Get the microphone</button><br/>
+  <button id="RecStart">Record</button>
+  <button id="RecStop" disabled>Stop</button><br>
+  <div id="RecMime"></div>
+</div></div>
 
 <p>コメント一覧</p>
 
