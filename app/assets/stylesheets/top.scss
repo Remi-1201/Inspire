@@ -1,0 +1,248 @@
+body {
+  position: relative;
+}
+
+.card{
+  width: 100%;
+  height: 100vh;
+
+  .items-group{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .item{
+      top: 0px;
+      left: 0px;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      overflow: hidden;
+      transition: 0.5s;
+      visibility: hidden;
+      position: relative;
+      padding: 50px 20px;
+      position: absolute;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+
+      &:hover{
+        
+        .bg{
+          opacity: 0.2;
+        }
+        
+        .block{
+          box-shadow: 0px 0px 50px #333;
+        }
+      }
+
+      &.active{
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .bg{
+        top: 0px;
+        left: 0px;
+        opacity: 1;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s;
+        position: absolute;
+        transform: scale(1.03);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      
+      .blur{
+        top: 0px;
+        left: 0px;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s;
+        filter: blur(5px);
+        position: absolute;
+        transform: scale(1.03);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .block{
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        color: #ffffff;
+        transition:box-shadow 0.5s;
+        max-width: 300px;
+        overflow: hidden;
+        max-height: 450px;
+        border-radius: 10px;
+        transform: scale(1.03);
+        box-sizing: border-box;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        box-shadow: none;
+        
+        .circle2{
+          top: 0px;
+          left: 0px;
+          opacity: 0;
+          content: '';
+          width: 100%;
+          height: 100%;
+          display: block;
+          transition: 0.5s;
+          position: absolute;
+          border-radius: 10px;
+          background: radial-gradient(circle at 80px 40px, #fff, transparent);
+        }
+        
+        .text{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          text-align: center;
+          flex-direction: column;
+          justify-content: center;
+          background-position: center;
+          background-attachment: fixed;
+        }
+        
+        h2{
+          font-family: 'Roboto', sans-serif;
+          font-size: 80px;
+          margin-bottom: 0px;
+        }
+        
+        p{
+          font-family: 'Roboto', sans-serif;
+          font-size: 15px;
+        }
+        
+        &:hover{
+          box-shadow: 0px 0px 70px #111;
+          
+          .circle2{
+            opacity: 0.4;
+          }
+        }
+      }
+    }
+  }
+
+  .nav{
+    bottom: 0px;
+    width: 100%;
+    position: absolute;
+
+    .pin{
+      height: 20px;
+      padding: 10px 0px;
+      text-align: center;
+
+      li{
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+        background: #fff;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        
+        &+li{
+          margin-left: 10px;
+        }
+
+        &:hover{
+          filter: blur(2px);
+        }
+
+        &.active{
+          width: 15px;
+          height: 15px;
+          
+          &:hover{
+            filter: blur(0px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration) {
+  &:after {
+    position: absolute;
+    content: "";
+    top: $y;
+    left: $x;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 25%;
+    opacity: 0.6;
+    transform: scale($size);
+    -webkit-filter: blur($spread);
+    -moz-filter: blur($spread);
+    -ms-filter: blur($spread);
+    filter: blur($spread);
+    background: linear-gradient(270deg, $colorA, $colorB);
+    background-size: 100% 100%;
+    animation: animateGlow $duration ease infinite;
+    
+    @keyframes animateGlow {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+  }
+}
+
+.light {
+  position: relative;
+  height: 100%;
+  color: #252B37;
+  animation: textColor 10s ease infinite;
+  @include backlight(36.5%, 1vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    
+  @keyframes textColor {
+    0% {
+      color: #7e0fff;
+    }
+    50% {
+      color: #0fffc1;
+    }
+    100% {
+      color: #7e0fff;
+    }
+  }
+}
+
+.light2 {
+  position: relative;
+  height: 100%;
+  color: #252B37;
+  animation: textColor2 10s ease infinite;
+  @include backlight(37%, 1vw, 5vw, 0.75, #AC9E62, #F34039, 10s);
+    
+  @keyframes textColor2 {
+    0% {
+      color: #AC9E62;
+    }
+    50% {
+      color: #eda934;
+    }
+    100% {
+      color: #F34039;
+    }
+  }
+}
