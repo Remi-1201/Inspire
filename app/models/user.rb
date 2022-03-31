@@ -5,9 +5,19 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.uid = SecureRandom.urlsafe_base64
+      user.provider = SecureRandom.urlsafe_base64
     end
   end
 
+  def self.admin_guest
+    find_or_create_by!(email: 'admin-guest@example.com', admin: 'true') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.uid = SecureRandom.urlsafe_base64
+      user.provider = SecureRandom.urlsafe_base64
+    end
+  end
+  
   def self.create_unique_string
     SecureRandom.uuid
   end
