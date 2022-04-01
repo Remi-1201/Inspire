@@ -16,6 +16,7 @@ class BlogsController < ApplicationController
   def show
     @comments = @blog.comments
     @comment = @blog.comments.build
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def new
@@ -27,7 +28,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    # @blog.user_id = current_user.id
+    @blog.user_id = current_user.id
     respond_to do |format|
       if @blog.save
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }

@@ -1,3 +1,11 @@
+<% unless @blog.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'Dislike', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'Like', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
   <select id="voice-select"></select>
 <p>Title:<%= @blog.title %></p>
