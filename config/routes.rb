@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'  
-  resources :favorites, only: [:create, :destroy]
-
   root 'oauth#index'
+
+  resources :favorites, only: [:create, :destroy]
   resources :blogs do
     resources :comments
   end

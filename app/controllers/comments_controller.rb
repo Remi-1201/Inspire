@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   
   def create
     @comment = @blog.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -10,6 +11,10 @@ class CommentsController < ApplicationController
         format.html { redirect_to blog_path(@blog), notice: 'The commenting attempt failed.' }
       end
     end
+  end
+
+  def show
+    @comment= current_user.comments.find_by(blog_id: @blog.id)
   end
 
   def edit
@@ -44,7 +49,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :blog)
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])

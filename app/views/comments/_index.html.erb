@@ -3,9 +3,14 @@
     <% if comment.id.present? %>
       <li>
         <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
+        <% if comment.user.name.present? %>
+          <div><%= comment.user.name %>&nbsp;made a comment.</div>
+        <% else %>
+          <div><%='Guest made a comment.'%></div>
+        <% end %>
         <p><%= comment.content %></p>
-        <p><%= link_to "コメント編集", edit_blog_comment_path(blog, comment), remote: true %></p>
-        <p><%= link_to "コメント削除", blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
+        <p><%= link_to "Edit", edit_blog_comment_path(blog, comment), remote: true %></p>
+        <p><%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></p>
       </li>
     <% end %>
   <% end %>
