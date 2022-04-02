@@ -63,6 +63,20 @@ class BlogsController < ApplicationController
     end
   end
 
+  def search
+    @blogs =
+    if params[:search_title].blank? && params[:search_detail].blank?
+      Blog.all.order(created_at: :desc)
+    elsif params[:search_title].present? && params[:search_detail].present?
+      Blog.where('title LIKE ?', "%#{params[:search_title]}%").where(detail: params[:search_detail]).order(created_at: :desc)
+    elsif params[:search_title].present? && params[:search_detail].blank?
+      Blog.where('title LIKE ?', "%#{params[:search_title]}%").order(created_at: :desc)
+    elsif params[:search_title].blank? && params[:search_detail].present?
+      Blog.where(detail: params[:search_detail]).order(created_at: :desc)
+    end
+    render :index
+  end
+
   private
     def set_blog
       @blog = Blog.find(params[:id])

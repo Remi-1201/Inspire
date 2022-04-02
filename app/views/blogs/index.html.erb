@@ -11,8 +11,17 @@
     </tr>
   </thead>
 
-  <tbody>
+<br>
+  <div class="search_form">
+    <%= form_with(url: search_blogs_path, method: :get, local: true) do %>      
+      <%= text_field_tag :search_title %>
+      <%= text_field_tag :search_detail %>
+      <%= submit_tag 'Search' %>
+      <% end %>
 
+  </div><br>
+  <tbody>
+<% if @blogs.present? %>
     <% @blogs.each do |blog| %>
       <tr>
         <td><% blog.categories.each do |category| %>
@@ -23,11 +32,11 @@
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+      </tr>        
+      <% end %>
+      <% else %>
+        <%= "Your search didn't match any results" %>        
+    <% end %>    
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>

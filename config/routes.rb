@@ -5,7 +5,14 @@ Rails.application.routes.draw do
   get 'categories/english' => 'categories#english'
   get 'categories/japanese' => 'categories#japanese'
   resources :categories
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites
+
+  resources :blogs do
+    collection do
+      get :search
+    end
+  end
+
   resources :blogs do
     resources :comments
   end
