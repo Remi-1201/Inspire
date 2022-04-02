@@ -6,8 +6,14 @@
   <% end %>
 <% end %>
 
+<br>
+<% @blog.categories.each do |category| %>
+    <%= category.name %>
+  <% end %>
 <p id="notice"><%= notice %></p>
   <select id="voice-select"></select>
+ 
+
 <p>Title:<%= @blog.title %></p>
 <p>
   <strong>Detail:</strong>

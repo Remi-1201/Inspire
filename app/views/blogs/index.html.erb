@@ -1,18 +1,23 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %><br>
+<%= button_to 'Categories', categories_path, method: :get %><br>
 
 <h1>Blogs</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Detail</th>
+      <th>All posts</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+
     <% @blogs.each do |blog| %>
-      <tr>     
+      <tr>
+        <td><% blog.categories.each do |category| %>
+            <%= category.name %>
+            <% end %></td>
         <td><%= blog.title %></td>
         <td><%= blog.detail %></td>
         <td><%= link_to 'Show', blog %></td>

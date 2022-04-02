@@ -12,6 +12,9 @@
   <% end %>
 
   <div class="field">
+    <%= collection_check_boxes(:blog, :category_ids, Category.all, :id, :name) do |cb| %>
+    <%= cb.label { cb.check_box + ' ' + cb.text } %>
+    <% end %>
     <%= form.label :title %>
     <%= form.text_area :title %>
     <%= form.label :detail %>

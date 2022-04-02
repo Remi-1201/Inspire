@@ -10,17 +10,18 @@ class BlogsController < ApplicationController
   # end
 
   def index
-    @blogs = Blog.all.order(created_at: :desc)
+    @blogs = Blog.all
   end
 
   def show
     @comments = @blog.comments
-    @comment = @blog.comments.build
+    @comment = @blog.comments.build    
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def new
     @blog = Blog.new
+    @blog.categorizings.build
   end
 
   def edit
@@ -28,7 +29,8 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    @blog.user_id = current_user.id
+    @blog.user_id = current_user.id  
+
     respond_to do |format|
       if @blog.save
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
@@ -67,6 +69,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:detail)
+      params.require(:blog).permit(:detail, :title, { category_ids: []} )
     end
 end

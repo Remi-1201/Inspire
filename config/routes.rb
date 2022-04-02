@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'  
   root 'oauth#index'
 
+  get 'categories/english' => 'categories#english'
+  get 'categories/japanese' => 'categories#japanese'
+  resources :categories
   resources :favorites, only: [:create, :destroy]
   resources :blogs do
     resources :comments

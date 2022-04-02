@@ -1,0 +1,13 @@
+<br>
+<br>
+English
+<br>
+<br>
+<% @blogs.each do |blog| %>
+  <% blog.categories.each do |c| %>
+    <% if c.name == "English"%>
+      <%= blog.title %>
+      <%= blog.detail%><br>
+    <% end %>
+  <% end %>
+<% end %>
