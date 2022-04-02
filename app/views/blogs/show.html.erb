@@ -11,9 +11,12 @@
     <%= category.name %>
   <% end %>
 <p id="notice"><%= notice %></p>
-  <select id="voice-select"></select>
+  <select id="voice-select"></select><br>
  
+Created by <%= @blog.user.name %> <br>
 
+<%= image_tag (@blog.user.avatar.url) , class: "avatar-index rounded-circle mx-auto" if @blog.user.avatar && @blog.user.avatar.url %>    
+          
 <p>Title:<%= @blog.title %></p>
 <p>
   <strong>Detail:</strong>
@@ -29,7 +32,9 @@
   <button id="RecStart">Record</button>
   <button id="RecStop" disabled>Stop</button><br>
   <div id="RecMime"></div>
-</div></div>
+</div></div> <br>
+
+<%= image_tag @blog.image.url %> <br>
 
 <p>コメント一覧</p>
 
@@ -41,3 +46,5 @@
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
+
+

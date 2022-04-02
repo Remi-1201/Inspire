@@ -19,7 +19,11 @@
     <%= form.text_area :title %>
     <%= form.label :detail %>
     <%= form.text_area :detail %>
-  </div>
+
+    <%= form.label :image %>
+    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+    <%= form.file_field :image, class: 'image', id: 'image' %>
+    <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %>
 
   <div class="actions">
     <%= form.submit %>

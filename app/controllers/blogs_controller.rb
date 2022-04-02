@@ -84,6 +84,7 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:detail, :title, { category_ids: []} )
+      params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []} )
     end
 end
+

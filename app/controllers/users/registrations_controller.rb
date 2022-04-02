@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :image, :name, :name_tag, :last_target, :notice, :notice_time ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :image, :name, :name_tag, :last_target, :notice, :notice_time, :avatar, :avatar_cache])
   end
 
   def after_sign_up_path_for(resource)

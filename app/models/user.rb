@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize: "30x30"
+  end
   has_many :favorites, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :comments, dependent: :destroy

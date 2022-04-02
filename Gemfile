@@ -11,6 +11,10 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'mimemagic', '0.3.7'
+gem 'image_processing'
 
 # for login
 gem 'devise'

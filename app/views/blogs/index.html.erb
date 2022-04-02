@@ -2,6 +2,7 @@
 <%= button_to 'Categories', categories_path, method: :get %><br>
 
 <h1>Blogs</h1>
+<div class="col-md-6"><%= button_to 'Make new Post', new_blog_path, method: :get %></div><br>
 
 <table>
   <thead>
@@ -31,8 +32,10 @@
         <td><% blog.categories.each do |category| %>
             <%= category.name %>
             <% end %></td>
+        <td><%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %></td>         
         <td><%= blog.title %></td>
         <td><%= blog.detail %></td>
+        <td><%= image_tag(blog.image.url) if blog.image && blog.image.url %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>

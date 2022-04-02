@@ -26,6 +26,14 @@
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
+      <div class="field">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
+
+        <%= image_tag(@user.avatar.url) if @user.avatar && @user.avatar.url %>
+      </div>
+
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>
