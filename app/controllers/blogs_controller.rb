@@ -72,7 +72,7 @@ class BlogsController < ApplicationController
     elsif params[:search_title].present? && params[:search_detail].blank?
       Blog.where('title LIKE ?', "%#{params[:search_title]}%").order(created_at: :desc)
     elsif params[:search_title].blank? && params[:search_detail].present?
-      Blog.where(detail: params[:search_detail]).order(created_at: :desc)
+      Blog.where('detail LIKE ?', "%#{params[:search_detail]}%").order(created_at: :desc)
     end
     render :index
   end
