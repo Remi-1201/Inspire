@@ -11,6 +11,7 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all
+    @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
   end
 
   def show
