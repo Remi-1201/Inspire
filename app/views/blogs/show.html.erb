@@ -34,7 +34,7 @@ Created by <%= @blog.user.name %> <br>
   <div id="RecMime"></div>
 </div></div> <br>
 
-<%= image_tag @blog.image.url %> <br>
+<%= image_tag @blog.image.url  if @blog.image && @blog.image.url %> <br>
 
 <p>コメント一覧</p>
 
