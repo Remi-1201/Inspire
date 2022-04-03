@@ -40,6 +40,16 @@ class User < ApplicationRecord
                       password: Devise.friendly_token[0, 20],
                                  )
   end
+  
+  def admin?
+    role == "admin"
+  end
+  def regular?
+    role == "regular"
+  end
+  def guest?
+    role == "guest"
+  end
 
   user.save
   user

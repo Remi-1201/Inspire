@@ -1,14 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
   load_and_authorize_resource
-  # before_action :authenticate_user
-
-  # def authenticate_user
-  #   @current_user = User.find_by(id: session[:user_id])
-  #   if @current_user.nil?
-  #     redirect_to new_user_session_path
-  #   end
-  # end
 
   def index
     @blogs = Blog.all
@@ -26,16 +18,12 @@ class BlogsController < ApplicationController
     @blog.categorizings.build
   end
 
-  def edit
-  end
-
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id  
-
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
+        format.html { redirect_to blogs_path, notice: "Blog was successfully created." }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -46,8 +34,9 @@ class BlogsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to blog_url(@blog), notice: "Blog was successfully updated." }
+      if @blog.user_id = current_user.id 
+        @blog.update(blog_params)
+        format.html { redirect_to blogs_path, notice: "Blog was successfully updated." }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,11 +46,14 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    @blog.destroy
-
-    respond_to do |format|
-      format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+      if @blog.user_id = current_user.id
+        @blog.destroy
+        format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
+        format.json { head :no_content }    
+      else
+      redirect_to blogs_path, notice: "Permission denied!"
+      end
     end
   end
 
@@ -80,12 +72,12 @@ class BlogsController < ApplicationController
   end
 
   private
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
 
-    def blog_params
-      params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []} )
-    end
+  def blog_params
+    params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []} )
+  end
 end
 
