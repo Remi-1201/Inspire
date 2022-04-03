@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
   # before_action :authenticate_user
 
   # def authenticate_user
