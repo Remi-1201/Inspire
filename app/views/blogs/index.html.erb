@@ -4,6 +4,8 @@
 <h1>Blogs</h1>
 <div class="col-md-6"><%= button_to 'Make new Post', new_blog_path, method: :get %></div><br>
 
+  <select id="voice-select"></select><br>
+
 <table>
   <thead>
     <tr>
@@ -25,7 +27,7 @@
       <% end %>
 
   </div><br>
-  <tbody>
+  <tbody class ="table">
 <% if @blogs.present? %>
     <% @blogs.each do |blog| %>
       <tr>
@@ -34,7 +36,9 @@
             <% end %></td>
         <td><%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %></td>         
         <td><%= blog.title %></td>
-        <td><%= blog.detail %></td>
+        <td><textarea id = "detail"><%= blog.detail %></textarea></td>
+        <td><button id="speak-btn">speak</button></td>
+        <td><button id="stop-btn">stop</button></td>
         <td><%= image_tag(blog.image.url) if blog.image && blog.image.url %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>

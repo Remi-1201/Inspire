@@ -1,5 +1,7 @@
 $(document).on ("turbolinks:load", function(){
-  const text        = document.querySelector('#text')
+
+  const text        = document.querySelector('#detail')
+
   const voiceSelect = document.querySelector('#voice-select')
   const speakBtn    = document.querySelector('#speak-btn')
   const stopBtn    = document.querySelector('#stop-btn')
