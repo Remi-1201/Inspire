@@ -1,16 +1,30 @@
-<div class="container">
-  <h1 class="title">Inspire</h1>
-    <p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag 'only/top', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    
-  <div class="contents">
-    <div class="col-md-6"><%= link_to 'All Posts', blogs_path %></li></div>
-    <div class="col-md-6"><%= link_to 'Make new Post', new_blog_path %></div>
-  <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Googleでサインアップしてね', user_google_omniauth_authorize_path, method: :post %>
-  <% end %>
-  </div> 
-    
+<div class="d-flex flex-column justify-content-center w-100 h-100">
+
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1>Inspire</h1>
+      <div class ="text"> 
+        <span>by sharing the words touched your heart</span>
+      </div>
+      <% if user_signed_in? %>
+      <div class="btn-group my-5">
+          <a href="/blogs" class="btn btn-outline-light" aria-current="page">INDEX</a>
+
+          <a href="/users/sign_out/" class="btn btn-outline-light">LOGOUT</a>
+        </div>
+      <% else %>
+        <div class="btn-group my-5">
+          <a href="/users/sign_up" class="btn btn-outline-light" aria-current="page">SIGNUP</a>
+          
+          <a href="/users/auth/google" class="btn btn-outline-light"> GOOGLE LOGIN</a>
+
+          <a href="/users/sign_in" class="btn btn-outline-light">LOGIN</a>
+        </div>
+      <% end %>
+
+      <h5 class="fw-light text-white m-0">— We learn languages by listen and repeat to inspiring words —</h5>
+
+  </div>
+</div>
 </div>

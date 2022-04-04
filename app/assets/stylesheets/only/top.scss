@@ -1,0 +1,91 @@
+html {
+  font-family: "Serif";
+}
+
+body {
+  background: radial-gradient(ellipse at right bottom, #1d1e63 5%, #1e173f  25%,#330c45 50%, #030243 100%);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// tile
+h1 {
+  margin: 0;
+  padding-bottom: 1rem;
+  grid-column: 1;
+  grid-row: 1;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+  font-size: 5rem;
+  text-transform: uppercase;
+  animation: glow 2s ease-in-out infinite alternate;
+  text-align: center;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px #a2107d;
+  }
+  to {
+    text-shadow: 0 0 30px #e4cbde, 0 0 10px #1054a2;
+  }
+}
+
+// text
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+.text {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+  font-size: 1.5rem;
+  color:white;
+}
+
+.text :first-of-type {   
+  animation: showup 7s infinite;
+}
+
+.text :last-of-type {
+  width:0px;
+  animation: reveal 15s infinite;
+}
+
+.text :last-of-type span {
+  margin-left:-355px;
+  animation: slidein 15s infinite;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
+}

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'all/application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "tts/speak.js" %>
     <%= javascript_include_tag "tts/record.js" %>
@@ -20,11 +20,9 @@
   <% end %>
 
   <% if user_signed_in? %>
-    <h1>User</h1>
     <%= link_to "Index", blogs_path %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
   <% else %>
-    <h1>Guest</h1>
     <%= link_to "Sign up", new_user_registration_path %>
     <%= link_to "Login", new_user_session_path %>
   <% end %>
