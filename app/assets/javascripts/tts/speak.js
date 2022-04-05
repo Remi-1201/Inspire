@@ -1,13 +1,13 @@
 $(document).on ("turbolinks:load", function(){
   // document.addEventListener('click',function(e){
-  //   var t=e.target;
-  //   if(t.id=="speak-btn"){
-  //     const text=Array.prototype.map.call(t.parentNode.parentNode.querySelectorAll('td'),function(n){
-  //       return n.textContent;
-  //     }).filter(function(v){
-  //       return v!=="";
-  //     })
-  //   };
+    // var t=e.target;
+    // if(t.id=="speak-btn"){
+    //   const a =Array.prototype.map.call(t.parentNode.parentNode.querySelectorAll('td'),function(n){
+    //     const text = n.textContent;
+    //   }).filter(function(v){
+    //     return v!=="";
+    //   })
+    // };
 
   const text        = document.querySelector('#detail')
   const voiceSelect = document.querySelector('#voice-select')

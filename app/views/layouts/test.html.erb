@@ -1,0 +1,53 @@
+    <nav>
+      <ul class="top_menu clearfix">
+        <li class="left">            
+          <a class="nav-link" href="/">Top Page</a>
+        </li>
+        <li class="left">
+          <a class="nav-link" href="/categories">Categories</a>              
+        </li>
+        <div class="b-right">
+          <% if logged_in? %>
+            <% if admin? %>              
+                <li class="right">
+                  <a class="nav-link" href="/admin/users">Admin</a>                                
+                </li>          
+                <li class="right">
+                  <a class="nav-link" href="/blogs">Index</a>                         
+                </li>
+                <li class="right">
+                  <a class="nav-link" href="/users/:id">Profile</a>                
+                </li>
+                <li class="right">
+                  <a class="nav-link disabled" href="/users/sign_out/" >Logout</a>
+                </li>
+              
+            <% else %>
+              
+                <li class="right">
+                  <a class="nav-link" href="/blogs">Index</a>                         
+                </li>
+                <li class="right">
+                  <a class="nav-link" href="/users/:id">Profile</a>                
+                </li>
+                <li class="right">
+                  <a class="nav-link disabled" href="/users/sign_out/" >Logout</a>
+                </li>
+              
+              <% end %>
+            <% else %>
+              
+                <li class="right">
+                  <a href="/users/sign_up">Signup</a>
+                </li>
+                <li class="right">          
+                  <a href="/users/auth/google"> Login by Google</a>
+                </li>
+                <li class="right">
+                  <a href="/users/sign_in">Login</a>
+                </li>
+              
+            <% end %>
+          </div>
+      </ul>
+    </nav>

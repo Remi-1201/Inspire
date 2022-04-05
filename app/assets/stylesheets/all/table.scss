@@ -1,0 +1,51 @@
+.table_frame{
+  table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-all;
+  padding-bottom: 50px;
+  margin: 10px auto;
+}
+
+table {
+  background-color: white;
+  margin: auto;
+  border: 1px solid;
+  border-spacing: 20px 10px;
+  border-radius: 6px;
+  width: 500px
+}
+
+.th_category{
+  border-top: 1px solid;
+  font-weight: lighter;
+  margin: 0 auto;
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.th_user {
+  font-weight: lighter;
+  margin: 0 auto;
+  text-align: left;
+  padding: 10px 20px;
+}
+
+.th_title {
+  font-weight: lighter;
+  padding: 10px 20px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.th_detail {
+  font-weight: lighter;
+  padding: 10px 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+td{
+  padding: 20px 35px;
+}
