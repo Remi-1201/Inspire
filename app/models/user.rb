@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
   
   def self.create_unique_string
-    SecureRandom.uuid
+    SecureRandom.uid
   end
 
   def self.find_for_google(auth)
