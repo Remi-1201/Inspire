@@ -14,18 +14,19 @@
   <div class="field">
     <%= collection_check_boxes(:blog, :category_ids, Category.all, :id, :name) do |cb| %>
     <%= cb.label { cb.check_box + ' ' + cb.text } %>
-    <% end %>
-    <%= form.label :title %>
-    <%= form.text_area :title %>
-    <%= form.label :detail %>
-    <%= form.text_area :detail %>
+    <% end %><br><br>
 
-    <%= form.label :image %>
-    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-    <%= form.file_field :image, class: 'image', id: 'image' %>
-    <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %>
+    <%= form.label :title %><br>
+    <%= form.text_area :title %><br>
+    <%= form.label :detail %><br>
+    <%= form.text_area :detail %><br>
+
+    <%= form.label :image %><br>
+    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br>
+    <%= form.file_field :image, class: 'image', id: 'image' %><br>
+    <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %><br>
 
   <div class="actions">
     <%= form.submit %>
-  </div>
+  </div><br>
 <% end %>

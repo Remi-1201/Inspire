@@ -1,18 +1,6 @@
 $(document).on ("turbolinks:load", function(){
-  // document.addEventListener('click',function(e){
-    // var t=e.target;
-    // if(t.id=="speak-btn"){
-    //   const a =Array.prototype.map.call(t.parentNode.parentNode.querySelectorAll('td'),function(n){
-    //     const text = n.textContent;
-    //   }).filter(function(v){
-    //     return v!=="";
-    //   })
-    // };
 
-  const text        = document.querySelector('#detail')
   const voiceSelect = document.querySelector('#voice-select')
-  const speakBtn    = document.querySelector('#speak-btn')
-  const stopBtn    = document.querySelector('#stop-btn')
 
   function appendVoices() {
     const voices = speechSynthesis.getVoices()
@@ -32,15 +20,15 @@ $(document).on ("turbolinks:load", function(){
     appendVoices()
   }
   
-  speakBtn.addEventListener('click', function() {
-    const uttr = new SpeechSynthesisUtterance(text.value)
+  $('.speak-btn').on('click', function() {
+    const uttr = new SpeechSynthesisUtterance(this.getAttribute('data-blog'))
     uttr.voice = speechSynthesis
       .getVoices()
       .filter(voice => voice.name === voiceSelect.value)[0]
     speechSynthesis.speak(uttr)
   })
 
-  stopBtn.addEventListener('click', function(){
+  $('.stop-btn').on('click', function(){
     speechSynthesis.cancel();
   }, false);
 });

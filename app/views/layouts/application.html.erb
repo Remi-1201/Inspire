@@ -14,7 +14,7 @@
   </head>
 
     
-  <body>
+  <body>           
     <nav>
       <ul class="top_menu clearfix">
         <li class="left">            
@@ -22,19 +22,13 @@
         </li>
         <li class="left">
           <a class="nav-link" href="/categories">Categories</a>              
-        </li>
-        <li class="left">
-          <%= form_with(url: search_blogs_path, method: :get, local: true) do %>      
-            <%= text_field_tag :search_detail %>
-            <%= submit_tag 'Search' %>
-          <% end %>
-        </li>
+        </li>        
       </div>
     </div>
 
         <div class="b-right">
           <% if user_signed_in? %>
-            <% if current_user.admin? %>              
+            <% if current_user.try(:admin?) %>              
               <li class="right">
                 <a class="nav-link" href="/admin/users">Admin</a>                                
               </li>          
@@ -42,10 +36,10 @@
                 <a class="nav-link" href="/blogs">Index</a>                         
               </li>
               <li class="right">
-                <a class="nav-link" href="/users/:id">Profile</a>                
+                <%= link_to "Profile", mypage_path, method: :get, class: 'mypage' %>
               </li>
               <li class="right">
-                <a class="nav-link disabled" href="/users/sign_out/" >Logout</a>
+                <%= link_to "Logout", destroy_user_session_path, method: :get, class: 'button_logout' %>
               </li>
               
           <% else %>              
@@ -53,10 +47,10 @@
               <a class="nav-link" href="/blogs">Index</a>                         
             </li>
             <li class="right">
-              <a class="nav-link" href="/users/">Profile</a>                
+              <%= link_to "Profile", mypage_path, method: :get, class: 'mypage' %>             
             </li>
             <li class="right">
-              <a class="nav-link" href="/users/sign_out/" >Logout</a>
+              <%= link_to "Logout", destroy_user_session_path, method: :get, class: 'button_logout' %>
             </li>              
           <% end %>
 
@@ -74,15 +68,10 @@
         </div>
       </ul>
     </nav>
-
-  <header></header>   
-
-
+  <p id="notice"><%= notice %>
   <footer>
     <p>© 2022 Developed by Remi Nakajima</p>
   </footer>
-
-
 
     <%= yield %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

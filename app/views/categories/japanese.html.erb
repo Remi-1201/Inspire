@@ -1,13 +1,85 @@
 <br>
+<h1>Japanese</h1>
 <br>
-Japanese
-<br>
-<br>
-<% @blogs.each do |blog| %>
-  <% blog.categories.each do |c| %>
-    <% if c.name == "Japanese"%>
-      <%= blog.title %>
-      <%= blog.detail%><br>
-    <% end %>
+
+<%= button_to 'Make new Post', new_blog_path, method: :get %><br>
+
+<select id="voice-select"></select><br><br>    
+
+<%= form_with(url: search_blogs_path, method: :get, local: true) do %>      
+  <%= text_field_tag :search_detail %>
+  <%= submit_tag 'Search' %>
+<% end %><br>
+
+<div class = "table-responsive">
+  <table class="table table-borderless">
+    <% if @blogs.present? %>
+      <% @blogs.each do |blog| %>    
+        <% blog.categories.each do |c| %>
+          <% if c.name == "Japanese"%>
+
+      <tbody >
+        <tr>
+          <td>
+            <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %>
+          </td>
+            <td>
+              <%= blog.user.name %>
+            </td>
+            <td>
+              <%= blog.created_at.to_s(:datetime) %>
+            </td>
+            <td>
+              <%= link_to 'Show', blog %>
+            </td>            
+        </tr>
+
+        <tr>
+          <th colspan="5" class="th_title">
+              <%= blog.title %>
+          <th>
+        </tr>
+
+        <tr>
+          <th colspan="5" class="th_detail">
+              <textarea id="detail">
+                <%= blog.detail %>
+              </textarea>
+          <th>
+        </tr>
+
+        <tr>
+          <td><button id="speak-btn">speak</button></td>            
+          <td><button id="stop-btn">stop</button></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th colspan="5" class="th">
+              <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
+          </th>
+        <tr>
+
+        <tr class="option">            
+          <td>
+            <% if @favorite.present? %>
+              <%= link_to 'Dislike', favorite_path(id: favorite.id), method: :delete %>
+            <% else %>
+              <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
+            <% end %>
+          </td>
+        <% end %>
+
+
+          <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+          <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+         <% end %>
+        <% end %>        
+      </tbody>
+    </table>
+  </div>
+  
+  <% else %>
+    <%= "Your search didn't match any results" %>        
   <% end %>
-<% end %>

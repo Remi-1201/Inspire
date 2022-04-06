@@ -1,35 +1,38 @@
-<div class="contents row">
-  <%= link_to 'Guest login', users_sign_in_guest_path, method: :post %></li>
-  <%= link_to 'Admin guest login', users_sign_in_admin_guest_path, method: :post %></li>
+<br>
+  <h1>Log in</h1><br>
 
-  <h2>Log in</h2>
+  <div class="login_button">
+    <%= button_to 'Guest login', users_sign_in_guest_path, method: :post %> 
+    <%= button_to 'Admin guest login', users_sign_in_admin_guest_path, method: :post %> 
+  </div><br>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="field">
-      <%= f.label :name %> <br />
+      <%= f.label :name %> <br>
       <%= f.text_field :name, autofocus: true, maxlength: "8" %>
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label :email %><br>
       <%= f.email_field :email, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :password %><br />
+      <%= f.label :password %><br>
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
     <% if devise_mapping.rememberable? -%>
       <div class="field">
-        <%= f.label :remember_me %><br />
+        <%= f.label :remember_me %><br>
         <%= f.check_box :remember_me %>
       </div>
     <% end -%>
 
     <div class="actions">
       <%= f.submit "Log in" %>
-    </div>
+    </div><br>
   <% end %>
-</div>
+
+  <a href="/users/auth/google"> Login with Google</a>

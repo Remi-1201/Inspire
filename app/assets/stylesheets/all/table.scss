@@ -1,9 +1,11 @@
-.table_frame{
+.table-responsive{
   table-layout: fixed;
   word-break: break-all;
   word-wrap: break-all;
   padding-bottom: 50px;
-  margin: 10px auto;
+  width:80%;
+  margin: 0 auto;
+  border-radius: 20px;
 }
 
 table {
@@ -15,7 +17,7 @@ table {
   width: 500px
 }
 
-.th_category{
+.category{
   border-top: 1px solid;
   font-weight: lighter;
   margin: 0 auto;
@@ -44,8 +46,4 @@ table {
   padding: 10px 20px;
   margin: 0 auto;
   text-align: center;
-}
-
-td{
-  padding: 20px 35px;
 }

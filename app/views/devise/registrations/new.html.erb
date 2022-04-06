@@ -1,5 +1,8 @@
-<div class="contents row">
-    <h2>Sign up</h2>
+ <%= stylesheet_link_tag 'all/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<h1>Sign up</h1><br>
+
+<div class="contents">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
@@ -24,15 +27,15 @@
       <div class="field">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
+      </div><br>
 
       <div class="field">
         <%= f.label :avatar %>
         <%= f.file_field :avatar %>
-        <%= f.hidden_field :avatar_cache %>
+        <%= f.hidden_field :avatar_cache %><br>
 
         <%= image_tag(@user.avatar.url) if @user.avatar && @user.avatar.url %>
-      </div>
+      </div><br>
 
       <div class="actions">
         <%= f.submit "Sign up" %>

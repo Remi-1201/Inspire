@@ -1,10 +1,20 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
+  # before_action :set_user
+
   load_and_authorize_resource
+  before_action :authenticate_user! 
 
   def index
     @blogs = Blog.all
     @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
+
+    # if !@user.id.nil?
+    #   @blogs = Blog.favorited_pages(current_user).blog(params[:blog])
+    #   @favorites = Favorite.find_by(user_id: current_user.id)
+    # else
+    #   @blogs = Blog.all.order('updated_at DESC').blog(params[:blog])
+    # end
   end
 
   def show
@@ -79,5 +89,10 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []} )
   end
+
+  # def set_user
+  #   # current_userがnilだったら空のUserインスタンスを設定
+  #   @user = current_user || User.new
+  # end
 end
 

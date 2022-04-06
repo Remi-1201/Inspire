@@ -1,0 +1,6 @@
+<h1>Update my profile</h1>
+
+<%= form_with model: @user do |form| %>
+  <div>Name<%= form.text_field :name %></div>
+  <div><%= form.submit "Submit" %></div>
+<% end %>

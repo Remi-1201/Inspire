@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  # alias_method :devise_current_user, :current_user
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to blogs_path, notice: "Permission denied!"
   end
@@ -13,8 +15,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
   
-  private
-  # def login_required
-  #     redirect_to new_user_session_path unless current_user
+  # def current_user
+  #   if devise_current_user.nil?
+  #     User.new
+  #   else
+  #     User.find_by_id(devise_current_user.id)
+  #   end
   # end
+
+  private
 end

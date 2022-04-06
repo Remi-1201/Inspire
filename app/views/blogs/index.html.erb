@@ -1,18 +1,23 @@
-<p id="notice"><%= notice %><br>
+<br>
 <h1>Blogs</h1>
 <%= button_to 'Make new Post', new_blog_path, method: :get %><br>
 
 <select id="voice-select"></select><br><br>    
 
-<div class = "table_frame">
-  <table>
+<%= form_with(url: search_blogs_path, method: :get, local: true) do %>      
+  <%= text_field_tag :search_detail %>
+  <%= submit_tag 'Search' %>
+<% end %><br>
+
+<div class = "table-responsive">
+  <table class="table table-borderless">
     <% if @blogs.present? %>
       <% @blogs.each do |blog| %>
-    <tbody>
-        <tr>
-          <th colspan="3" class="th_category">
-              <% blog.categories.each do |category| %>
-                <%= category.name %>
+    <tbody >
+        <tr class="category">
+          <th colspan="5" >
+            <% blog.categories.each do |category| %>
+              <%= category.name %>
             <% end %>
           </th>
         </tr>
@@ -26,37 +31,45 @@
             </td>
             <td>
               <%= blog.created_at.to_s(:datetime) %>
+            </td>
+            <td>
+              <%= link_to 'Show', blog %>
             </td>            
         </tr>
 
         <tr>
-          <th colspan="3" class="th_title">
+          <th colspan="5" class="th_title">
               <%= blog.title %>
           <th>
         </tr>
 
         <tr>
-          <th colspan="3" class="th_detail">
-              <textarea id="detail">
-                <%= blog.detail %>
-              </textarea>
+          <th colspan="5" class="th_detail">              
+            <%= blog.detail %>              
           <th>
         </tr>
 
         <tr>
-            <td><button id="speak-btn">speak</button></td>            
-            <td><button id="stop-btn">stop</button></td>
+            <td><button class="speak-btn" data-blog="<%= blog.detail %>">speak</button></td>                 
+            <td><button class="stop-btn">stop</button></td>
             <td></td>
         </tr>
 
         <tr>
-          <th colspan="3" class="th">
+          <th colspan="5" class="th">
               <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
           </th>
         <tr>
 
-        <tr>
-            <td><%= link_to 'Show', blog %></td>
+        <tr class="option">            
+            <td>
+              <% if @favorite.present? %>
+                <%= link_to 'Dislike', favorite_path(id: favorite.id), method: :delete %>
+              <% else %>
+                <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
+              <% end %>
+            </td>
+
             <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
             <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

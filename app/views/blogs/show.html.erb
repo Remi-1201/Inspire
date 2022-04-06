@@ -1,50 +1,105 @@
-<% unless @blog.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'Dislike', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'Like', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
+<h1>Detail</h1>
 
-<br>
-<% @blog.categories.each do |category| %>
-    <%= category.name %>
-  <% end %>
 <p id="notice"><%= notice %></p>
-  <select id="voice-select"></select><br>
- 
-Created by <%= @blog.user.name %> <br>
 
-<%= image_tag (@blog.user.avatar.url) , class: "avatar-index rounded-circle mx-auto" if @blog.user.avatar && @blog.user.avatar.url %>    
-          
-<p>Title:<%= @blog.title %></p>
-<p>
-  <strong>Detail:</strong>
-  <textarea rows="3" cols="40" id="detail"><%= @blog.detail %></textarea>
-</p>
-<button id="speak-btn">speak</button>
-<button id="stop-btn">stop</button>
-<br>
-<br>
-<div class="record">
-<div id="Control">
-  <button id="MicOn">Get the microphone</button><br/>
-  <button id="RecStart">Record</button>
-  <button id="RecStop" disabled>Stop</button><br>
-  <div id="RecMime"></div>
-</div></div> <br>
+<select id="voice-select"></select><br><br>
 
-<%= image_tag @blog.image.url  if @blog.image && @blog.image.url %> <br>
+
+<div class = "table-responsive">
+  <table class="table table-borderless">
+      <tr>
+        <th colspan="5" class="th_category">
+            <% @blog.categories.each do |category| %>
+              <%= category.name %>
+          <% end %>
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <%= image_tag (@blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @blog.user.avatar && @blog.user.avatar.url %>
+        </td>
+        <td>
+          <%= @blog.user.name %>
+        </td>      
+        <td>
+          <%= @blog.created_at.to_s(:datetime) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>      
+        <td>
+          <button class="speak-btn" data-blog="<%= @blog.detail %>">speak</button>
+        </td>           
+        <td>
+          <button class="stop-btn">stop</button>
+        </td>
+      </tr>
+
+      <tr>
+        <th colspan="5" class="th_title">
+            <%= @blog.title %>
+        <th>
+      </tr>
+
+      <tr>
+        <th colspan="5" class="th_detail">
+          <%= @blog.detail %>
+        <th>
+      </tr>
+
+      <tr>
+        <th colspan="5" class="th">
+            <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+        </th>
+      <tr>
+
+      <tr>            
+        <td>
+          <% if @favorite.present? %>
+            <%= link_to 'Dislike', favorite_path(id: @favorite.id), method: :delete %>
+          <% else %>
+            <%= link_to 'Like', favorites_path(blog_id: @blog.id), method: :post %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="record">
+            <div id="Control">
+              <td>
+                <button id="MicOn">Get the microphone</button>
+              </td>
+              <td>
+                <button id="RecStart">Record</button>
+              </td>
+              <td>
+                <button id="RecStop" disabled>Stop</button>
+              </td>
+              <div id="RecMime">
+            </div>
+          </div>
+        </td>            
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 <p>コメント一覧</p>
+  <table class="table table-borderless">
 
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
-  </div>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    </div>
 
-  <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+    <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+  </table><br>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+  <%= link_to 'Edit', edit_blog_path(@blog) %> | <%= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back', blogs_path %> 
+
+
 
 

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'categories/english' => 'categories#english'
   get 'categories/japanese' => 'categories#japanese'
+  get '/mypage' => 'users#mypage'
+
   resources :categories
   resources :favorites
 
@@ -25,10 +27,10 @@ Rails.application.routes.draw do
 }
 
   devise_scope :user do
-    get "signup", :to => "users/registrations#new" 
-    get "login", :to => "users/sessions#new"
-    delete "logout", :to => "users/sessions#destroy"
     post 'users/sign_in/guest', to: 'users/sessions#guest_sign_in'
     post 'users/sign_in/admin_guest', to: 'users/sessions#admin_guest_sign_in'
   end
+
+  resources :users, only: [:show]
+
 end
