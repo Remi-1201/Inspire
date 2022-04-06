@@ -2,8 +2,6 @@
 <h1>Blogs</h1>
 <%= button_to 'Make new Post', new_blog_path, method: :get %><br>
 
-<select id="voice-select"></select><br><br>    
-
 <%= form_with(url: search_blogs_path, method: :get, local: true) do %>      
   <%= text_field_tag :search_detail %>
   <%= submit_tag 'Search' %>

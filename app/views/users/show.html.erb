@@ -3,6 +3,7 @@
 <p><%= link_to "Update my profile", edit_user_registration_path %> &nbsp;
 <%= link_to "My favorites", favorites_path %></p> 
 
+
 <% @blogs.each do |blog| %>
     <% if blog.user_id == @user.id %>
       <% if blog.present? %>
