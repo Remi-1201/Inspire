@@ -25,6 +25,9 @@ gem 'rexml'
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
 
+# translate
+gem 'rails-i18n'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
