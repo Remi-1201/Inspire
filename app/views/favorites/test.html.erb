@@ -1,0 +1,40 @@
+        <% if favorite.present? %>
+          <tr>
+            <td>Posted by :&emsp;<%= favorite.blog.user.name %></td>       
+            <td></td>
+            <td><%= button_to '↓Unlike',favorite_path(id: favorite.id), method: :delete, class: 'unlike' %></td>  
+          </tr>          
+        
+        <% else %>          
+          <tr>
+            <td>Posted by :&emsp;<%= favorite.blog.user.name %></td>       
+            <td></td>
+            <td><%= button_to 'Like', favorites_path(blog_id: blog.id), method: :post, class: "like" %></td>
+          </tr>            
+        <% end %>
+
+
+        <tr>
+            <th colspan="3" class="favorite">
+              <%= favorite.blog.title %>
+            </th>
+          </tr>
+
+          <tr>
+            <th colspan="3" class="favorite">
+              <%= favorite.blog.content %>
+            </th>
+          </tr>
+        
+        <% if favorite.blog.image.url%>
+          <tr>
+            <th colspan="3" class="favorite">
+              <%= image_tag favorite.blog.image.url %>
+            </th>
+          </tr>
+        <% end %>
+            
+    </tr>
+
+    <% if favorite.user_id == current_user %>
+    <% end %>

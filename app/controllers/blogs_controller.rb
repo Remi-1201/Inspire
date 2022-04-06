@@ -9,12 +9,6 @@ class BlogsController < ApplicationController
     @blogs = Blog.all
     @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
 
-    # if !@user.id.nil?
-    #   @blogs = Blog.favorited_pages(current_user).blog(params[:blog])
-    #   @favorites = Favorite.find_by(user_id: current_user.id)
-    # else
-    #   @blogs = Blog.all.order('updated_at DESC').blog(params[:blog])
-    # end
   end
 
   def show

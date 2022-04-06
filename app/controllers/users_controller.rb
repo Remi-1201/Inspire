@@ -12,6 +12,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    user = User.find(params[:id])
+    return redirect_to blogs_path unless current_user.id ==  user.id
+    @user_favorites = user.favorites
+    @blogs = Blog.all
+  end
+
   def update
   if current_user.update(user_params)
       redirect_to user_path(current_user)

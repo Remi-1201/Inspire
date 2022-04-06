@@ -9,11 +9,10 @@
   <%= submit_tag 'Search' %>
 <% end %><br>
 
-<div class = "table-responsive">
-  <table class="table table-borderless">
-    <% if @blogs.present? %>
-      <% @blogs.each do |blog| %>
-    <tbody >
+<% if @blogs.present? %>
+  <% @blogs.each do |blog| %>
+    <div class = "table-responsive">
+      <table >
         <tr class="category">
           <th colspan="5" >
             <% blog.categories.each do |category| %>
@@ -26,15 +25,15 @@
           <td>
             <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %>
           </td>
-            <td>
-              <%= blog.user.name %>
-            </td>
-            <td>
-              <%= blog.created_at.to_s(:datetime) %>
-            </td>
-            <td>
-              <%= link_to 'Show', blog %>
-            </td>            
+          <td>
+            <%= blog.user.name %>
+          </td>
+          <td>
+            <%= blog.created_at.to_s(:datetime) %>
+          </td>
+          <td>
+            <%= link_to 'Show', blog %>
+          </td>            
         </tr>
 
         <tr>
@@ -50,9 +49,28 @@
         </tr>
 
         <tr>
-            <td><button class="speak-btn" data-blog="<%= blog.detail %>">speak</button></td>                 
-            <td><button class="stop-btn">stop</button></td>
-            <td></td>
+          <td><button class="speak-btn" data-blog="<%= blog.detail %>">speak</button></td>                 
+          <td><button class="stop-btn">stop</button></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="record">
+              <div id="Control">
+                <td>
+                  <button id="MicOn">Get the microphone</button>
+                </td>
+                <td>
+                  <button id="RecStart">Record</button>
+                </td>
+                <td>
+                  <button id="RecStop" disabled>Stop</button>
+                </td>
+                <div id="RecMime">
+              </div>
+            </div>
+          </td>            
         </tr>
 
         <tr>
@@ -62,24 +80,26 @@
         <tr>
 
         <tr class="option">            
-            <td>
-              <% if @favorite.present? %>
-                <%= link_to 'Dislike', favorite_path(id: favorite.id), method: :delete %>
-              <% else %>
-                <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
-              <% end %>
-            </td>
-
-            <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-            <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+          <td>
+            <% if @favorite.present? %>
+              <%= link_to 'Dislike', favorite_path(id: favorite.id), method: :delete %>
+            <% else %>
+              <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
             <% end %>
-      </tbody>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_blog_path(blog) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
     </table>
-  </div>    
+  </div><br>
 
-    <% else %>
-      <%= "Your search didn't match any results" %>        
-    <% end %>    
+  <% else %>
+    <%= "Your search didn't match any results" %>        
+  <% end %>    
 
 
