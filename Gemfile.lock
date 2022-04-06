@@ -309,6 +309,7 @@ DEPENDENCIES
   dotenv-rails
   image_processing
   jbuilder (~> 2.7)
+  kaminari
   listen (~> 3.2)
   mimemagic (= 0.3.7)
   mini_magick

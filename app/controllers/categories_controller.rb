@@ -10,15 +10,15 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @blogs = Blog.where(category_id: current_category)
+    @blogs = Blog.where(category_id: current_category).order(created_at: :desc).kaminari(params[:page])
   end
 
   def english
-    @blogs = Blog.all
+    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])
   end
 
   def japanese
-    @blogs = Blog.all
+    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])
   end
 
   def create

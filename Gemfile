@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'mimemagic', '0.3.7'
 gem 'image_processing'
+gem 'kaminari'
 
 # for login
 gem 'devise'

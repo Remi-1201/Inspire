@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites
-    @blogs = Blog.all  
+    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])  
   end
 
   def show

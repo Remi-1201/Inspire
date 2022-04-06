@@ -99,3 +99,9 @@
   <% else %>
     <%= "Your search didn't match any results" %>        
   <% end %>
+
+  <% if @blogs.present? %>
+    <div class="page">
+      <%= paginate @blogs %>
+    </div>
+  <% end %>

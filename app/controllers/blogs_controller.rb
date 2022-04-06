@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user! 
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])
     @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
 
   end
@@ -64,13 +64,13 @@ class BlogsController < ApplicationController
   def search
     @blogs =
     if params[:search_title].blank? && params[:search_detail].blank?
-      Blog.all.order(created_at: :desc)
+      Blog.all.order(created_at: :desc).kaminari(params[:page])
     elsif params[:search_title].present? && params[:search_detail].present?
-      Blog.where('title LIKE ?', "%#{params[:search_title]}%").where(detail: params[:search_detail]).order(created_at: :desc)
+      Blog.where('title LIKE ?', "%#{params[:search_title]}%").where(detail: params[:search_detail]).order(created_at: :desc).kaminari(params[:page])
     elsif params[:search_title].present? && params[:search_detail].blank?
-      Blog.where('title LIKE ?', "%#{params[:search_title]}%").order(created_at: :desc)
+      Blog.where('title LIKE ?', "%#{params[:search_title]}%").order(created_at: :desc).kaminari(params[:page])
     elsif params[:search_title].blank? && params[:search_detail].present?
-      Blog.where('detail LIKE ?', "%#{params[:search_detail]}%").order(created_at: :desc)
+      Blog.where('detail LIKE ?', "%#{params[:search_detail]}%").order(created_at: :desc).kaminari(params[:page])
     end
     render :index
   end

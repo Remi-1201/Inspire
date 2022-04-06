@@ -95,3 +95,9 @@
       <% end %>
     </table>
   </div><br>
+
+  <% if @blogs.present? %>
+    <div class="page">
+      <%= paginate @blogs %>
+    </div>
+  <% end %>
