@@ -34,6 +34,10 @@ gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+    # for rspec
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
+  gem 'rexml'
 end
 
 group :development do
@@ -46,8 +50,8 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'webdrivers'
+  # gem 'selenium-webdriver'は削除
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
