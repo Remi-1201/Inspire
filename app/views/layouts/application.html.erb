@@ -28,6 +28,9 @@
                   <li><%= link_to "Japanese", categories_japanese_path, class: "link" %></li>
               </ul>              
           </li>
+          <li class="left"> 
+            <select id="voice-select"></select> 
+          </li>
         </ul>
       </div>
     </div>
@@ -76,7 +79,7 @@
     </nav>
   <p id="notice"><%= notice %>
   <footer>
-    <select id="voice-select"></select> 
+    Developed by Remi since 2022
   </footer>
 
     <%= yield %>
