@@ -15,14 +15,20 @@
 
     
   <body>           
-    <nav>
+    <nav >
       <ul class="top_menu clearfix">
         <li class="left">            
           <a class="nav-link" href="/">Top Page</a>
         </li>
-        <li class="left">
-          <a class="nav-link" href="/categories">Categories</a>              
-        </li>        
+        <ul class = "menu">
+          <li class="left">                    
+            <%= link_to "Categories", categories_path, method: :get, class: "link" %>
+              <ul>
+                  <li><%= link_to "English", categories_english_path, class: "link" %></li>
+                  <li><%= link_to "Japanese", categories_japanese_path, class: "link" %></li>
+              </ul>              
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -36,10 +42,10 @@
                 <a class="nav-link" href="/blogs">Index</a>                         
               </li>
               <li class="right">
-                <%= link_to "Profile", mypage_path, method: :get, class: 'mypage' %>
+                <%= link_to "Profile", mypage_path, class: "link" %>
               </li>
               <li class="right">
-                <%= link_to "Logout", destroy_user_session_path, method: :get, class: 'button_logout' %>
+                <%= link_to "Logout", destroy_user_session_path, class: "link" %>
               </li>
               
           <% else %>              
@@ -47,10 +53,10 @@
               <a class="nav-link" href="/blogs">Index</a>                         
             </li>
             <li class="right">
-              <%= link_to "Profile", mypage_path, method: :get, class: 'mypage' %>             
+              <%= link_to "Profile", mypage_path, class: "link" %>             
             </li>
             <li class="right">
-              <%= link_to "Logout", destroy_user_session_path, method: :get, class: 'button_logout' %>
+              <%= link_to "Logout", destroy_user_session_path, class: "link" %>
             </li>              
           <% end %>
 

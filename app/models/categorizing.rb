@@ -1,4 +1,4 @@
 class Categorizing < ApplicationRecord
-  belongs_to :blog
-  belongs_to :category
+  belongs_to :blog, optional: true 
+  belongs_to :category, optional: true 
 end

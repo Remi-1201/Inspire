@@ -30,5 +30,5 @@ $(document).on ("turbolinks:load", function(){
 
   $('.stop-btn').on('click', function(){
     speechSynthesis.cancel();
-  }, false);
+  })
 });

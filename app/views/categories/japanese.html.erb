@@ -19,28 +19,28 @@
                 <td>
                   <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %>
                 </td>
-                  <td>
-                    <%= blog.user.name %>
-                  </td>
-                  <td>
-                    <%= blog.created_at.to_s(:datetime) %>
-                  </td>
-                  <td>
-                    <%= link_to 'Show', blog %>
-                  </td>            
+                <td>
+                  <%= blog.user.name %>
+                </td>
+                <td>
+                  <%= blog.created_at.to_s(:datetime) %>
+                </td>
+                <td>
+                  <%= link_to 'Show', blog %>
+                </td>            
               </tr>
 
               <tr>
                 <th colspan="5" class="th_title">
-                    <%= blog.title %>
+                  <%= blog.title %>
                 <th>
               </tr>
 
               <tr>
                 <th colspan="5" class="th_detail">
-                    <textarea id="detail">
-                      <%= blog.detail %>
-                    </textarea>
+                  <textarea id="detail">
+                    <%= blog.detail %>
+                  </textarea>
                 <th>
               </tr>
 

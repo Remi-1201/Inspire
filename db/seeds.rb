@@ -13,8 +13,7 @@
 end
 
 10.times do |n|
-  category = "Japanese"
-  user_id = rand(20..50) 
+  user_id = rand(34..43) 
   title = Faker::JapaneseMedia::StudioGhibli.character
   detail = Faker::JapaneseMedia::StudioGhibli.quote
 Blog.create!( 
@@ -25,8 +24,7 @@ Blog.create!(
 end
 
 10.times do |n|
-  category = "English"
-  user_id = rand(20..50) 
+  user_id = rand(34..43)
   title = "Matz"
   detail = Faker::Quote.matz
 Blog.create!( 
@@ -35,5 +33,4 @@ Blog.create!(
   detail: detail
 ) 
 end
-
 

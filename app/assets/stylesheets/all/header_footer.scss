@@ -4,25 +4,60 @@ nav{
   background-color: #337ab7;
   height: fit-content;
   top: 0; 
-  color:white;
   text-decoration: none;
   font-weight: bold;
+}
+.menu {
+	list-style-type:none;
+}
+.menu > li {
+	display:inline-block;
+	position:relative;
+}
+.menu > li > ul {
+	display:none;
+}
+.menu > li:hover ul {
+	display:block;
+	position:absolute;
+	padding:0;
+	margin:0;
+	top:1.5em;
+	left:0;
+	list-style-type:none;
+  background-color: #337ab7;
+}
+
+.link{
+  color:white;
+  text-decoration: none;
+}
+
+.a{
+  color:white;
+  text-decoration: none;
 }
 
 .left{
   float: left;
   margin-top: 5px;
   margin-left: 5px;
+  color:white;
+  text-decoration: none;
 }
 
 .b-right{
   float: right;
   margin-top: 10px;
   margin-right: 5px;
+  color:white;
+  text-decoration: none;
 }
 .right{
   float: left;
   margin-right: 20px;
+  color:white;
+  text-decoration: none;
 }
 
 .link1:hover {

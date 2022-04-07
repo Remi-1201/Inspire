@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize: "30x30"
   end
-  has_many :favorites, dependent: :destroy
-  has_many :blogs, dependent: :destroy
+  has_many :favorites, dependent: :destroy, foreign_key: :user_id
+  has_many :blogs, dependent: :destroy, foreign_key: :user_id
   has_many :comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
@@ -41,17 +41,17 @@ class User < ApplicationRecord
                                  )
   end
   
-  def admin?
-    role == "admin"
-  end
-  def regular?
-    role == "regular"
-  end
-  def guest?
-    role == "guest"
-  end
+  # def admin?
+  #   role == "admin"
+  # end
+  # def regular?
+  #   role == "regular"
+  # end
+  # def guest?
+  #   role == "guest"
+  # end
 
-  user.save
-  user
+  # user.save
+  # user
   end
 end
