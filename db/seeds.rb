@@ -1,4 +1,4 @@
-10.times do |n|
+30.times do |n|
   name = Faker::Games::Pokemon.name
   email = Faker::Internet.email
   password = SecureRandom.urlsafe_base64
@@ -13,7 +13,7 @@
 end
 
 10.times do |n|
-  user_id = rand(34..43) 
+  user_id = rand(5..15) 
   title = Faker::JapaneseMedia::StudioGhibli.character
   detail = Faker::JapaneseMedia::StudioGhibli.quote
 Blog.create!( 
@@ -24,7 +24,7 @@ Blog.create!(
 end
 
 10.times do |n|
-  user_id = rand(34..43)
+  user_id = rand(5..15)
   title = "Matz"
   detail = Faker::Quote.matz
 Blog.create!( 
