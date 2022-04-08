@@ -26,22 +26,21 @@
                   <a href="/blogs" class="btn btn-outline-light" aria-current="page">INDEX</a>
                   <a href="/users/sign_out/" class="btn btn-outline-light">LOGOUT</a>
                 </div>
-
               <% else %>      
                 <div class="btn-group my-5">
-                  <a href="/users/sign_up" class="btn btn-outline-light" aria-current="page">SIGNUP</a>          
-                  <a href="/users/auth/google" class="btn btn-outline-light"> GOOGLE LOGIN</a>
-                  <a href="/users/sign_in" class="btn btn-outline-light">LOGIN</a>
-                </div>
+                  <a href="/users/sign_up" class="btn btn-outline-light" aria-current="page">SIGNUP</a>                                   
+                  <%= link_to "LOGIN BY GOOGLE", user_google_omniauth_authorize_path, method: :post, class: "btn btn-outline-light" %>
+                  <a href="/users/sign_in" class="btn btn-outline-light">LOGIN</a>                
+                </div>                
             <% end %>
 
             <h5 class="fw-light">— Learning languages by listen and repeat to inspiring words —</h5>
-          </div>
+          </div>          
         </div>
       </div>
     </div>
-
-    <div class="col-sm">
+  
+    <div class="col-sm">      
     </div>
 
   </div>

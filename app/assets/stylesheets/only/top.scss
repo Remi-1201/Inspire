@@ -20,6 +20,30 @@ h1 {
   }
 }
 
+// Google_login
+.google{
+  color: white;
+  text-decoration: none;
+}
+.google:hover{
+  text-decoration: none;
+}
+.google_btn{
+  background-color: transparent;
+  margin: 0,auto;
+  margin-bottom: 30px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: white;
+}
+.google_btn:hover{
+  background-color: white;
+  color: transparent;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: white;
+}
 // text
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
@@ -31,13 +55,6 @@ h1 {
   color:white;
   font-weight:lighter;
   text-align: center;
-}
-
-.fw-light {
-  font-weight:lighter;
-  color:white ;
-  font-size: 1.5rem;
-  margin: 0 auto;
 }
 
 .text :first-of-type {   
@@ -74,4 +91,11 @@ h1 {
     30% {width:355px;}
     80% {opacity:1;}
     100% {opacity:0;width:355px;}
+}
+
+.fw-light {
+  font-weight: 100;
+  color:white ;
+  font-size: 1.5rem;
+  margin: 0 auto;
 }
