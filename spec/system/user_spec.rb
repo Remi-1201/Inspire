@@ -81,4 +81,27 @@ RSpec.describe 'ユーザー機能', type: :system do
       end
     end
   end  
+
+  describe '管理者機能' do
+    context '管理者がログインした場合' do
+      it 'Adminリンクが表示される' do
+        visit new_user_session_path
+        click_on 'Admin guest login'
+        expect(page).to have_link 'Admin'
+      end
+    end
+      it '管理者画面に入れる' do
+        visit new_user_session_path
+        click_on 'Admin guest login'
+        click_on 'Admin'
+        expect(page).to have_text 'Dashboard'
+      end    
+    context '一般ユーザーがログインした場合' do
+      it 'Adminリンクが表示されない' do
+        visit new_user_session_path
+        click_on 'Guest login'
+        expect(page).not_to have_link 'Admin'
+      end
+    end  
+  end  
 end
