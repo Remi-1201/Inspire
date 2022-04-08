@@ -1,3 +1,37 @@
 .record {
-  color:white;
+  display: flex;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.transparent{
+  color:black;
+}
+
+.speak {
+  animation : fadeOut 10s;
+  animation-fill-mode: both;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.record_msg {
+  animation : fadeOut 10s;
+  animation-fill-mode: both;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

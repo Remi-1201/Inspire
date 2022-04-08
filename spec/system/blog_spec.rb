@@ -18,7 +18,7 @@ RSpec.describe 'ブログ管理機能', type: :system do
           visit blogs_path          
           expect(page).to have_content 'detail1'
         end
-      end
+      end      
     context '検索をした場合' do
         it "ブログの内容をあいまい検索できる" do
           login

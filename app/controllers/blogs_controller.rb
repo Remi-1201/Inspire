@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])
     @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
-
+    @favorites = current_user.favorites
   end
 
   def show

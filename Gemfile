@@ -32,6 +32,10 @@ gem 'rails-i18n'
 # seed
 gem 'faker'
 
+# test
+gem 'poltergeist'
+gem 'pry-rails'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
     # for rspec

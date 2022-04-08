@@ -79,7 +79,35 @@
     </nav>
   <p id="notice"><%= notice %>
   <footer>
-    Developed by Remi since 2022
+    <div class="record">
+      <table>
+        <tr>
+          <td colspan=5>
+            <div id="Control">
+              <div class = "transparent">
+                <div id="RecMime"></div>
+              </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=5>
+            <div class="record_msg">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="MicOn">Microphone</button>
+          </td>
+          <td>
+            <button id="RecStart">Record</button>
+          </td>
+          <td>
+            <button id="RecStop" disabled>Stop</button>
+          </td>
+        </tr>
+      </table>
+    </div>
   </footer>
 
     <%= yield %>

@@ -26,9 +26,14 @@ $(document).on ("turbolinks:load", function(){
       .getVoices()
       .filter(voice => voice.name === voiceSelect.value)[0]
     speechSynthesis.speak(uttr)
+    // const msg = 'Speaking ... '
+    // $('.speak').append(msg)
   })
 
   $('.stop-btn').on('click', function(){
     speechSynthesis.cancel();
+    // const msg02 = 'Thank you!'
+    // $('.speak').append(msg02)
   })
+  // $('.speak').fadeOut()
 });
