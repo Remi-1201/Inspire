@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   get '/mypage' => 'users#mypage'
 
   resources :categories
-  resources :favorites
 
+  resources :favorites
   resources :blogs do
-    collection do
+    collection do      
       post :sort
       get :search
     end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :blogs do
     resources :comments
+    resources :favorites, only: [:create , :destroy]
   end
 
   devise_for :users, controllers: {

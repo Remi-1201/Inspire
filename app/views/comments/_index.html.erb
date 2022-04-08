@@ -12,7 +12,7 @@
             <% end %>
             <p><%= comment.content %></p>
             <tr>
-              <%= link_to "Edit", edit_blog_comment_path(blog, comment), remote: true %>
+              <%= link_to "Edit", edit_blog_comment_path(blog, comment), remote: true %> &nbsp;
               <%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %>
             </tr>
           </li>

@@ -13,21 +13,26 @@
     <% @blogs.each do |blog| %>    
       <% blog.categories.each do |c| %>
         <% if c.name == "English"%>
-          <div class = "table-responsive">
-            <table>
+           <div class = "table-responsive">
+            <table >
+              <tr class="category">
+                <th colspan="5" >
+                  <% blog.categories.each do |category| %>
+                    <%= category.name %>
+                  <% end %>
+                </th>
+              </tr>
+
               <tr>
                 <td>
                   <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %>
                 </td>
-                  <td>
-                    <%= blog.user.name %>
-                  </td>
-                  <td>
-                    <%= blog.created_at.to_s(:datetime) %>
-                  </td>
-                  <td>
-                    <%= link_to 'Show', blog %>
-                  </td>            
+                <td>
+                  <%= blog.user.name %>
+                </td>
+                <td>
+                  <%= blog.created_at.to_s(:datetime) %>
+                </td>            
               </tr>
 
               <tr>
@@ -38,37 +43,18 @@
 
               <tr>
                 <th colspan="5" class="th_detail">
-                    <textarea id="detail">
-                      <%= blog.detail %>
-                    </textarea>
+                <textarea rows="5" cols="35"><%= blog.detail %></textarea>
                 <th>
               </tr>
 
               <tr>
-                <td><button class="speak-btn" data-blog="<%= blog.detail %>">speak</button></td>            
-                <td><button id="stop-btn">stop</button></td>
-                <td></td>
+                <td colspan="5" class="spk">
+                  <button class="speak-btn" data-blog="<%= blog.detail %>">speak</button>
+                  <button class="stop-btn">stop</button>
+                  <div class = "speak"></div>
+                </td>
               </tr>
-
-              <tr>
-                <td>
-                  <div class="record">
-                    <div id="Control">
-                      <td>
-                        <button id="MicOn">Get the microphone</button>
-                      </td>
-                      <td>
-                        <button id="RecStart">Record</button>
-                      </td>
-                      <td>
-                        <button id="RecStop" disabled>Stop</button>
-                      </td>
-                      <div id="RecMime">
-                    </div>
-                  </div>
-                </td>            
-              </tr>
-
+              
               <tr>
                 <th colspan="5" class="th">
                     <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
@@ -76,32 +62,29 @@
               <tr>
 
               <tr class="option">            
-                <td>
-                  <% if @favorite.present? %>
-                    <%= link_to 'Dislike', favorite_path(id: favorite.id), method: :delete %>
-                  <% else %>
+                <td colspan="5" >
+                  <% if blog.favorites.present? %> 
+                    <%= link_to 'Dislike', blog_favorite_path(id: blog.id, blog_id: blog.id), method: :delete %>
+                  <% else %> 
                     <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
-                  <% end %>
-                </td>              
-                <td>
-                  <%= link_to 'Edit', edit_blog_path(blog) %>
-                </td>
-                <td>
+                  <% end %> &nbsp;
+                  <%= link_to 'Comment', blog %> &nbsp;
+                  <%= link_to 'Edit', edit_blog_path(blog) %> &nbsp;            
                   <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
                 </td>
               </tr>
-            <% end %>
           <% end %>
-        <% end %>        
-      </table>
-    </div><br>
+        <% end %>
+      <% end %>
+    </table>
+  </div><br>
   
   <% else %>
     <%= "Your search didn't match any results" %>        
   <% end %>
 
-  <% if @blogs.present? %>
-    <div class="page">
-      <%= paginate @blogs %>
-    </div>
-  <% end %>
+  <div class="page">
+    <% if @blogs.present? %>    
+      <%= paginate @blogs %>    
+    <% end %>
+  </div>

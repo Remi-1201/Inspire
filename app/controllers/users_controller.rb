@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     return redirect_to blogs_path unless current_user.id ==  user.id
     @user_favorites = user.favorites
-    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])
+    @blogs = Blog.where(user_id: nil).or(Blog.where(user_id: current_user.id)).kaminari(params[:page])
   end
 
   def update

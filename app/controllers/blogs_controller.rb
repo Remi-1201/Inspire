@@ -7,8 +7,9 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])
-    @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
-    @favorites = current_user.favorites
+    # @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
+    # @favorites = current_user.favorites.find_by(blog_id: params[:blog_id])
+    favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
   end
 
   def show
@@ -83,10 +84,5 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []} )
   end
-
-  # def set_user
-  #   # current_userがnilだったら空のUserインスタンスを設定
-  #   @user = current_user || User.new
-  # end
 end
 

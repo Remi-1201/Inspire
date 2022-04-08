@@ -12,12 +12,18 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    @blog = Blog.find(params[:blog_id])
     favorite = current_user.favorites.create(blog_id: params[:blog_id])
-    redirect_to blogs_path, notice: "You liked #{favorite.blog.user.name}'s post."
+    if @blog.user.name.present?
+      redirect_back fallback_location: root_path, notice: "You liked #{@blog.user.name}'s post."
+    else
+      redirect_back fallback_location: root_path, notice: "You liked guest's post."
+    end
   end
 
   def destroy
-    favorite = current_user.favorites.find_by(id: params[:id]).destroy
-    redirect_to blogs_path, notice: "You disliked #{favorite.blog.user.name}'s post."
+    favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id).destroy
+
+    redirect_back fallback_location: root_path,  notice: "Post was disliked!"
   end
 end

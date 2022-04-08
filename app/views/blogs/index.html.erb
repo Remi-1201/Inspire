@@ -28,9 +28,6 @@
           </td>
           <td>
             <%= blog.created_at.to_s(:datetime) %>
-          </td>
-          <td>
-            <%= link_to 'Show', blog %>
           </td>            
         </tr>
 
@@ -62,12 +59,13 @@
 
         <tr class="option">            
           <td colspan="5" >
-            <% if @favorite.present? %>
-              <%= link_to 'Dislike', favorite_path(id: favorite.id), method: :delete %>
-            <% else %>
+            <% if blog.favorites.present? %> 
+              <%= link_to 'Dislike', blog_favorite_path(id: blog.id, blog_id: blog.id), method: :delete %>
+            <% else %> 
               <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
-            <% end %> &nbsp;          
-            <%= link_to 'Edit', edit_blog_path(blog) %> &nbsp;          
+            <% end %> &nbsp;
+            <%= link_to 'Comment', blog %> &nbsp;
+            <%= link_to 'Edit', edit_blog_path(blog) %> &nbsp;            
             <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
         </tr>

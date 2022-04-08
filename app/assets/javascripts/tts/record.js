@@ -66,15 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
       this.recStartBtn.setAttribute("disabled", true);
       this.recStopBtn.removeAttribute("disabled");
       this.mediaRecorder.start();
-      // const msg = 'Recording ... '
-      // $('.record_msg').append(msg)
-      // $('.record_msg').fadeOut()
     }.bind(this));    
     this.recStopBtn.addEventListener("click",function(){
       this.mediaRecorder.stop();
-      // const msg02 = 'Finished'
-      // $('.record_msg').append(msg02)
-      // $('.record_msg').fadeOut()
     }.bind(this));
   }
   window.addEventListener("DOMContentLoaded",function(){

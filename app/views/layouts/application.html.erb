@@ -17,8 +17,8 @@
   <body>           
     <nav >
       <ul class="top_menu clearfix">
-        <li class="left">            
-          <a class="nav-link" href="/">Top Page</a>
+        <li class="left">                      
+          <%= link_to "Top Page", root_path, class: "link" %>
         </li>
         <ul class = "menu">
           <li class="left">                    
@@ -39,10 +39,10 @@
           <% if user_signed_in? %>
             <% if current_user.try(:admin?) %>              
               <li class="right">
-                <a class="nav-link" href="/admin/users">Admin</a>                                
+                <%= link_to "Admin", rails_admin_path, class: "link" %>
               </li>          
-              <li class="right">
-                <a class="nav-link" href="/blogs">Index</a>                         
+              <li class="right">                
+                <%= link_to "Index", blogs_path, class: "link" %>
               </li>
               <li class="right">
                 <%= link_to "Profile", mypage_path, class: "link" %>
@@ -53,7 +53,7 @@
               
           <% else %>              
             <li class="right">
-              <a class="nav-link" href="/blogs">Index</a>                         
+              <%= link_to "Index", blogs_path, class: "link" %>                      
             </li>
             <li class="right">
               <%= link_to "Profile", mypage_path, class: "link" %>             
@@ -64,14 +64,14 @@
           <% end %>
 
           <% else %>              
-            <li class="right">
-              <a href="/users/sign_up">Sign up</a>
+            <li class="right">              
+              <%= link_to "Sign up", new_user_registration_path, class: "link" %>
             </li>
-            <li class="right">          
-              <a href="/users/auth/google"> Login by Google</a>
+            <li class="right">                        
+              <%= link_to "Login by Google", user_google_omniauth_authorize_path, class: "link" %>
             </li>
             <li class="right">
-              <a href="/users/sign_in">Login</a>
+              <%= link_to "Login", new_user_session_path	, class: "link" %>
             </li>              
           <% end %>
         </div>

@@ -29,8 +29,6 @@ RSpec.describe 'ユーザー機能', type: :system do
         expect(page).to have_content 'Log in'
       end
     end
-
-
   describe 'セッション機能' do
     context 'ログイン操作した場合' do
       it 'ログインできる' do
