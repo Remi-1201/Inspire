@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # GET /users/sign_in
-  def new
+  def new    
     super
   end
 

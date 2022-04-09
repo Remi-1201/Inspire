@@ -14,69 +14,74 @@
   </head>
 
     
-  <body>           
-    <nav >
-      <ul class="top_menu clearfix">
-        <li class="left">                      
-          <%= link_to "Top Page", root_path, class: "link" %>
-        </li>
-        <ul class = "menu">
-          <li class="left">                    
-            <%= link_to "Categories", categories_path, method: :get, class: "link" %>
-              <ul>
-                  <li><%= link_to "English", categories_english_path, class: "link" %></li>
-                  <li><%= link_to "Japanese", categories_japanese_path, class: "link" %></li>
-              </ul>              
+  <body>
+    <header class = "header">
+      <nav class = "navigation">
+        <ul class="top_menu clearfix">
+          <li class="left">                      
+            <%= link_to "Top Page", root_path, class: "link_top" %>
           </li>
-          <li class="left"> 
-            <select id="voice-select"></select> 
-          </li>
-        </ul>
+          <ul class = "menu">
+            <li class="left">                    
+              <%= link_to "Categories", categories_path, method: :get, class: "link_categories" %>
+                <ul>
+                    <li><%= link_to "English", categories_english_path, class: "link" %></li>
+                    <li><%= link_to "Japanese", categories_japanese_path, class: "link" %></li>
+                </ul>              
+            </li>
+            <li class="left"> 
+              <div class = "voice">
+                <select id="voice-select"></select> 
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-        <div class="b-right">
-          <% if user_signed_in? %>
-            <% if current_user.try(:admin?) %>              
+          <div class="b-right">
+            <% if user_signed_in? %>
+              <% if current_user.try(:admin?) %>              
+                <li class="right">
+                  <%= link_to "Admin", rails_admin_path, class: "link" %>
+                </li>          
+                <li class="right">                
+                  <%= link_to "Index", blogs_path, class: "link" %>
+                </li>
+                <li class="right">
+                  <%= link_to "Profile", mypage_path, class: "link" %>
+                </li>
+                <li class="right">
+                  <%= link_to "Logout", destroy_user_session_path, class: "link" %>
+                </li>
+                
+            <% else %>              
               <li class="right">
-                <%= link_to "Admin", rails_admin_path, class: "link" %>
-              </li>          
-              <li class="right">                
-                <%= link_to "Index", blogs_path, class: "link" %>
+                <%= link_to "Index", blogs_path, class: "link" %>                      
               </li>
               <li class="right">
-                <%= link_to "Profile", mypage_path, class: "link" %>
+                <%= link_to "Profile", mypage_path, class: "link" %>             
               </li>
               <li class="right">
                 <%= link_to "Logout", destroy_user_session_path, class: "link" %>
-              </li>
-              
-          <% else %>              
-            <li class="right">
-              <%= link_to "Index", blogs_path, class: "link" %>                      
-            </li>
-            <li class="right">
-              <%= link_to "Profile", mypage_path, class: "link" %>             
-            </li>
-            <li class="right">
-              <%= link_to "Logout", destroy_user_session_path, class: "link" %>
-            </li>              
-          <% end %>
+              </li>              
+            <% end %>
 
-          <% else %>              
-            <li class="right">              
-              <%= link_to "Sign up", new_user_registration_path, class: "link" %>
-            </li>
-            <li class="right">                        
-              <%= link_to "Login by Google", user_google_omniauth_authorize_path, method: :post, class: "link" %>
-            </li>
-            <li class="right">
-              <%= link_to "Login", new_user_session_path	, class: "link" %>
-            </li>              
-          <% end %>
-        </div>
-      </ul>
-    </nav>
+            <% else %>              
+              <li class="right">              
+                <%= link_to "Sign up", new_user_registration_path, class: "link" %>
+              </li>
+              <li class="right">                        
+                <%= link_to "Login by Google", user_google_omniauth_authorize_path, method: :post, class: "link" %>
+              </li>
+              <li class="right">
+                <%= link_to "Login", new_user_session_path	, class: "link" %>
+              </li>              
+            <% end %>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
   <p id="notice"><%= notice %>
   <footer>
     <div class="record">
