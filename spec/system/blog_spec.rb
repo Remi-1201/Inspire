@@ -19,6 +19,7 @@ RSpec.describe 'ブログ管理機能', type: :system do
           expect(page).to have_content 'detail1'
         end
       end      
+
     context '検索をした場合' do
         it "ブログの内容をあいまい検索できる" do
           login
@@ -29,5 +30,41 @@ RSpec.describe 'ブログ管理機能', type: :system do
           expect(page).not_to have_content 'detail2'
         end
       end
+
+      context 'お気に入り操作をした場合' do
+        it "投稿がお気に入り一覧ページに表示される" do
+          login
+          visit blogs_path
+          click_on 'Like', match: :first
+          visit favorites_path
+          expect(page).to have_content 'detail2'
+        end
+      end
+      context 'お気に入り解除をした場合' do
+        it "投稿がお気に入り一覧ページから消える" do
+          login
+          visit blogs_path
+          click_on 'Like', match: :first
+          sleep 1
+          click_on 'Dislike', match: :first
+          visit favorites_path
+          expect(page).not_to have_content 'detail2'
+        end
+      end
+  
+    describe 'マイページ画面' do
+        context 'ユーザーが投稿した場合' do
+            it '投稿がマイページに表示される' do
+              login
+              visit blogs_path         
+              click_on 'Make new Post'
+              fill_in 'blog[title]', with: 'Harry Potter'
+              fill_in 'blog[detail]', with: 'Hogwards'
+              click_on 'Create Blog'
+              visit mypage_path
+              expect(page).to have_content 'Hogwards'
+            end
+          end
+        end      
     end
 end
