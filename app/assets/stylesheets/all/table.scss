@@ -2,17 +2,18 @@
   table-layout: fixed;
   word-break: break-all;
   word-wrap: break-all;
-  width: 500px;
   margin: 0 auto;
+  z-index: 100;
 }
 
 .table-responsive table{
   background-color: white;
   margin: 0 auto;
-  border-radius: 10px;
+  width: max-content;
+  border-radius: 3px;
   border-spacing: 10px 10px;
-  border:0.5px solid;
-  border-color: rgb(170, 164, 164);
+  border: 1px solid;
+  border-color: rgb(217, 204, 230);
   margin-bottom: 30px;
   padding: 20px 10px;
   border-collapse: separate;

@@ -1,14 +1,17 @@
 footer {
-  background-color:#337ab7;
-  // opacity:0.5;
+  background: #7F7FD5; 
+  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  
+  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); 
+  z-index: 100;
+
   padding: 15px 0 0px 0;
   color: white;
   margin: 0 auto;
+  margin-top: 50px;
   font-size: 12px;
   position: fixed;
   bottom:0;
   width: 100%;
-  z-index: 110;
 }
 
 li {
@@ -16,4 +19,13 @@ li {
 }
 ul {
     padding:0;
+}
+
+.pagination{
+  display: block;
+  z-index: 50;
+  margin-bottom: 200px;
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
