@@ -1,9 +1,14 @@
 .header{
   position: relative;
   width: 100%;
-  background-color: #7533b7;
   height: 200px;
   top: 0; 
   text-decoration: none;
   margin-bottom: 10px;
+  z-index: 10;
+  
+  background: #7F7FD5; 
+  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  
+  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); 
 }
+

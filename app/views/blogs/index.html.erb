@@ -1,85 +1,121 @@
 <br>
 <h1>All Posts</h1>
-<%= button_to 'Make new Post', new_blog_path, method: :get %><br>
+<p id="notice"><%= notice %>
+<%= button_to 'Make new Post', new_blog_path, method: :get%><br>
 
 <%= form_with(url: search_blogs_path, method: :get, local: true) do %>      
-  <%= text_field_tag :search_detail %>
+  <%= text_field_tag :search_detail %>  
   <%= submit_tag 'Search' %>
 <% end %><br>
 
-<% if @blogs.present? %>
-  <% @blogs.each do |blog| %>
-    <div class = "table-responsive">
-      <table >
-        <tr class="category">
-          <th colspan="5" >
-            <% blog.categories.each do |category| %>
-              <%= category.name %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-6 col-sm-4 col-md-3"  id="sticky-sidebar">
+      <div class="sticky-top" >
+        <div class="card border-info mb-3" style="max-width: 18rem;" >
+          <div class="card-header">Header</div>
+            <div class="card-body text-info">
+              <h5 class="card-title">Info card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>            
+      </div>
+      
+    <div class="col-xs-6 col-sm-4 col-md-6">
+      <% if @blogs.present? %>
+        <% @blogs.each do |blog| %>
+          <div class = "table-responsive">
+            <table >
+              <tr class="category">
+                <th colspan="5" >
+                  <% blog.categories.each do |category| %>
+                    <%= category.name %>
+                  <% end %>
+                </th>
+              </tr>
+
+              <tr>
+                <td>
+                  <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %>
+                </td>
+                <td>
+                  <%= blog.user.name %>
+                </td>
+                <td>
+                  <%= blog.created_at.to_s(:datetime) %>
+                </td>            
+              </tr>
+
+              <tr>
+                <th colspan="5" class="th_title">
+                    <%= blog.title %>
+                <th>
+              </tr>
+
+              <tr>
+                <th colspan="5" class="th_detail">
+                <textarea rows="5" cols="35"><%= blog.detail %></textarea>
+                <th>
+              </tr>
+
+              <tr>
+                <td colspan="5" class="spk">
+                  <button class="speak-btn" data-blog="<%= blog.detail %>">speak</button>
+                  <button class="stop-btn">stop</button>
+                  <div class = "speak"></div>
+                </td>
+              </tr>
+              
+              <tr>
+                <th colspan="5" class="th">
+                    <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
+                </th>
+              <tr>
+
+              <tr class="option">            
+                <td colspan="5" >
+                  <% if blog.favorites.present? %> 
+                    <%= link_to 'Dislike', blog_favorite_path(id: blog.id, blog_id: blog.id), method: :delete %>
+                  <% else %> 
+                    <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
+                  <% end %> &nbsp;
+                  <%= link_to 'Comment', blog %> &nbsp;
+                  <%= link_to 'Edit', edit_blog_path(blog) %> &nbsp;            
+                  <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
             <% end %>
-          </th>
-        </tr>
+          </table>
+        </div>
+      </div>
 
-        <tr>
-          <td>
-            <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %>
-          </td>
-          <td>
-            <%= blog.user.name %>
-          </td>
-          <td>
-            <%= blog.created_at.to_s(:datetime) %>
-          </td>            
-        </tr>
+    <div class="col-xs-12 col-sm-4 col-md-3" id="sticky-sidebar">
+      <div class="sticky-top">
+        <div class="card border-info mb-3" style="max-width: 18rem;">
+          <div class = "col3">
+            <div class="card-header">Header</div>
+              <div class="card-body text-info">
+                <h5 class="card-title">Info card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <tr>
-          <th colspan="5" class="th_title">
-              <%= blog.title %>
-          <th>
-        </tr>
+  </div>
+</div>
 
-        <tr>
-          <th colspan="5" class="th_detail">
-          <textarea rows="5" cols="35"><%= blog.detail %></textarea>
-          <th>
-        </tr>
-
-        <tr>
-          <td colspan="5" class="spk">
-            <button class="speak-btn" data-blog="<%= blog.detail %>">speak</button>
-            <button class="stop-btn">stop</button>
-            <div class = "speak"></div>
-          </td>
-        </tr>
-        
-        <tr>
-          <th colspan="5" class="th">
-              <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
-          </th>
-        <tr>
-
-        <tr class="option">            
-          <td colspan="5" >
-            <% if blog.favorites.present? %> 
-              <%= link_to 'Dislike', blog_favorite_path(id: blog.id, blog_id: blog.id), method: :delete %>
-            <% else %> 
-              <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
-            <% end %> &nbsp;
-            <%= link_to 'Comment', blog %> &nbsp;
-            <%= link_to 'Edit', edit_blog_path(blog) %> &nbsp;            
-            <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </div><br>
+  <div class="pagination">
+    <% if @blogs.present? %>
+      <%= paginate @blogs %>    
+    <% end %>
+  </div>
 
   <% else %>
     <%= "Your search didn't match any results" %>        
   <% end %>    
   
-  <div class="page">
-    <% if @blogs.present? %>
-      <%= paginate @blogs %>    
-    <% end %>
-  </div>
 
