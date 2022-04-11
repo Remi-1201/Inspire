@@ -40,6 +40,7 @@ class User < ApplicationRecord
                       password: Devise.friendly_token[0, 20],
                                  )
   end
-
+  user.save
+  user
   end
 end
