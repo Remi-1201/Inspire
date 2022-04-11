@@ -6,7 +6,7 @@
   color: white;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 10px 10px -10px #99bcfc;
 }
 .speak-btn:hover{
   background: #FF9800;
@@ -16,18 +16,19 @@
   color: white;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 10px 10px -10px #FF9800;
 }
 
 .stop-btn{
-  background: #7F7FD5;
+  background: #906bbd;
   border-radius: 5px;  
   padding: 0 10px;  
   padding-top: 5px;
   color: white;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
+  // box-shadow: none !important;
+  box-shadow: 0 10px 10px -10px #906bbd;
 }
 .stop-btn:hover{
   background: #ababff;
@@ -37,5 +38,5 @@
   color: white;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 10px 10px -10px #ababff;
 }
