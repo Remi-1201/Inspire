@@ -5,12 +5,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width">
 
     <%= stylesheet_link_tag 'all/application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "tts/speak.js" %>
     <%= javascript_include_tag "tts/record.js" %>
+    <%= javascript_include_tag "tts/remove.js" %>
   </head>
 
     
@@ -112,36 +114,53 @@
       </nav>
     </div>
   </header>
-    
-  <footer>
-    <div class="record">
-      <table>
-        <tr>
-          <td colspan=5>
-            <div id="Control">
-              <div class = "transparent">
-                <div id="RecMime"></div>
-              </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan=5>
-            <div class="record_msg">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button id="MicOn">Microphone</button>
-          </td>
-          <td>
-            <button id="RecStart">Record</button>
-          </td>
-          <td>
-            <button id="RecStop" disabled>Stop</button>
-          </td>
-        </tr>
-      </table>
+
+  <div class = "main-btn">
+    <div class="floating-container">
+      <div class="floating-button">
+        <span class="material-icons">
+          settings_voice
+        </span>
+      </div>
+      <div class="element-container">
+        <span class="float-element tooltip-left">
+          <i class="material-icons">
+            <span class="material-icons">
+              <button id="RecStop">
+                stop_circle
+              </button>
+            </span>
+          </i>   
+        <span class="float-element">
+          <span class="material-icons">
+            <button id="RecStart" >
+              record_voice_over
+            </button>     
+          </span>
+        </span>
+        <span class="float-element">
+          <span class="material-icons">
+            <button id="MicOn">
+              settings_voice
+            </button>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <footer> 
+    <div id="Control">
+      <div id="RecMime">
+      </div>
+    </div>     
+    <div id ="visible">
+      <div id ="player" onclick="showbox()">
+        <span class="material-icons">visibility</span>
+      </div>
+      <div id ="player" onclick="hidebox()">
+        <span class="material-icons">visibility_off</span>
+      </div>
     </div>
   </footer>
 

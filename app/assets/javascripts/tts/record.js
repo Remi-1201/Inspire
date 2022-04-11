@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.mediaRecorder.start();
     }.bind(this));    
     this.recStopBtn.addEventListener("click",function(){
-      this.mediaRecorder.stop();
+      this.mediaRecorder.stop();      
     }.bind(this));
   }
   window.addEventListener("DOMContentLoaded",function(){
