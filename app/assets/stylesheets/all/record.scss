@@ -21,6 +21,9 @@
   border-color: transparent;
   border: 0px solid;
   font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #MicOn:active{
@@ -35,6 +38,9 @@
   border: 0px solid;
   size: 100px;
   font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #RecStop{
@@ -42,6 +48,9 @@
   border-color: transparent;
   border: 0px solid;
   font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #Control{

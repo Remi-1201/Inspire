@@ -57,7 +57,6 @@
   margin: 35px 25px;
   z-index: 300;
   margin-bottom: 80px;
-
 }
 .floating-container:hover {
   height: 300px;
@@ -70,6 +69,9 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   z-index: 300;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 .floating-container:hover .element-container .float-element:nth-child(1) {
   -webkit-animation: come-in 0.4s forwards 0.2s;
