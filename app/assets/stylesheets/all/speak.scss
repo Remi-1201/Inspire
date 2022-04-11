@@ -1,42 +1,42 @@
 .speak-btn{
-  background: #99bcfc;
-  border-radius: 5px;
+  background: #42A5F5;
+  box-shadow: 0 10px 15px -10px rgba(66, 165, 245, 0.5);
+  border-radius: 15px;
   padding: 0 10px;  
   padding-top: 5px;
   color: white;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 10px 10px -10px #99bcfc;
 }
 .speak-btn:hover{
-  background: #FF9800;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 0 10px;  
   padding-top: 5px;
   color: white;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 10px 10px -10px #FF9800;
+  background: #FF9800;
+  box-shadow: 0 10px 15px -10px #FF9800;
 }
 
 .stop-btn{
-  background: #906bbd;
-  border-radius: 5px;  
+  background: #ababff;
+  border-radius: 15px;  
   padding: 0 10px;  
   padding-top: 5px;
   color: white;
   border: none !important;
   outline: none !important;
   // box-shadow: none !important;
-  box-shadow: 0 10px 10px -10px #906bbd;
+  box-shadow: 0 10px 15px -10px #a989cf;
 }
 .stop-btn:hover{
-  background: #ababff;
-  border-radius: 5px;
+  background: #FF9800;
+  border-radius: 15px;
   padding: 0 10px;  
   padding-top: 5px;
   color: white;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 10px 10px -10px #ababff;
+  box-shadow: 0 10px 15px -10px #FF9800;
 }
