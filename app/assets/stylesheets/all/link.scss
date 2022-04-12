@@ -3,19 +3,10 @@
   display: inline-flex;
   margin: 0 15px;
   text-align: center;
-  color: royalblue;
-  overflow: hidden;
-  background: linear-gradient(to right, midnightblue, midnightblue 50%, royalblue 50%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 100%;
-  background-position: 100%;
-  transition: background-position 275ms ease;
-  text-decoration: none; // text decorations are clipped in WebKit browsers
-  &:hover {
-    background-position: 0 100%;
-  }
+  text-decoration: none;
+  color:#6c757d;
+  font-weight: bolder;
+  font-size: small;
 }
 
 .link_count{
@@ -23,7 +14,8 @@
   display: inline-flex;
   margin: 0 1px;
   text-align: right;
-  color: rgb(0, 0, 0);
+  color:#6c757d;
+  font-size: small;
 }
 
 .link_icon{
@@ -31,18 +23,37 @@
   display: inline-flex;
   margin-right: 15px;
   margin-left: 0px;
+  text-align: center;  
+  text-decoration: none;  
+  color:#6c757d;
+  font-weight: bolder;
+  font-size: small;
+}
+
+.link_blog:hover{
+  position: relative;
+  display: inline-flex;
+  margin: 0 15px;
   text-align: center;
-  color: royalblue;
-  overflow: hidden;
-  background: linear-gradient(to right, midnightblue, midnightblue 50%, royalblue 50%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 100%;
-  background-position: 100%;
-  transition: background-position 275ms ease;
-  text-decoration: none; // text decorations are clipped in WebKit browsers
-  &:hover {
-    background-position: 0 100%;
-  }
+  text-decoration: none;
+  color:#000;
+}
+
+.link_count:hover{
+  position: relative;
+  display: inline-flex;
+  margin: 0 1px;
+  text-align: right;
+  text-decoration: none;  
+  color:#000;
+}
+
+.link_icon:hover{
+  position: relative;
+  display: inline-flex;
+  margin-right: 15px;
+  margin-left: 0px;
+  text-align: center;  
+  text-decoration: none;  
+  color:#000;
 }

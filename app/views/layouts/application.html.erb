@@ -24,7 +24,9 @@
 
           <ul class="top_menu clearfix">
             <li class="left">                      
-              <%= link_to "Top page", root_path, class: "link" %>
+              <a class="btn" href="<%= blogs_path %>">
+                <span class="material-icons">home</span>
+              </a>
             </li>
             <li class="left"> 
               <div class = "voice">
@@ -33,16 +35,18 @@
             </li>
 
           <div class="b-right">
-            <li class="menu"> Menu ▼
+            <li class="menu"> <span class="material-icons">list</span>
               <ul>
+                <li class="right">
+                  <a class="btn" href="<%= root_path %>">
+                    <span class="material-icons">business</span>
+                  </a>
+                </li>
                 <% if user_signed_in? %>
                 <% if current_user.try(:admin?) %>              
                   <li class="right">
                     <%= link_to "Admin", rails_admin_path, class: "link" %>
-                  </li>          
-                  <li class="right">                
-                    <%= link_to "Index", blogs_path, class: "link" %>
-                  </li>
+                  </li>                  
                   <li class="dir">
                     <%= link_to "◀ Languages", categories_path, method: :get, class: "link" %>
                       <ul>
@@ -65,7 +69,7 @@
                     <%= link_to "Index", blogs_path, class: "link" %>
                   </li>
                   <li class="dir">
-                    <%= link_to "Languages", categories_path, method: :get, class: "link" %>
+                    <%= link_to "◀ Languages", categories_path, method: :get, class: "link" %>
                       <ul>
                         <li>
                           <%= link_to "English", categories_english_path, class: "link" %>
@@ -131,7 +135,7 @@
                 stop_circle
               </button>
             </span>
-          </i>   
+          </i>           
         <span class="float-element">
           <span class="material-icons">
             <button id="RecStart" >
@@ -143,17 +147,42 @@
           <span class="material-icons">
             <button id="MicOn">
               settings_voice
-            </button>
+            </button>            
           </span>
-        </span>
+        </span>     
       </div>
     </div>
   </div>
 
-  <footer> 
-    <div id="Control">
-      <div id="RecMime">
-      </div>
+  <footer>
+    <div class="foot-wrap">
+      <div class="menu-left">
+        
+        <span class="drop-up">
+          <span class="drop-up-item">
+            <button type="button">
+              <span class="material-icons">search</span>
+            </button>
+              <span class="drop-up-sub-nav">
+                <span class="drop-up-item">
+                  <div class ="search">
+                    <%= form_with(url: search_blogs_path, class: "search_container", method: :get, local: true) do %>      
+                      <%= text_field_tag :search_detail %>  
+                      <%= submit_tag "Search", class: "search-btn" %>
+                    <% end %> 
+                  </div>
+                </span>      
+              </span>
+          </span>
+        </span>
+      <ul class="foot-left">
+      </ul>
+    </div>
+
+    <div class="menu-center">
+      <div id="Control">
+        <div id="RecMime">
+        </div>
     </div>     
     <div id ="visible">
       <div id ="player" onclick="showbox()">
@@ -161,6 +190,18 @@
       </div>
       <div id ="player" onclick="hidebox()">
         <span class="material-icons">visibility_off</span>
+      </div>
+    </div>
+      <ul class="foot-center">
+      </ul>
+    </div>
+
+    <div class="menu-right"> 
+        <a class="btn" href="<%= new_blog_path %>">
+          <span class="material-icons">note_add</span>
+        </a>
+          <ul class="foot-right">
+          </ul>        
       </div>
     </div>
   </footer>
