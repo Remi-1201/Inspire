@@ -5,13 +5,37 @@
   display: inline-block;
   text-align: left;
   scroll-behavior: smooth;
-  list-style: none;
-  
+  list-style: none;  
 }
 #list{
   text-align: left;
   justify-content: left;  
+  width: fit-content;
 }
-.title{
-  
+#open{
+  font-size: smaller;
+}
+
+.card-title02{
+  margin: 15px auto;
+}
+.link_resources{
+ display: block;
+ margin: 0 15px;
+ text-decoration: none;
+ color:#6c757d;
+}
+.link_resources:hover{
+  margin-top: 5px;
+  display: block;
+  margin: 0 15px;
+  text-decoration: none;
+  color:#42A5F5;
+ }
+
+.link-text01{
+  font-size: small;
+}
+.link-text02{
+  font-size: smaller;
 }

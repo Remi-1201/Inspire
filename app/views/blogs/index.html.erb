@@ -21,8 +21,9 @@
                   <%= link_to "Index", blogs_path, class: "link" %>
                 </h5>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                      <%= link_to "Languages", categories_path, method: :get, class: "link" %>
+                    <li class="list-group-item" id="side-subtitle">
+                      <span class="material-icons">language</span>
+                      <%= link_to "Languages", categories_path, method: :get, id:"side-subtitle" %>
                     </li>
                     <li class="list-group-item">
                       <%= link_to "English", categories_english_path, class: "link" %>
@@ -30,6 +31,33 @@
                     <li class="list-group-item">
                       <%= link_to "Japanese", categories_japanese_path, class: "link" %>
                     </li>
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="side-subtitle">
+                      <span class="material-icons">person</span>
+                      <%= link_to "Profile", mypage_path, class: "link" %>
+                    </li>
+                    <li class="list-group-item">
+                      <%= link_to "My Favorites", favorites_path, class: "link" %>                       
+                    </li>
+                    <li class="list-group-item">
+                      <%= link_to "Update my profile", edit_user_registration_path, class: "link" %>                       
+                    </li>                    
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="side-subtitle">
+                      <span class="material-icons">redeem</span> Shares
+                    </li>
+                    <li class="list-group-item">
+                      <p>
+                        <a class="btn" href="https://www.youtube.com/c/Nonki4ever">
+                          <span class="material-icons" id="open">open_in_new</span>
+                        </a>                      
+                        <a class="link" href="https://www.youtube.com/c/Nonki4ever">Nonki Channel</a>
+                      </p>
+                      <p class="link-text01">A Youtube channel for learning Japanese and English conversation by shadowing method.</p>
+                      <p class="link-text02">(made by Remi Nakajima since 2018)</p>                       
+                    </li>                    
                   </ul>
                 </div>
               </div>
@@ -48,11 +76,11 @@
                     <% blog.categories.each do |category| %>
                       <%= category.try(:name) || "Others" %>                 
                     <% end %>
-                    <span class = "blog_show">
+                    <div class="blog_show">
                       <a class="btn" href="<%= blog_path(blog) %>">
-                        <span class="material-icons">open_in_new</span>
+                        <span class="material-icons" id = "blog_show">open_in_new</span>
                       </a>
-                    </span>
+                    </div>
                   </div>
                 </th>
               </tr>
@@ -150,18 +178,24 @@
           <div class = "col3">
             <div class="card-header">Informations</div>
               <div class="card-body text-secondary">
-                <h5 class="card-title">Lastest posts</h5>
+                <h5 class="card-title">                
+                  <span class="material-icons">auto_awesome</span>
+                  Lastest posts
+                </h5>
                   <ul class="list-group list-group-flush">
                     <% @blogs.each.with_index(1) do |blog, idx| %> 
                       <li class="list-group-item" id="list">
-                        <div class = "list_title">
+                        <div class ="list_title">                          
                           <%= idx %>
+                          <a class="btn" href="<%= blog_path(blog) %>">
+                            <span class="material-icons" id="open">open_in_new</span>
+                          </a>
                           <span class = "title"><%= blog.title %></span> by
                           <% if blog.user.name.present? %>
                             <%= blog.user.name %>
                           <% else %>
                             <%= "Guest" %>
-                          <% end %>
+                          <% end %>                          
                         </div>
                       </li>
                     <% end %>
