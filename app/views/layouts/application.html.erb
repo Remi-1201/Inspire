@@ -35,7 +35,7 @@
             </li>
 
           <div class="b-right">
-            <li class="menu"> <span class="material-icons">list</span>
+            <li class="menu"> <span class="material-icons">menu</span>
               <ul>
                 <li class="right">
                   <a class="btn" href="<%= root_path %>">
@@ -184,9 +184,9 @@
               <span class="drop-up-sub-nav">
                 <span class="drop-up-item">
                   <div class ="search">
-                    <%= form_with(url: search_blogs_path, class: "search_container", method: :get, local: true) do %>      
-                      <%= text_field_tag :search_detail %>  
+                    <%= form_with(url: search_blogs_path, class: "search_container", method: :get, local: true) do %>
                       <%= submit_tag "Search", class: "search-btn" %>
+                      <%= text_field_tag :search_detail %>                      
                     <% end %> 
                   </div>
                 </span>      

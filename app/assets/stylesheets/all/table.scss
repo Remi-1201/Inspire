@@ -4,6 +4,7 @@
   word-wrap: break-all;
   margin: 0 auto;
   z-index: 100;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .table-responsive table{
@@ -11,39 +12,64 @@
   margin: 0 auto;
   width: max-content;
   border-radius: 3px;
-  border-spacing: 10px 10px;
   border: 1px solid;
   border-color: #6c757d; 
   margin-bottom: 30px;
-  padding: 20px 10px;
+  padding: 15px 15px;
   border-collapse: separate;
 }
 
+.card-header{
+  height: fit-content;
+}
 .category{
-  font-weight: lighter;
+  font-size: 1rem;
+  color:#6c757d; 
   margin: 0 auto;
   text-align: left;
-  padding-top: 20px;
-  padding-bottom: 10px;
   padding-left: 20px;
+  padding-bottom: 5px;
 }
-
+.blog_show{
+  float: right;
+  top: 0px;
+  font-size: 1rem;
+  color:#6c757d; 
+}
 .th_user {
   text-align: left;
-  height: fit-content;
+  height: max-content;
   font-weight: 200;
+  margin: 5px auto;
+  padding-left: 20px;
+}
+.user_name{
+  font-weight: bold;
+  margin-right: 10px;
+}
+.card-text{
+  margin: 10px auto;
 }
 
 .th_title {
   font-weight: lighter;
-  padding: 10px 20px;
+  padding-top: 0 ;
+  padding-right: 20px;
+  padding-bottom: 10px;
   margin: 0 auto;
-  text-align: left;
+  text-align: right;
+  font-size: 0.5rem;
 }
 
 .th_detail {
-  font-weight: lighter;
-  padding: 10px 20px;
+  font-weight: 350;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
+  overflow-wrap: break-word;
+  width: 25em;
+  color: black;
 }

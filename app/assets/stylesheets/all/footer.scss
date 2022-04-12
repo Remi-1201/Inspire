@@ -44,8 +44,6 @@ footer {
   margin-top: 10px;
   height: 30px;
 }
-.menu-right{
-}
 
 .foot-wrap ul {
   list-style: none;
@@ -126,20 +124,23 @@ footer {
   display: none;
   opacity: 0;
   z-index: 30;
-  background: #FFFFFF;
-  border: 1px solid #F0F0F0;
-  box-shadow: 0 -5px 15px 0 rgba(0,0,0,0.12);
+  background: transparent;
+  border: 1px solid transparent;
+  transition-delay: 10s;
 }
 .drop-up-sub-nav .drop-up-item {
   display: block;
   width: 100%;
-  background-color: #fff;
+  background-color: transparent;
   text-align: center;
   z-index: 30;
+  transition-delay: 10s;
+
 }
 .drop-up-sub-nav .drop-up-item button {
-  background-color: #fff;
+  background-color: transparent;
   border: none;
+  transition-delay: 10s;
 }
 .drop-up-item:hover .drop-up-sub-nav {
   display: block;
@@ -148,4 +149,12 @@ footer {
   bottom: 23px;
   width: 140%;
   text-align: center;
+  transition-delay: 10s;
+}
+
+.search_container{
+  display: inline-block;
+  width: max-content;
+  background-color: transparent;
+  transition-delay: 10s;
 }
