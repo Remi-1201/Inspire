@@ -1,9 +1,10 @@
-.voice{
-  margin-left: 5px;
+.center{
+  display: flex;
+  text-align: center;
+  justify-content: center;
   width: 100%;
   overflow: hidden;
-  border-radius: 5px;
-  margin-top: 5px;
+  size: 1em;
 }
 
 .record {

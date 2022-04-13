@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-xs-12 col-sm-4 col-md-3" id="sticky-sidebar">
+    <div class="col-xs-12 col-sm-4 col-md-3 order-2 order-md-1" id="sticky-sidebar">
       <div class="sticky-top">
         <div class="card border-secondary mb-3" style="max-width: 18rem;">
           <div class = "col3">
@@ -65,7 +65,7 @@
           </div>
         </div>
 
-    <div class="col-xs-6 col-sm-4 col-md-6">
+    <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
       <% if @blogs.present? %>
         <% @blogs.each do |blog| %>
           <div class = "table-responsive">
@@ -95,25 +95,15 @@
                     <%= blog.created_at.to_s(:datetime) %>                    
                   </p>
                 </th>
-              </tr>
-         
+              </tr>         
          
               <tr>
                 <th colspan="5" class="th_detail">
-
-
-                <blockquote class="quote-card">
-    <p>
-                  
-                    
+                  <blockquote class="quote-card">
+                    <p>
                       <%= blog.detail %>
-                      
-                    
-
-</p>
-                      </blockquote>
-
-
+                    </p>
+                  </blockquote>
                 <th>
               </tr>
 
@@ -179,10 +169,15 @@
             <% end %>
           </table>          
         </div>
+        <div class="pagination">
+          <% if @blogs.present? %>
+            <%= paginate @blogs %>    
+          <% end %>
+        </div>
       </div>
 
 
-    <div class="col-xs-12 col-sm-4 col-md-3" id="sticky-sidebar">
+    <div class="col-xs-12 col-sm-4 col-md-3 order-3 order-md-3" id="sticky-sidebar">
       <div class="sticky-top">
         <div class="card border-secondary mb-3" style="max-width: 18rem;">
           <div class = "col3">
@@ -220,11 +215,7 @@
       </div>
     </div>
 
-  <div class="pagination">
-    <% if @blogs.present? %>
-      <%= paginate @blogs %>    
-    <% end %>
-  </div>
+
 
   <% else %>
     <%= "Your search didn't match any results" %>        

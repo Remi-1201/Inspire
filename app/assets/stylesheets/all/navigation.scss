@@ -1,9 +1,9 @@
 .navigation{
   position: fixed;
-  display: inline-block;
+  display: inline-flex;
   z-index: 500;
   width: 100%;
-  height: fit-content;
+  height: 50px;
   top: 0; 
   left: 0;
   text-decoration: none;
@@ -19,8 +19,20 @@
 }
 
 .menu{
-  padding-left: 10px;
-  font-size: 30px;
+  text-align: right;
+  margin-left: 20px;
+  display: block;
+  justify-content: center;
+}
+
+#home{
+  margin-right: 15px;
+  font-size: 1.5rem;
+}
+#menu{
+  margin-left: 30px;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
 #side-subtitle{
@@ -36,7 +48,8 @@
 	font-weight:700;
 	font-size:12px;
   line-height:25px;
-	padding:0 15px;
+  margin: 10px auto;
+  justify-content: space-between;
 }
 
 #primary_nav_wrap ul{
@@ -121,7 +134,7 @@
 
 .b-right{
   float: right;
-  margin-right: 20px;
+  padding-right: 20px;
   text-decoration: none;
 }
 .right{
