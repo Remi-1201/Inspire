@@ -6,9 +6,8 @@ class BlogsController < ApplicationController
   before_action :authenticate_user! 
 
   def index
-    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])
-    # @blogs = Blog.includes(:favorites).all
-    favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
+    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page]).per(10)
+    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
   end
 
   def show
@@ -61,7 +60,9 @@ class BlogsController < ApplicationController
     end
   end
 
-  def search
+  def search    
+    @searched_blogs = Blog.search(params[:search])
+    @searched_blogs = @searched_blogs.page(params[:page])
     @blogs =
     if params[:search_title].blank? && params[:search_detail].blank?
       Blog.all.order(created_at: :desc).kaminari(params[:page])

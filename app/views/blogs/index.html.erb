@@ -141,8 +141,8 @@
               <tr>
 
               <tr class="option">            
-                <td colspan="5" >
-                  <% if blog.favorites.present? %> 
+                <td colspan="5" >                
+                  <% if blog.favorited_by?(current_user)  %>
                     <div class = "link_count">
                       <%= blog.favorites.size %> 
                     </div>                  
@@ -154,7 +154,7 @@
                     </div>
                     <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>                     
                     <%= link_to 'Like', favorites_path(blog_id: blog.id), class:'link_icon', method: :post %>
-                  <% end %> 
+                  <% end %>
                     <div class = "link_count">
                       <%= blog.comments.size %> 
                     </div>
@@ -190,12 +190,13 @@
                           <a class="btn" href="<%= blog_path(blog) %>">
                             <span class="material-icons" id="open">open_in_new</span>
                           </a>
-                          <span class = "title"><%= blog.title %></span> by
+                          <span class = "title"><%= blog.title %></span>
+                          <span class="link-text02"> by </span>
                           <% if blog.user.name.present? %>
                             <%= blog.user.name %>
                           <% else %>
                             <%= "Guest" %>
-                          <% end %>                          
+                          <% end %><span class="link-text02"> at <%= blog.created_at.to_s(:datetime) %></span>
                         </div>
                       </li>
                     <% end %>

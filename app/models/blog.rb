@@ -10,4 +10,9 @@ class Blog < ApplicationRecord
   validates :title, presence: true, length: {maximum: 120}
   validates :detail, presence: true, length: {maximum: 1000}
   scope :kaminari, -> (kaminari_page){ page(kaminari_page).per(10) }
+  
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+ end
+
 end
