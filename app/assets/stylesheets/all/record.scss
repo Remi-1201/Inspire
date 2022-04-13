@@ -56,3 +56,113 @@
   box-shadow: none !important;
   color: white;
 }
+
+#MicOn[disabled]{
+  background-color: transparent;
+  color:grey;
+  padding: 10px 10px;
+  border-color: transparent;
+  border: 0px solid;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  pointer-events: none;
+}
+
+#RecStart[disabled]{
+  background-color: transparent;
+  border-color: transparent;
+  border: 0px solid;
+  size: 100px;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: grey;
+  pointer-events: none;
+}
+
+#RecStop[disabled]{
+  background-color: transparent;
+  border-color: transparent;
+  border: 0px solid;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: grey;
+  pointer-events: none;
+}
+
+
+#MicOn:hover{
+  background-color: transparent;
+  text-shadow: 5px 5px 10px rgb(244, 244, 94);
+  padding: 10px 10px;
+  border-color: transparent;
+  border: 0px solid;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#RecStart:hover{
+  background-color: transparent;
+  border-color: transparent;
+  border: 0px solid;
+  size: 100px;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-shadow: 5px 5px 10px rgb(244, 244, 94);
+}
+
+#RecStop:hover{
+  background-color: transparent;
+  border-color: transparent;
+  border: 0px solid;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-shadow: 5px 5px 10px rgb(244, 244, 94);
+}
+
+
+#MicOn:active{
+  background-color: transparent;
+  text-shadow: 5px 5px 10px #E94057;
+  padding: 10px 10px;
+  border-color: transparent;
+  border: 0px solid;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#RecStart:active{
+  background-color: transparent;
+  border-color: transparent;
+  border: 0px solid;
+  size: 100px;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-shadow: 5px 5px 10px #E94057;
+}
+
+#RecStop:active{
+  background-color: transparent;
+  border-color: transparent;
+  border: 0px solid;
+  font-size:1.5em; 
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-shadow: 5px 5px 10px #E94057;
+}

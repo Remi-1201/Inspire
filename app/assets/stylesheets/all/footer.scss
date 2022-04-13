@@ -32,10 +32,12 @@ footer {
 #player{
   display: inline;
   margin-right: 10px;
-  // margin-bottom: 5px;
   text-align: center;
 }
 
+#player:hover{
+  text-shadow: 5px 5px 10px rgb(244, 244, 94);
+}
 
 .foot-wrap .menu-left, .menu-center, .menu-right {
   display: inline-block;
@@ -59,31 +61,14 @@ footer {
   color: #fff;
 }
 
-.new_footer{
-  background: #fff;
-  box-shadow: 0 10px 15px -10px #a989cf;
-  color: #a989cf;
-  font-size: 1rem;
-  font-weight: bolder;
-  border: none !important;
-  outline: none !important;
-  border-radius: 35px;
-  height: 30px;
-  width: 60px;
-  text-align: center;
-  padding-top: 2px;
+#new_footer{
+  color: white;
 }
-.new_footer:hover{
-  border-radius: 35px;
-  height: 30px;
-  width: 60px;
-  text-align: center;
-  padding-top: 2px; 
+#new_footer:hover{ 
   color: white;
   border: none !important;
   outline: none !important;
-  background: #42A5F5;
-  box-shadow: 0 10px 15px -10px rgba(66, 165, 245, 0.5);
+  text-shadow: 5px 5px 10px rgb(244, 244, 94);
 }
 
 /* drop up buttons menu */

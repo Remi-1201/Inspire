@@ -39,7 +39,7 @@
               <ul>
                 <li class="right">
                   <a class="btn" href="<%= root_path %>">
-                    <span class="material-icons">business</span>
+                    <span class="material-icons" id="root">business</span>
                   </a>
                 </li>
                 <% if user_signed_in? %>
@@ -47,8 +47,8 @@
                   <li class="right">
                     <%= link_to "Admin", rails_admin_path, class: "link" %>
                   </li>                  
-                  <li class="dir">
-                    <%= link_to "◀ Languages", categories_path, method: :get, class: "link" %>
+                  <li class="dir">                    
+                    <%= link_to "Languages", categories_path, method: :get, class: "link" %>
                       <ul>
                         <li>
                           <%= link_to "English", categories_english_path, class: "link" %>
@@ -59,13 +59,13 @@
                       </ul>
                   </li>
                   <li class="dir">
-                    <%= link_to "◀ Profile", mypage_path, method: :get, class: "link" %>
+                     <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
                       <ul>                        
                         <li>
                           <%= link_to "My favorites", favorites_path, class: "link" %>
                         </li>
                         <li>
-                          <%= link_to "Update my profile", edit_user_registration_path, class: "link" %>
+                          <%= link_to "Update profile", edit_user_registration_path, class: "link" %>
                         </li>
                       </ul>
                   </li>
@@ -77,7 +77,7 @@
                     <%= link_to "Index", blogs_path, class: "link" %>
                   </li>
                   <li class="dir">
-                    <%= link_to "◀ Languages", categories_path, method: :get, class: "link" %>
+                    <%= link_to "Languages", categories_path, method: :get, class: "link" %>
                       <ul>
                         <li>
                           <%= link_to "English", categories_english_path, class: "link" %>
@@ -89,13 +89,13 @@
                   </li>
                   
                   <li class="dir">
-                    <%= link_to "◀ Profile", mypage_path, method: :get, class: "link" %>
+                    <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
                       <ul>                        
                         <li>
                           <%= link_to "My favorites", favorites_path, class: "link" %>
                         </li>
                         <li>
-                          <%= link_to "Update my profile", edit_user_registration_path, class: "link" %>
+                          <%= link_to "Update profile", edit_user_registration_path, class: "link" %>
                         </li>
                       </ul>
                   </li>
@@ -146,31 +146,29 @@
         </span>
       </div>
       <div class="element-container">
-        <span class="float-element tooltip-left">
-          <i class="material-icons">
+        <span class="float-element tooltip-left">          
+          <span class="material-icons">
+            <button id="RecStop">
+              check_circle_outline
+            </button>
+          </span>
+          <span class="float-element">
             <span class="material-icons">
-              <button id="RecStop">
-                stop_circle
-              </button>
+              <button id="RecStart" >
+                record_voice_over
+              </button>     
             </span>
-          </i>           
-        <span class="float-element">
-          <span class="material-icons">
-            <button id="RecStart" >
-              record_voice_over
-            </button>     
           </span>
-        </span>
-        <span class="float-element">
-          <span class="material-icons">
-            <button id="MicOn">
-              settings_voice
-            </button>            
-          </span>
-        </span>     
+          <span class="float-element">
+            <span class="material-icons">
+              <button id="MicOn">
+                settings_voice
+              </button>            
+            </span>
+          </span>     
+        </div>
       </div>
     </div>
-  </div>
 
   <footer>
     <div class="foot-wrap">
@@ -204,10 +202,10 @@
     </div>     
     <div id ="visible">
       <div id ="player" onclick="showbox()">
-        <span class="material-icons">visibility</span>
+        <span class="material-icons" id="visibility">visibility</span>
       </div>
       <div id ="player" onclick="hidebox()">
-        <span class="material-icons">visibility_off</span>
+        <span class="material-icons" id="visibility_off">visibility_off</span>
       </div>
     </div>
       <ul class="foot-center">
@@ -216,7 +214,7 @@
 
     <div class="menu-right"> 
         <a class="btn" href="<%= new_blog_path %>">
-          <span class="material-icons">post_add</span>
+          <span class="material-icons" id="new_footer">post_add</span>
         </a>
           <ul class="foot-right">
           </ul>        
