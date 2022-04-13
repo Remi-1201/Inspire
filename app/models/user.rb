@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+  attr_reader :avatar_remote_url
+  validates_acceptance_of :avatar, content_type: /\Aimage\/.*\Z/
+  def avatar_remote_url=(url_value)
+    if url_value.present?
+      self.avatar = URI.parse(url_value)
+      @avatar_remote_url = url_value
+    end
+  end
+
   mount_uploader :avatar, AvatarUploader
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize: "30x30"

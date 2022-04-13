@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user! 
 
   def index
-    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page]).per(10)
+    @blogs = Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
   end
 
