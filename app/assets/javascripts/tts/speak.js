@@ -37,17 +37,31 @@ $(document).on ("turbolinks:load", function(){
       .getVoices()
       .filter(voice => voice.name === voiceSelect.value)[0]
     speechSynthesis.speak(uttr)
+    $('.speak-btn').prop("disabled", true);
+    $('.pause-btn').attr("disabled", false);
+    $('.resume-btn').attr("disabled", false);
+    $('.stop-btn').attr("disabled", false);
   })
 
   $('.pause-btn').on('click', function(){
     speechSynthesis.pause();
+    $('.pause-btn').attr("disabled", false);
+    $('.resume-btn').attr("disabled", false);
+    $('.stop-btn').attr("disabled", false);
   })
 
   $('.resume-btn').on('click', function(){
     speechSynthesis.resume();
+    $('.pause-btn').attr("disabled", false);
+    $('.resume-btn').attr("disabled", false);
+    $('.stop-btn').attr("disabled", false);    
   })
 
   $('.stop-btn').on('click', function(){
     speechSynthesis.cancel();
+    $('.speak-btn').prop("disabled", false);
+    $('.pause-btn').prop("disabled", true);
+    $('.resume-btn').prop("disabled", true);
+    $('.stop-btn').prop("disabled", true);    
   })
 });

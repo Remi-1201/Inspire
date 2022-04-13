@@ -20,6 +20,16 @@
   box-shadow: 0 10px 15px -10px #FF9800;
 }
 
+.speak-btn[disabled]{
+  border-radius: 15px;
+  padding: 0 10px;  
+  padding-top: 5px;
+  border: none !important;
+  outline: none !important;
+  pointer-events: none;
+  background-color: rgb(231, 227, 227);
+}
+
 .pause-btn{
   background: #ababff;
   border-radius: 15px;  
@@ -40,6 +50,16 @@
   outline: none !important;
   background: #FF9800;
   box-shadow: 0 10px 15px -10px #FF9800;
+}
+
+.pause-btn[disabled]{
+  border-radius: 15px;
+  padding: 0 10px;  
+  padding-top: 5px;  
+  border: none !important;
+  outline: none !important;
+  pointer-events: none;
+  background-color: rgb(231, 227, 227);
 }
 
 .resume-btn{
@@ -64,6 +84,16 @@
   box-shadow: 0 10px 15px -10px #FF9800;
 }
 
+.resume-btn[disabled]{
+  border-radius: 15px;
+  padding: 0 10px;  
+  padding-top: 5px;
+  border: none !important;
+  outline: none !important;
+  pointer-events: none;
+  background-color: rgb(231, 227, 227);
+}
+
 .stop-btn{
   background: #ababff;
   border-radius: 15px;  
@@ -84,4 +114,14 @@
   border: none !important;
   outline: none !important;
   box-shadow: 0 10px 15px -10px #FF9800;
+}
+
+.stop-btn[disabled]{
+  border-radius: 15px;
+  padding: 0 10px;  
+  padding-top: 5px;
+  border: none !important;
+  outline: none !important;
+  pointer-events: none;
+  background-color: rgb(231, 227, 227);
 }
