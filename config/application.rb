@@ -22,3 +22,7 @@ module Inspire
     end
   end
 end
+require "active_storage/attached"
+# ActiveSupport.on_load(:active_record) do
+# extend ActiveStorage::Attached::Macros
+# end
