@@ -2,7 +2,6 @@
   <% if blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
-
       <ul>
         <% blog.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,22 +10,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= collection_check_boxes(:blog, :category_ids, Category.all, :id, :name) do |cb| %>
-    <%= cb.label { cb.check_box + ' ' + cb.text } %>
-    <% end %><br><br>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :Category %><br>
+        <%= collection_check_boxes(:blog, :category_ids, Category.all, :id, :name) do |cb| %>
+        <%= cb.label { cb.check_box + ' ' + cb.text  } %>
+        <% end %>
+      </div><br>
 
-    <%= form.label :title %><br>
-    <%= form.text_area :title %><br>
-    <%= form.label :detail %><br>
-    <%= form.text_area :detail %><br>
+      <%= form.label :title %><br>
+      <%= form.text_area :title %><br>
 
-    <%= form.label :image %><br>
-    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br>
-    <%= form.file_field :image, class: 'image', id: 'image' %><br>
-    <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %><br>
+      <%= form.label :detail %><br>
+      <%= form.text_area :detail %><br>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div><br>
-<% end %>
+      <%= form.label :image %><br>
+      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br>
+      <%= form.file_field :image, class: 'image', id: 'image' %><br>
+      <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %><br><br>
+
+      <div class="actions">
+        <%= form.submit :Submit, class: "new_blog" %>
+      </div><br>
+    <% end %>
+  </div>
+

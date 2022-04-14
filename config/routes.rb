@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :blogs do
-    resources :comments
+    resources :comments, only: [:create, :destroy, :edit, :update]
     resources :favorites, only: [:create , :destroy]
   end
 

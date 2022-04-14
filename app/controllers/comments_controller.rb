@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
   before_action :set_blog, only: [:create, :edit, :update]
+
+  def index    
+    @comments = @blog.comments.order(created_at: :desc).kaminari(params[:page]).per(5)
+  end
   
   def create
+    @blog = Blog.find(params[:blog_id])
     @comment = @blog.comments.build(comment_params)
     @comment.user_id = current_user.id
     respond_to do |format|
@@ -18,25 +23,32 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = @blog.comments.find(params[:id])
-    respond_to do |format|
-      flash.now[:notice] = 'Editing ...'
-      format.js { render :edit }
+    @comment = @blog.comments.find(params[:id])    
+      respond_to do |format|
+        if @comment.user_id = current_user.id  
+        flash.now[:notice] = 'Editing ...'
+        format.js { render :edit }
+      else
+        flash.now[:notice] = 'Permission denied.'
+        format.js { render :index }
+      end
     end
   end
 
   def update
-    @comment = @blog.comments.find(params[:id])
-      respond_to do |format|
-        if @comment.update(comment_params)
-          flash.now[:notice] = 'Blog was successfully updated.'
-          format.js { render :index }
-        else
-          flash.now[:notice] = 'The updating attempt failed.'
-          format.js { render :edit }
-        end
+    @comment = @blog.comments.find(params[:id])    
+    respond_to do |format|
+      if @comment.user_id = current_user.id  
+        @comment.update(comment_params)
+        flash.now[:notice] = 'Comment was successfully updated.'
+        format.js { render :index }
+      else
+        flash.now[:notice] = 'The updating attempt failed.'
+        format.js { render :edit }
       end
+    end
   end
+
 
   def destroy
     @comment = Comment.find(params[:id])
@@ -47,11 +59,13 @@ class CommentsController < ApplicationController
     end
   end
 
+
   private
   def comment_params
-    params.require(:comment).permit(:content, :blog)
+    params.require(:comment).permit(:content, :blog_id)
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])
   end
+
 end

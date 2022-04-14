@@ -1,23 +1,37 @@
-<table class="table table-borderless">
-  <thead>
-    <tr>
-      <% Comment.all.each do |comment| %>
-        <% if comment.id.present? %>
-          <li>
-            <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
-            <% if comment.user.name.present? %>
-              <div><%= comment.user.name %>&nbsp;made a comment.</div>
-            <% else %>
-              <div><%='Guest made a comment.'%></div>
-            <% end %>
-            <p><%= comment.content %></p>
-            <tr>
-              <%= link_to "Edit", edit_blog_comment_path(blog, comment), remote: true %> &nbsp;
-              <%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %>
-            </tr>
-          </li>
-        <% end %>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<% comments.each do |comment| %>
+  <% if comment.id.present? %>
+    <% if comment.present? %>
+      <div class = "comment_index">
+        <tr>
+          <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
+        </tr>
+        <tr>          
+          <% if comment.user.name.present? %>
+            <div><%= comment.user.name %>&nbsp;made a comment.
+            </div>
+          <% else %>
+            <div>            
+            <%='Guest made a comment.'%>
+            </div>
+          <% end %>
+        </tr>
+
+        <tr>
+          <div id="c_content">
+            <span class="material-icons">notes</span>
+              <%= simple_format(comment.content) %>
+              <%= comment.created_at.to_s(:datetime) %>
+              <% end %>
+          </div>
+        </tr>
+
+        <tr>        
+          <% if comment.user.name == current_user.name %>
+            <%= link_to "Edit", edit_blog_comment_path(blog, comment),class:'link_blog', remote: true %> &nbsp;
+            <%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), class:'link_blog', method: :delete, remote: true, data: { confirm: "Are you sure"} %>          
+          <% end %>
+        </tr>        
+      </div><br>      
+    <% end %>
+  <% end %>
+<br>

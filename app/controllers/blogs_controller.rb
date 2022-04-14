@@ -11,6 +11,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blogs = Blog.all.includes(:user)
     @comments = @blog.comments
     @comment = @blog.comments.build    
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
