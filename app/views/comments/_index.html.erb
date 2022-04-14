@@ -25,13 +25,11 @@
           </div>
         </tr>
 
-        <tr>        
-          <% if comment.user.name == current_user.name %>
-            <%= link_to "Edit", edit_blog_comment_path(blog, comment),class:'link_blog', remote: true %> &nbsp;
-            <%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), class:'link_blog', method: :delete, remote: true, data: { confirm: "Are you sure"} %>          
-          <% end %>
-        </tr>        
-      </div><br>      
+        <tr>                  
+          <%= link_to "Edit", edit_blog_comment_path(blog, comment),class:'link_blog', remote: true %> &nbsp;
+          <%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), class:'link_blog', method: :delete, remote: true, data: { confirm: "Are you sure"} %>                      
+        </tr>
+      </div><br>
     <% end %>
   <% end %>
-<br>
+  

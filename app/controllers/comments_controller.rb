@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_blog, only: [:create, :edit, :update]
+  load_and_authorize_resource
+  before_action :authenticate_user! 
 
   def index    
     @comments = @blog.comments.order(created_at: :desc).kaminari(params[:page]).per(5)
@@ -23,20 +25,19 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = @blog.comments.find(params[:id])    
+    @comment= current_user.comments.find_by(blog_id: @blog.id)
       respond_to do |format|
-        if @comment.user_id = current_user.id  
+        if  @comment.user_id = current_user.id  
         flash.now[:notice] = 'Editing ...'
         format.js { render :edit }
       else
-        flash.now[:notice] = 'Permission denied.'
-        format.js { render :index }
+        redirect_back fallback_location: root_path, notice: "Permission denied!"
       end
     end
   end
 
   def update
-    @comment = @blog.comments.find(params[:id])    
+    @comment= current_user.comments.find_by(blog_id: @blog.id)
     respond_to do |format|
       if @comment.user_id = current_user.id  
         @comment.update(comment_params)
@@ -49,7 +50,6 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
@@ -59,10 +59,9 @@ class CommentsController < ApplicationController
     end
   end
 
-
   private
   def comment_params
-    params.require(:comment).permit(:content, :blog_id)
+    params.require(:comment).permit(:content)
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])
