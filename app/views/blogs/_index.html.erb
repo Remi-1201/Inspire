@@ -1,25 +1,6 @@
-<br>
-<h1>English</h1>
-<br>
-<p id="notice"><%= notice %>
-
-<div id = "first_line">
-  <div class = "new">
-    <%= button_to 'Make new Post', new_blog_path, class:"new_blog", method: :get %>
-  </div>
-</div><br>
-
-<div class="container">
-  <div class="row">
-
-  <%= render partial: 'blogs/left', locals: { blog: @blog } %>
-  <%= render partial: 'blogs/right', locals: { comment: @comment }%>
-
 <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
       <% if @blogs.present? %>
         <% @blogs.each do |blog| %>
-          <% blog.categories.each do |c| %>
-          <% if c.name == "English"%>
           <div class = "table-responsive">
             <table >
               <tr class="category">
@@ -94,7 +75,7 @@
 
               <tr class="option">            
                 <td colspan="5" >                
-                  <% if blog.favorite_user_ids.include?(current_user)%>
+                  <% if blog.favorites.present? %>
                     <div class = "link_count">
                       <%= blog.favorites.size %> 
                     </div>                  
@@ -111,28 +92,22 @@
                       <%= blog.comments.size %> 
                     </div>
                     <%= link_to 'Comment', blog, class:'link_icon' %>
-                  <% if blog.user_id == @user %>
+
                     <%= link_to 'Edit', edit_blog_path(blog), class:"link_blog" %>
-                    <%= link_to 'Delete', blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %>    
-                  <% else %>
-                  <% end %>
-                  </td>
-                </tr>
-              <% end %>
+                    <%= link_to 'Delete', blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %>                    
+                  
+                </td>
+              </tr>
             <% end %>
-          <% end %>
-        </table>          
+          </table>          
+        </div>
+        <div class="pagination">
+          <% if @blogs.present? %>
+            <%= paginate @blogs %>    
+          <% end %>          
+        </div>
       </div>
-      <div class="pagination">
-        <% if @blogs.present? %>
-          <%= paginate @blogs %>    
-        <% end %>          
-      </div>
-    </div>
 
-    <% else %>
-      <%= "Your search didn't match any results" %>        
-    <% end %>    
-  
-
-
+  <% else %>
+    <%= "Your search didn't match any results" %>        
+  <% end %> 

@@ -2,7 +2,8 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites
-    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])  
+    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])     
+    @user = User.where(favorites: {blog_id: id})
   end
 
   def show
@@ -22,8 +23,11 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id).destroy
-
-    redirect_back fallback_location: root_path,  notice: "Post was disliked!"
+    if current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id).present?
+      favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id).destroy
+      redirect_back fallback_location: root_path,  notice: "Post was disliked!"
+    else
+      redirect_back fallback_location: root_path, notice: "Permission denied!"
+    end
   end
 end
