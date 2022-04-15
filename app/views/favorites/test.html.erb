@@ -1,28 +1,14 @@
-<br>
-<h1>My favorite list</h1>
-<p id="notice"><%= notice %>
 
-<div id = "first_line">
-  <div class = "new">
-    <%= button_to 'Make new Post', new_blog_path, class:"new_blog", method: :get %>
-  </div>
-
-<div class="container">
-  <div class="row">
-  
-  <%= render partial: 'blogs/left', locals: { blog: @blog } %>
-  <%= render partial: 'blogs/right', locals: { blog: @blog }%>
-
-  <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
+<div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
+  <% if @blogs.present? %>
     <% @favorites.each do |favorite| %>
       <div class = "table-responsive">
         <table >
           <tr class="category">
             <th colspan="5" >
-              <div class="card-header">
-                <% favorite.blog.categories.each do |category|%>
-                  <%= category.try(:name) || "Others" %> 
-                <% end %>
+              <% favorite.blog.categories.each do |category|%>
+                <%= category.try(:name) || "Others" %> 
+              <% end %>
                 <div class="blog_show">
                   <a class="btn" href="<%= blog_path(favorite.blog) %>">
                     <span class="material-icons" id = "blog_show">open_in_new</span>
@@ -39,6 +25,7 @@
               <span class = "user_name">            
                 <%= favorite.blog.user.name %>
               </span>
+              <td>
                 <%= favorite.blog.created_at.to_s(:datetime) %>
               </p>
             </th>            
@@ -85,36 +72,36 @@
             <th colspan="5" class="th">
                 <%= image_tag(favorite.blog.image.url) if favorite.blog.image && favorite.blog.image.url %>
             </th>
-          </tr>
+          <tr>
 
           <tr class="option">            
             <td colspan="5" >
+              <% if favorite.present? %> 
                 <div class = "link_count">
-                  <%= favorite.blog.favorites.size %> 
+                  <%= @blog.favorite.size %> 
                 </div>
                 <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>
-                <%= link_to 'Dislike', favorite_path(id: favorite.id, blog_id: favorite.blog.id), class:'link_icon', method: :delete %>              
-                <%= link_to 'Comment', blog_path(favorite.blog.id), class:'link_icon' %>
-
-                <% if favorite.blog.user_id == current_user.id %>
-                <%= link_to 'Edit', edit_blog_path(favorite.blog.id), class:"link_blog" %>
-                <%= link_to 'Delete', @blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %> 
-                <% else %>
-                <% end %>
+                <%= link_to 'Dislike', favorite_path(id: favorite.id, blog_id: favorite.blog.id), class:'link_icon', method: :delete %>
+              <% else %> 
+                <div class = "link_count">
+                  <%= @blog.comments.size %> 
+                </div>
+                <%= link_to 'Comment', blog, class:'link_icon' %>
+              <% if @blog.user_id == current_user.id %>
+                <%= link_to 'Edit', edit_blog_path(blog), class:"link_blog" %>
+                <%= link_to 'Delete', blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %>                    
+              <% else %>
+              <% end %>
             </td>
           </tr>
-     
-        </table>
-      </div>
+        <% end %>
+      <% end %>
     <% end %>
+  </table>          
+</div>
 
     <div class="pagination">
       <% if @favorites.present? %>    
         <%= paginate @blogs %>    
       <% end %>      
     </div>
-
-    </div>
-  </div>
-</div>
-

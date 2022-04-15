@@ -79,7 +79,7 @@
 
           <tr class="option">            
             <td colspan="5" >                
-              <% if @blog.favorited_by?(current_user)  %>
+              <% if current_user.favorited_by?(@blog)  %>
                 <div class = "link_count">
                   <%= @blog.favorites.size %> 
                 </div>                  

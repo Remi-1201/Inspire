@@ -2,13 +2,18 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites
-    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])     
+
+    @blogs = Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
+    
+    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
+
   end
 
   def show
     @comments = @blog.comments
     @comment = @blog.comments.build    
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @blogs = Blog.all.includes(:user)
   end
 
   def create
