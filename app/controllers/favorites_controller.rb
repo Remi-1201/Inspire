@@ -3,7 +3,6 @@ class FavoritesController < ApplicationController
   def index
     @favorites = current_user.favorites
     @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page])     
-    @user = User.where(favorites: {blog_id: id})
   end
 
   def show

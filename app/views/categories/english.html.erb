@@ -94,7 +94,7 @@
 
               <tr class="option">            
                 <td colspan="5" >                
-                  <% if blog.favorite_user_ids.include?(current_user)%>
+                  <% if current_user.favorited_by?(blog) %>
                     <div class = "link_count">
                       <%= blog.favorites.size %> 
                     </div>                  
@@ -111,7 +111,7 @@
                       <%= blog.comments.size %> 
                     </div>
                     <%= link_to 'Comment', blog, class:'link_icon' %>
-                  <% if blog.user_id == @user %>
+                  <% if blog.user_id == current_user.id %>
                     <%= link_to 'Edit', edit_blog_path(blog), class:"link_blog" %>
                     <%= link_to 'Delete', blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %>    
                   <% else %>

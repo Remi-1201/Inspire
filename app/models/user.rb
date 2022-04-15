@@ -42,4 +42,8 @@ class User < ApplicationRecord
     user
   end
 
+  def favorited_by?(blog_id)
+    favorites.where(blog_id: blog_id ).exists?
+  end
+
 end

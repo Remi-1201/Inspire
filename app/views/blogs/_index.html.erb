@@ -75,7 +75,7 @@
 
               <tr class="option">            
                 <td colspan="5" >                
-                  <% if blog.favorites.present? %>
+                  <% if current_user.favorited_by?(blog) %>
                     <div class = "link_count">
                       <%= blog.favorites.size %> 
                     </div>                  
@@ -92,22 +92,26 @@
                       <%= blog.comments.size %> 
                     </div>
                     <%= link_to 'Comment', blog, class:'link_icon' %>
-
+                  <% if blog.user_id == current_user.id %>
                     <%= link_to 'Edit', edit_blog_path(blog), class:"link_blog" %>
                     <%= link_to 'Delete', blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %>                    
-                  
+                  <% else %>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
           </table>          
         </div>
         <div class="pagination">
+
           <% if @blogs.present? %>
             <%= paginate @blogs %>    
           <% end %>          
+
+      <% else %>
+        <%= "Your search didn't match any results" %>        
+      <% end %> 
+      
         </div>
       </div>
 
-  <% else %>
-    <%= "Your search didn't match any results" %>        
-  <% end %> 

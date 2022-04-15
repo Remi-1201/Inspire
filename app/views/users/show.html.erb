@@ -1,76 +1,16 @@
-<h1>My page</h1>
+<h1>My page</h1><br>
 
-<p><%= link_to "Update my profile", edit_user_registration_path %> &nbsp;
-<%= link_to "My favorites", favorites_path %></p> 
+<p><%= link_to "Update my profile", edit_user_registration_path , class:'btn btn-light' %> &nbsp;
+<%= link_to "My favorites", favorites_path , class:'btn btn-light' %></p> 
 
-  <% @blogs.each do |blog| %>
-    <div class = "table-responsive">
-      <table >
-        <tr class="category">
-          <th colspan="5" >
-            <% blog.categories.each do |category| %>
-              <%= category.name %>
-            <% end %>
-          </th>
-        </tr>
+<p id="notice"><%= notice %>
 
-        <tr>
-          <td>
-            <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if blog.user.avatar && blog.user.avatar.url %>
-          </td>
-          <td>
-            <%= blog.user.name %>
-          </td>
-          <td>
-            <%= blog.created_at.to_s(:datetime) %>
-          </td>            
-        </tr>
-
-        <tr>
-          <th colspan="5" class="th_title">
-              <%= blog.title %>
-          <th>
-        </tr>
-
-        <tr>
-          <th colspan="5" class="th_detail">
-          <textarea rows="5" cols="35"><%= blog.detail %></textarea>
-          <th>
-        </tr>
-
-        <tr>
-          <td colspan="5" class="spk">
-            <button class="speak-btn" data-blog="<%= blog.detail %>">speak</button>
-            <button class="stop-btn">stop</button>
-            <div class = "speak"></div>
-          </td>
-        </tr>
-        
-        <tr>
-          <th colspan="5" class="th">
-              <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
-          </th>
-        <tr>
-
-        <tr class="option">            
-          <td colspan="5" >
-            <% if blog.favorites.present? %> 
-              <%= link_to 'Dislike', blog_favorite_path(id: blog.id, blog_id: blog.id), method: :delete %>
-            <% else %> 
-              <%= link_to 'Like', favorites_path(blog_id: blog.id), method: :post %>
-            <% end %> &nbsp;
-              <%= link_to 'Comment', blog %> &nbsp;
-              <%= link_to 'Edit', edit_blog_path(blog) %> &nbsp;            
-              <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </div><br>
+<div class="container">
+  <div class="row">
   
-  <div class="page">
-    <% if @blogs.present? %>
-      <%= paginate @blogs %>    
-    <% end %>
-  </div>
+  <%= render partial: 'blogs/left', locals: { blog: @blog } %>
+  <%= render partial: 'blogs/index', locals: { blog: @blog, user: @user } %>
+  <%= render partial: 'blogs/right', locals: { blog: @blog }%>
 
+  </div>
+</div>

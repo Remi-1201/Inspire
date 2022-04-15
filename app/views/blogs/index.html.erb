@@ -6,7 +6,6 @@
   <div class = "new">
     <%= button_to 'Make new Post', new_blog_path, class:"new_blog", method: :get %>
   </div>
-</div><br>
 
 <div class="container">
   <div class="row">
@@ -91,7 +90,7 @@
 
               <tr class="option">            
                 <td colspan="5" >                
-                  <% if blog.favorited_by?(current_user)  %>
+                  <% if current_user.favorited_by?(blog)  %>
                     <div class = "link_count">
                       <%= blog.favorites.size %> 
                     </div>                  
@@ -122,11 +121,12 @@
           <% if @blogs.present? %>
             <%= paginate @blogs %>    
           <% end %>          
-        </div>
-      </div>
 
-  <% else %>
-    <%= "Your search didn't match any results" %>        
-  <% end %>    
+          <% else %>
+            <%= "Your search didn't match any results" %>        
+          <% end %>    
+
+    </div>
+  </div>
   
 
