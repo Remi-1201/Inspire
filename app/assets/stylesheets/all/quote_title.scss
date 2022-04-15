@@ -1,0 +1,39 @@
+.mainquote {
+  color: white;
+  font-family: sans-serif;
+  font-size: 0.85rem;
+  width: 50%;
+  margin-top: 6em;
+  float:right;
+  text-align: right;
+  padding-right: 3em;
+}
+.mainquote h1 {
+  font-size: 1rem;
+}
+.mainquote .best_word {
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.mainquote .best_word::before,
+.mainquote .best_word::after {
+  content: "“";
+  font-family: sans-serif;
+  font-size: 5rem;
+  margin: -2.5rem 0 0 -2.5rem;
+  position: absolute;
+  opacity: 0.2;
+}
+
+.mainquote .best_word::after {
+  content: "”";
+  margin: 1rem -3rem 0 1rem;
+  right: 1em;
+  opacity: 0.2;
+}
+
+.mainquote .author {
+  font-size: 0.75rem;
+  opacity: 0.5;
+}

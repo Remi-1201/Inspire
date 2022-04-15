@@ -9,14 +9,13 @@ h1 {
   font-size: 5rem;
   text-transform: uppercase;
   animation: glow 2s ease-in-out infinite alternate;
-  text-align: center;
 }
 @keyframes glow {
   from {
-    text-shadow: 0 0 20px #1054a2;
+    text-shadow: 0 0 20px rgb(199, 197, 197);
   }
   to {
-    text-shadow: 0 0 30px #e0eaf1, 0 0 10px #040b2c;
+    text-shadow: 0 0 30px #e0eaf1, 0 0 10px rgb(81, 81, 81);
   }
 }
 

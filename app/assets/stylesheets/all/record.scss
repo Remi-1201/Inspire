@@ -16,22 +16,18 @@
 }
 
 #MicOn{
+  text-align: center;
   background-color: transparent;
-  color:white;
-  padding: 10px 10px;
+  padding: 10px auto;
   border-color: transparent;
   border: 0px solid;
-  font-size:1.5em; 
+  font-size: 3em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-}
+  color: #4CAF50;
+  text-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
 
-#MicOn:active{
-  border-style: hidden;
-  border-color: transparent;
-  border: 0px solid;
-  color: white;
 }
 
 #RecStart{
@@ -39,22 +35,23 @@
   border-color: transparent;
   border: 0px solid;
   size: 100px;
-  font-size:1.5em; 
+  font-size: 3em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  color: white;
+  color: #FF9800;
+  text-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
 }
 
 #RecStop{
   background-color: transparent;
   border-color: transparent;
   border: 0px solid;
-  font-size:1.5em; 
+  font-size: 3em; 
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
-  color: white;
+  color: #42A5F5;
+  text-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
 }
 
 #MicOn[disabled]{
@@ -63,7 +60,6 @@
   padding: 10px 10px;
   border-color: transparent;
   border: 0px solid;
-  font-size:1.5em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
@@ -75,7 +71,6 @@
   border-color: transparent;
   border: 0px solid;
   size: 100px;
-  font-size:1.5em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
@@ -87,7 +82,6 @@
   background-color: transparent;
   border-color: transparent;
   border: 0px solid;
-  font-size:1.5em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
@@ -98,73 +92,47 @@
 
 #MicOn:hover{
   background-color: transparent;
-  text-shadow: 5px 5px 10px rgb(244, 244, 94);
-  padding: 10px 10px;
+  text-shadow: 5px 5px 10px rgba(76, 175, 80, 0.5);
   border-color: transparent;
   border: 0px solid;
-  font-size:1.5em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+
+  -webkit-transform: translatey(5px);
+          transform: translatey(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #RecStart:hover{
   background-color: transparent;
   border-color: transparent;
   border: 0px solid;
-  size: 100px;
-  font-size:1.5em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  text-shadow: 5px 5px 10px rgb(244, 244, 94);
+  text-shadow: 5px 5px 10px rgba(255, 152, 0, 0.5);
+
+  -webkit-transform: translatey(5px);
+          transform: translatey(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #RecStop:hover{
   background-color: transparent;
   border-color: transparent;
   border: 0px solid;
-  font-size:1.5em; 
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  text-shadow: 5px 5px 10px rgb(244, 244, 94);
-}
+  text-shadow: 5px 5px 10px rgba(66, 165, 245, 0.5);
 
-
-#MicOn:active{
-  background-color: transparent;
-  text-shadow: 5px 5px 10px #E94057;
-  padding: 10px 10px;
-  border-color: transparent;
-  border: 0px solid;
-  font-size:1.5em; 
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-#RecStart:active{
-  background-color: transparent;
-  border-color: transparent;
-  border: 0px solid;
-  size: 100px;
-  font-size:1.5em; 
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  text-shadow: 5px 5px 10px #E94057;
-}
-
-#RecStop:active{
-  background-color: transparent;
-  border-color: transparent;
-  border: 0px solid;
-  font-size:1.5em; 
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  text-shadow: 5px 5px 10px #E94057;
+  -webkit-transform: translatey(5px);
+          transform: translatey(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #Control{

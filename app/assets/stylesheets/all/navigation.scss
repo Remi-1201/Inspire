@@ -7,11 +7,14 @@
   top: 0; 
   left: 0;
   text-decoration: none;
+  background: #7F7FD5; 
+  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  
+  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); 
 
-  background: rgba(255,255,255,0.4);
-  border: 1px solid rgba(255,255,255,0.2);
   backdrop-filter: blur(5px);
- -webkit-backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px 0 rgba(31, 38, 135, 0.2);
+  border: 0.5px solid rgba(255, 255, 255, 0.401);
 }
 
 .link{
@@ -89,8 +92,7 @@
 }
 
 #primary_nav_wrap ul li:hover{
-  width: fit-content;
-  height: fit-content;
+
   background: rgba(255,255,255,0.4);
   border: 1px solid rgba(255,255,255,0.2);
   backdrop-filter: blur(5px);
