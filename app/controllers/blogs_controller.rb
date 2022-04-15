@@ -62,14 +62,7 @@ class BlogsController < ApplicationController
   end
 
   def search    
-    @searched_blogs = Blog.search(params[:search])
-    @searched_blogs = @searched_blogs.page(params[:page])
-    # unless params[:search].nil?
-    #   if params[:search_detail].present? 
-    #     @blogs = Blog.where('detail LIKE ?', "%#{params[:search_detail]}%").order(created_at: :desc).kaminari(params[:page])
-    #   else
-    #   end
-    # end
+    @blogs = @blogs.page(params[:page])
     @blogs =
     if params[:search_title].blank? && params[:search_detail].blank?
       Blog.all.order(created_at: :desc).kaminari(params[:page])
