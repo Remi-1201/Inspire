@@ -15,7 +15,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /users/sign_in
   def new    
-    super
+    render :layout => "second_layout"
+    # super
   end
 
   # POST /users/sign_in

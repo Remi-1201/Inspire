@@ -1,39 +1,76 @@
-<br>
-  <h1>Log in</h1><br>
+<%= stylesheet_link_tag 'only/top', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'only/top_star', media: 'all', 'data-turbolinks-track': 'reload' %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<%= stylesheet_link_tag 'all/application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-  <div class="login_button">
-    <%= button_to 'Guest login', users_sign_in_guest_path, method: :post %> 
-    <%= button_to 'Admin guest login', users_sign_in_admin_guest_path, method: :post %> 
-  </div><br>
-  
-  <% resource = User.new unless resource %>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-    <div class="field">
-      <%= f.label :name %> <br>
-      <%= f.text_field :name, autofocus: true, maxlength: "8" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :email %><br>
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %><br>
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.label :remember_me %><br>
-        <%= f.check_box :remember_me %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
       </div>
-    <% end -%>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div><br>
-  <% end %>
+  <div class="col-sm">
+    <div class="bg"></div>
+    <div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="d-flex flex-column justify-content-center w-100 h-100">
+      
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <br>
+      <div class ="login_field">
+        <h1>Login</h1><br>
+          
+          <div class="login_button">
+            <table>
+              <tr>
+                <%= button_to 'Guest login', users_sign_in_guest_path, method: :post , class:"new_session" %> &nbsp;
+                <%= button_to 'Admin guest login', users_sign_in_admin_guest_path, method: :post , class:"new_session" %> &nbsp;
+                <%= button_to 'Google login', user_google_omniauth_authorize_path, method: :get , class:"new_session" %> 
+              </tr>
+            </table>
+          </div><br><br><br>
+  
+        <% resource = User.new unless resource %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          
+          <div class="field">
+            <%= f.label :email %><br>
+            <%= f.email_field :email, autofocus: true %>
+          </div><br>
 
-  <a href="/users/auth/google"> Login with Google</a>
+          <div class="field">
+            <%= f.label :password %><br>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div><br>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.label :remember_me %><br>
+              <%= f.check_box :remember_me %>
+            </div>
+          <% end -%><br>
+
+          <div class="actions">
+            <%= f.submit "Log in" , class: "search-btn"%>
+          </div><br>
+        <% end %><br>
+      </div>
+
+      <div class="login_button">
+        <table>
+          <tr>
+            <%= button_to 'Sign Up', new_user_registration_path, method: :get , class:"new_session" %> &nbsp;
+            <%= button_to 'Back to top', root_path, method: :get , class:"new_session" %> &nbsp;
+          </tr>
+        </table>
+      </div><br><br><br>
+
+    </div>
+  </div>
+  
+  <div class="col-sm">
+    </div>
+
+  </div>
+</div>
