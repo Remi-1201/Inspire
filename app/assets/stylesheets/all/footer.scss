@@ -38,7 +38,24 @@ footer {
 }
 
 #player:hover{
-  text-shadow: 5px 5px 10px rgb(244, 244, 94);
+  -webkit-transform: translatex(5px);
+  transform: translatex(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#visibility:hover{
+  -webkit-transform: translatex(5px);
+  transform: translatex(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#visibility_off:hover{
+  -webkit-transform: translatex(5px);
+  transform: translatex(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .foot-wrap .menu-left, .menu-center, .menu-right {
@@ -70,7 +87,10 @@ footer {
   color: white;
   border: none !important;
   outline: none !important;
-  text-shadow: 5px 5px 10px rgb(244, 244, 94);
+  -webkit-transform: translatex(5px);
+  transform: translatex(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 /* drop up buttons menu */

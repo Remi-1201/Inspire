@@ -3,10 +3,11 @@
   font-family: sans-serif;
   font-size: 0.85rem;
   width: 50%;
-  margin-top: 6em;
+  margin-top: 6.5em;
   float:right;
   text-align: right;
-  padding-right: 3em;
+  margin-right: 10%;
+  z-index: 250;
 }
 .mainquote h1 {
   font-size: 1rem;
@@ -29,7 +30,7 @@
 .mainquote .best_word::after {
   content: "”";
   margin: 1rem -3rem 0 1rem;
-  right: 1em;
+  right: 12%;
   opacity: 0.2;
 }
 

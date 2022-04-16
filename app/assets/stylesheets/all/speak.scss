@@ -1,3 +1,7 @@
+.voice{
+  margin-left: 10px;
+  margin-top: 2px;
+}
 .speak-btn{
   background: #42A5F5;
   box-shadow: 0 10px 15px -10px rgba(66, 165, 245, 0.5);
@@ -28,6 +32,7 @@
   outline: none !important;
   pointer-events: none;
   background-color: rgb(231, 227, 227);
+  box-shadow: none;
 }
 
 .pause-btn{
@@ -60,6 +65,7 @@
   outline: none !important;
   pointer-events: none;
   background-color: rgb(231, 227, 227);
+  box-shadow: none;
 }
 
 .resume-btn{
@@ -92,6 +98,7 @@
   outline: none !important;
   pointer-events: none;
   background-color: rgb(231, 227, 227);
+  box-shadow: none;
 }
 
 .stop-btn{
@@ -124,4 +131,5 @@
   outline: none !important;
   pointer-events: none;
   background-color: rgb(231, 227, 227);
+  box-shadow: none;
 }

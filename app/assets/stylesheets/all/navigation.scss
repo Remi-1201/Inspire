@@ -1,11 +1,11 @@
 .navigation{
   position: fixed;
-  display: inline-flex;
+  display: block;
   z-index: 500;
-  width: 100%;
   height: 50px;
   top: 0; 
   left: 0;
+  right: 0;
   text-decoration: none;
   background: #7F7FD5; 
   background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  
@@ -23,17 +23,15 @@
 
 .menu{
   text-align: right;
-  margin-left: 20px;
   display: block;
-  justify-content: center;
+  margin-right: 50px !important;
 }
 
 #home{
-  margin-right: 15px;
+  margin-left: 50px !important;
   font-size: 1.5rem;
 }
 #menu{
-  margin-left: 30px;
   font-size: 2rem;
   margin-bottom: 10px;
 }
@@ -59,7 +57,7 @@
 	list-style:none;
 	position:relative;
 	margin:0;
-	padding:0
+	padding:0;
 }
 
 #primary_nav_wrap ul a{
@@ -70,7 +68,7 @@
 	font-size:12px;
 	line-height:32px;
 	padding:0 15px;
-	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif  
+	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #primary_nav_wrap ul li{
