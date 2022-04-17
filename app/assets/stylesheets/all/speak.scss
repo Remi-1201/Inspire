@@ -1,7 +1,19 @@
 .voice{
   margin-left: 10px;
   margin-top: 2px;
+  display: flex;
+  align-items: center;
 }
+
+#interpreter_mode{
+  color:white;
+  margin-right: 7px;
+}
+
+#voice-select{
+  border-radius: 5px;
+}
+
 .speak-btn{
   background: #42A5F5;
   box-shadow: 0 10px 15px -10px rgba(66, 165, 245, 0.5);

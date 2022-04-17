@@ -30,7 +30,8 @@
             </li>
             <li class="left"> 
               <div class = "voice">
-                <select id="voice-select"></select> 
+                <span class="material-icons" id="interpreter_mode">interpreter_mode</span>
+                <select id="voice-select"></select>                 
               </div>
             </li>
 
@@ -47,8 +48,10 @@
                   <li class="right">
                     <%= link_to "Admin", rails_admin_path, class: "link" %>
                   </li>                  
-                  <li class="dir">                    
-                    <%= link_to "Languages", categories_path, method: :get, class: "link" %>
+                  <li class="dir">
+                    <div class = "to_left01">
+                      <span class="material-icons" id="navigate_before">arrow_left</span> Languages
+                    </div>
                       <ul>
                         <li>
                           <%= link_to "English", categories_english_path, class: "link" %>
@@ -59,7 +62,11 @@
                       </ul>
                   </li>
                   <li class="dir">
-                     <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
+                    <div class = "to_left">
+                      <span class="material-icons" 
+                      id="navigate_before">arrow_left</span> 
+                      <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
+                    </div>
                       <ul>                        
                         <li>
                           <%= link_to "My favorites", favorites_path, class: "link" %>
@@ -73,11 +80,13 @@
                     <%= link_to "Logout", destroy_user_session_path, class: "link" %>
                   </li>
                 <% else %>
-                  <li class="right">                
+                  <li class="right">
                     <%= link_to "Index", blogs_path, class: "link" %>
                   </li>
                   <li class="dir">
-                    <%= link_to "Languages", categories_path, method: :get, class: "link" %>
+                    <div class = "to_left01">
+                      <span class="material-icons" id="navigate_before">arrow_left</span> Languages
+                    </div>
                       <ul>
                         <li>
                           <%= link_to "English", categories_english_path, class: "link" %>
@@ -89,8 +98,12 @@
                   </li>
                   
                   <li class="dir">
-                    <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
-                      <ul>                        
+                    <div class = "to_left">
+                      <span class="material-icons" 
+                      id="navigate_before">arrow_left</span> 
+                      <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
+                    </div>                    
+                      <ul>
                         <li>
                           <%= link_to "My favorites", favorites_path, class: "link" %>
                         </li>
@@ -109,7 +122,9 @@
                     <%= link_to "Index", blogs_path, class: "link" %>
                   </li>
                   <li class="dir">
-                    <%= link_to "Languages", categories_path, method: :get, class: "link" %>
+                    <div class = "to_left01">
+                      <span class="material-icons" id="navigate_before">arrow_left</span> Languages
+                    </div>
                       <ul>
                         <li>
                           <%= link_to "English", categories_english_path, class: "link" %>
@@ -244,7 +259,7 @@
         <a class="btn" href="<%= new_blog_path %>">
           <span class="material-icons" id="new_footer">post_add</span>
         </a>
-          <ul class="foot-right">
+          <ul class="foot-right">          
           </ul>        
       </div>
     </div>
