@@ -17,60 +17,62 @@
     <div class="d-flex flex-column justify-content-center w-100 h-100">
       
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <br>
-      <div class ="login_field">
-        <h1>Login</h1><br>
-          
-          <div class="login_button">
-            <table>
-              <tr>
-                <%= button_to 'Guest login', users_sign_in_guest_path, method: :post , class:"new_session" %> &nbsp;
-                <%= button_to 'Admin guest login', users_sign_in_admin_guest_path, method: :post , class:"new_session" %> &nbsp;
-                <%= button_to 'Google login', user_google_omniauth_authorize_path, method: :get , class:"new_session" %> 
-              </tr>
-            </table>
-          </div><br><br><br>
+    <br> 
+      <h1>Inspire</h1>
+        <h2 class ="login_title">Login</h2><br>          
+
+          <div class ="login_field">
+            <div class="login_button">
+              <table>
+                <tr>
+                  <%= link_to 'Guest login', users_sign_in_guest_path, method: :post , class:"new_session" %> &nbsp;
+                  <%= link_to 'Admin guest login', users_sign_in_admin_guest_path, method: :post , class:"new_session" %> &nbsp;
+                  <%= link_to 'Google login', user_google_omniauth_authorize_path, method: :get , class:"new_session" %> 
+                </tr>
+              </table>
+            </div><br>
+            
+          <p id="notice"><%= notice %></p>
   
-        <% resource = User.new unless resource %>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          
-          <div class="field">
-            <%= f.label :email %><br>
-            <%= f.email_field :email, autofocus: true %>
-          </div><br>
-
-          <div class="field">
-            <%= f.label :password %><br>
-            <%= f.password_field :password, autocomplete: "off" %>
-          </div><br>
-
-          <% if devise_mapping.rememberable? -%>
+          <% resource = User.new unless resource %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            
             <div class="field">
-              <%= f.label :remember_me %><br>
-              <%= f.check_box :remember_me %>
-            </div>
-          <% end -%><br>
+              <%= f.label :email %><br>
+              <%= f.email_field :email, autofocus: true %>
+            </div><br>
 
-          <div class="actions">
-            <%= f.submit "Log in" , class: "search-btn"%>
-          </div><br>
-        <% end %><br>
+            <div class="field">
+              <%= f.label :password %><br>
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div><br>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.label :remember_me %><br>
+                <%= f.check_box :remember_me %>
+              </div>
+            <% end -%><br>
+
+            <div class="actions">
+              <%= f.submit "Log in" , class: "search-btn"%>
+            </div><br>
+          <% end %><br>
+        
+
+        <div class="login_button">
+          <table>
+            <tr>
+              <%= link_to 'Sign Up', new_user_registration_path, method: :get , class:"new_session" %> &nbsp;
+              <%= link_to 'Back to top', root_path, method: :get , class:"new_session" %> &nbsp;
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-sm">
+        </div>
+
       </div>
-
-      <div class="login_button">
-        <table>
-          <tr>
-            <%= button_to 'Sign Up', new_user_registration_path, method: :get , class:"new_session" %> &nbsp;
-            <%= button_to 'Back to top', root_path, method: :get , class:"new_session" %> &nbsp;
-          </tr>
-        </table>
-      </div><br><br><br>
-
     </div>
   </div>
-  
-  <div class="col-sm">
-    </div>
-
-  </div>
-</div>
+</div><br><br><br>

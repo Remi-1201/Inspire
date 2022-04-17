@@ -1,6 +1,5 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
-  # before_action :set_user
 
   load_and_authorize_resource
   before_action :authenticate_user! 
@@ -40,7 +39,7 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.user_id = current_user.id 
         @blog.update(blog_params)
-        format.html { redirect_to blogs_path, notice: "Blog was successfully updated." }
+        format.html { redirect_back fallback_location: root_path, notice: "Blog was successfully updated." }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,10 +52,10 @@ class BlogsController < ApplicationController
       respond_to do |format|
       if @blog.user_id = current_user.id
         @blog.destroy
-        format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
+        format.html { redirect_back fallback_location: root_path, notice: "Blog was successfully destroyed." }
         format.json { head :no_content }    
       else
-      redirect_to blogs_path, notice: "Permission denied!"
+        redirect_back fallback_location: root_path, notice: "Permission denied!"
       end
     end
   end

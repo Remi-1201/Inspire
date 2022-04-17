@@ -1,16 +1,21 @@
-<h1>My page</h1><br>
+<br>
+<h1><%= @user.name %>'s page</h1><br>
 
-<p><%= link_to "Update my profile", edit_user_registration_path , class:'btn btn-light' %> &nbsp;
-<%= link_to "My favorites", favorites_path , class:'btn btn-light' %></p> 
+<div class = "user_line"><%= button_to "Update my profile", edit_user_registration_path , method: :get,class:'new_blog' %> &nbsp;
+<%= button_to "My favorites", favorites_path , method: :get, class:'new_blog' %></div> <br>
 
-<p id="notice"><%= notice %>
+<div class="alert alert-light" role="alert">
+  <div id="notice02"><%= notice %></div>
+</div>
 
 <div class="container">
   <div class="row">
   
-  <%= render partial: 'blogs/left', locals: { blog: @blog } %>
-  <%= render partial: 'blogs/index', locals: { blog: @blog, user: @user } %>
-  <%= render partial: 'blogs/right', locals: { blog: @blog }%>
+  <%= render partial: 'blogs/left', locals: { blog: @blog } %> <br>
+
+  <%= render partial: 'blogs/index', locals: { blog: @blog, user: @user } %> <br>
+
+  <%= render partial: 'blogs/right', locals: { blog: @blog, user: @user }%> <br>
 
   </div>
 </div>

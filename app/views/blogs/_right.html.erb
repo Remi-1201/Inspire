@@ -10,6 +10,7 @@
                   Lastest posts
                 </h5>
                   <ul class="list-group list-group-flush">
+                  <% if @blogs.present? %>
                     <% @blogs.each.with_index(1) do |blog, idx| %> 
                       <li class="list-group-item" id="list">
                         <div class ="list_title">                          
@@ -26,6 +27,9 @@
                           <% end %><span class="link-text02"> at <%= blog.created_at.to_s(:datetime) %></span>
                         </div>
                       </li>
+                    <% end %>
+                    <% else %>
+                    You haven't post anything yet.
                     <% end %>
                   </ul>                  
                 </div>

@@ -138,8 +138,16 @@
     </div>
 
 <header class = "header">
+  <div class="sub_context">
+  Finding, learning & sharing
+  </div>
+
   <div class="context">
     <p class="logo">Inspire</p>
+  </div>
+
+  <div class="sub_context02">
+  with many inspiring quotes
   </div>
 
   <div class="area" >
@@ -155,7 +163,7 @@
     <p class="best_word">If there were hurting words,<br> there would be <br> <strong>healing words</strong> also.</p>
     <cite class = "author">Ms.Miyuki Nakajima</cite>
   </blockquote>
-  
+ 
 </header>
 
   <div class = "main-btn">
@@ -197,14 +205,14 @@
         <span class="drop-up">
           <span class="drop-up-item">
             <button type="button">
-              <span class="material-icons">search</span>
+              <span class="material-icons" id="seach_button">search</span>
             </button>
               <span class="drop-up-sub-nav">
                 <span class="drop-up-item">
                   <div class ="search">
                     <%= form_with(url: search_blogs_path, class: "search_container", method: :get, local: true) do %>
                       <%= submit_tag "Search", class: "search-btn" %>
-                      <%= text_field_tag :search_detail %>                      
+                      <%= text_field_tag :search_detail %> 
                     <% end %> 
                   </div>
                 </span>      

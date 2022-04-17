@@ -1,0 +1,49 @@
+#notice{
+  margin-top: 20px;
+  color: white;
+}
+
+.login_title{
+  color: white;
+  opacity: 0.8;
+}
+
+.login_text{
+  background: transparent;
+  text-decoration: none;
+  font-size: 1rem;
+  color: white;
+  padding: 2px 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.login_field{
+  display: block;
+  color: white;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px 0 rgba(31, 38, 135, 0.2);
+  border: 0.5px solid rgba(255, 255, 255, 0.401);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.new_session{
+  background: transparent;
+  outline: none !important;  
+  border: none !important;
+  cursor: pointer;
+  color:white;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.new_session:hover{
+  outline: none !important;  
+  border: none !important;
+  cursor: pointer;
+  color:white;
+  text-decoration: none;
+  opacity: 1;
+}

@@ -1,8 +1,11 @@
- <%= stylesheet_link_tag 'all/application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+<%= stylesheet_link_tag 'all/application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <br>
 <h1>Sign up</h1>
 <br>
+
+<div class="alert alert-light" role="alert">
+  <div id="notice02"><%= notice %></div>
+</div>
 
 <div class="contents">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

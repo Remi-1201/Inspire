@@ -7,12 +7,11 @@
   z-index: 10;  
   left: 0 !important;
   margin-right: 0 !important;
-  height: 200px;
+  height: 220px;
   width: 100%;
   overflow: hidden;
-  background: #7F7FD5; 
-  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  
-  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5) ; 
+
+  background-image: linear-gradient(328deg, rgba(29, 29, 29, 0.05) 0%, rgba(29, 29, 29, 0.05) 25%,rgba(226, 226, 226, 0.05) 25%, rgba(226, 226, 226, 0.05) 50%,rgba(21, 21, 21, 0.05) 50%, rgba(21, 21, 21, 0.05) 75%,rgba(216, 216, 216, 0.05) 75%, rgba(216, 216, 216, 0.05) 100%),linear-gradient(172deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 25%,rgba(108, 108, 108, 0.05) 25%, rgba(108, 108, 108, 0.05) 50%,rgba(21, 21, 21, 0.05) 50%, rgba(21, 21, 21, 0.05) 75%,rgba(236, 236, 236, 0.05) 75%, rgba(236, 236, 236, 0.05) 100%),linear-gradient(207deg, rgba(153, 153, 153, 0.05) 0%, rgba(153, 153, 153, 0.05) 25%,rgba(83, 83, 83, 0.05) 25%, rgba(83, 83, 83, 0.05) 50%,rgba(5, 5, 5, 0.05) 50%, rgba(5, 5, 5, 0.05) 75%,rgba(82, 82, 82, 0.05) 75%, rgba(82, 82, 82, 0.05) 100%),linear-gradient(297deg, rgba(26, 26, 26, 0.05) 0%, rgba(26, 26, 26, 0.05) 25%,rgba(223, 223, 223, 0.05) 25%, rgba(223, 223, 223, 0.05) 50%,rgba(232, 232, 232, 0.05) 50%, rgba(232, 232, 232, 0.05) 75%,rgba(153, 153, 153, 0.05) 75%, rgba(153, 153, 153, 0.05) 100%),linear-gradient(204deg, rgba(120, 120, 120, 0.05) 0%, rgba(120, 120, 120, 0.05) 25%,rgba(191, 191, 191, 0.05) 25%, rgba(191, 191, 191, 0.05) 50%,rgba(246, 246, 246, 0.05) 50%, rgba(246, 246, 246, 0.05) 75%,rgba(123, 123, 123, 0.05) 75%, rgba(123, 123, 123, 0.05) 100%),linear-gradient(90deg, rgb(32,234,255),rgb(37,116,255));
 
 //   border-bottom-left-radius: 15%;
 //   border-bottom-right-radius: 15%;
@@ -20,14 +19,14 @@
   box-shadow: 0 2px 5px 0 rgba(31, 38, 135, 0.2);
 //   border: 1px solid rgba(255, 255, 255, 0.401);
 
-  background-repeat: no-repeat;
-  background-position: center right;
-  background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center right;
+//   background-size: cover;
   
-  background-blend-mode: screen;
-  background-image: 
-  linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5),
-   url('https://img.wallpapersafari.com/desktop/1920/1080/48/87/0FVhvT.jpg');
+//   background-blend-mode: screen;
+//   background-image: 
+//   linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5),
+//    url('https://img.wallpapersafari.com/desktop/1920/1080/48/87/0FVhvT.jpg');
 }
 
 @import url('https://fonts.googleapis.com/css?family=Nuto:400,700');

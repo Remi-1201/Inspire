@@ -1,6 +1,9 @@
 <br>
 <h1>My favorite list</h1>
-<p id="notice"><%= notice %>
+
+<div class="alert alert-light" role="alert">
+  <div id="notice02"><%= notice %></div>
+</div>
 
 <div id = "first_line">
   <div class = "new">
@@ -14,99 +17,103 @@
   <%= render partial: 'blogs/right', locals: { blog: @blog }%>
 
   <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
-    <% @favorites.each do |favorite| %>
-      <div class = "table-responsive">
-        <table >
-          <tr class="category">
-            <th colspan="5" >
-              <div class="card-header">
-                <% favorite.blog.categories.each do |category|%>
-                  <%= category.try(:name) || "Others" %> 
-                <% end %>
-                <div class="blog_show">
-                  <a class="btn" href="<%= blog_path(favorite.blog) %>">
-                    <span class="material-icons" id = "blog_show">open_in_new</span>
-                  </a>
+    <% if @favorites.present? %>
+      <% @favorites.each do |favorite| %>
+        <div class = "table-responsive">
+          <table >
+            <tr class="category">
+              <th colspan="5" >
+                <div class="card-header">
+                  <% favorite.blog.categories.each do |category|%>
+                    <%= category.try(:name) || "Others" %> 
+                  <% end %>
+                  <div class="blog_show">
+                    <a class="btn" href="<%= blog_path(favorite.blog) %>">
+                      <span class="material-icons" id = "blog_show">open_in_new</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </th>
-          </tr>            
+              </th>
+            </tr>            
 
-          <tr>
-            <th colspan="5" class="th_user">
-              <p class="card-text">
-                <%= image_tag (favorite.blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if favorite.blog.user.avatar && favorite.blog.user.avatar.url %>
-              <span class = "user_name">            
-                <%= favorite.blog.user.name %>
-              </span>
-                <%= favorite.blog.created_at.to_s(:datetime) %>
-              </p>
-            </th>            
-          </tr>
-
-          <tr>
-            <th colspan="5" class="th_detail">
-              <blockquote class="quote-card">
-                <p>
-                  <%= favorite.blog.detail %>
+            <tr>
+              <th colspan="5" class="th_user">
+                <p class="card-text">
+                  <%= image_tag (favorite.blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if favorite.blog.user.avatar && favorite.blog.user.avatar.url %>
+                <span class = "user_name">            
+                  <%= favorite.blog.user.name %>
+                </span>
+                  <%= favorite.blog.created_at.to_s(:datetime) %>
                 </p>
-              </blockquote>
-            <th>
-          </tr>        
+              </th>            
+            </tr>
 
-          <tr>
-            <th colspan="5" class="th_title">
-              <blockquote class="blockquote mb-0">
-                <cite title="Source Title">
-                    ～ by <%= favorite.blog.title %>
-                  </cite>
-              </blockquote>
-            </th>
-          </tr>
+            <tr>
+              <th colspan="5" class="th_detail">
+                <blockquote class="quote-card">
+                  <p>
+                    <%= favorite.blog.detail %>
+                  </p>
+                </blockquote>
+              <th>
+            </tr>        
 
-          <tr>
-            <td colspan="5" class="spk">
-              <button class="speak-btn" data-blog="<%= favorite.blog.detail %>">
-                <span class="material-icons">play_circle</span>
-              </button>
-              <button class="pause-btn" disabled>
-                <span class="material-icons">pause</span>
-              </button>
-              <button class="resume-btn" disabled>
-                <span class="material-icons">replay_circle_filled</span>
-              </button>
-              <button class="stop-btn" disabled>
-                <span class="material-icons">stop_circle</span>
-              </button>
-            </td>
-          </tr>
-          
-          <tr>
-            <th colspan="5" class="th">
-                <%= image_tag(favorite.blog.image.url) if favorite.blog.image && favorite.blog.image.url %>
-            </th>
-          </tr>
+            <tr>
+              <th colspan="5" class="th_title">
+                <blockquote class="blockquote mb-0">
+                  <cite title="Source Title">
+                      ～ by <%= favorite.blog.title %>
+                    </cite>
+                </blockquote>
+              </th>
+            </tr>
 
-          <tr class="option">            
-            <td colspan="5" >
-                <div class = "link_count">
-                  <%= favorite.blog.favorites.size %> 
-                </div>
-                <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>
-                <%= link_to 'Dislike', favorite_path(id: favorite.id, blog_id: favorite.blog.id), class:'link_icon', method: :delete %>              
-                <%= link_to 'Comment', blog_path(favorite.blog.id), class:'link_icon' %>
+            <tr>
+              <td colspan="5" class="spk">
+                <button class="speak-btn" data-blog="<%= favorite.blog.detail %>">
+                  <span class="material-icons">play_circle</span>
+                </button>
+                <button class="pause-btn" disabled>
+                  <span class="material-icons">pause</span>
+                </button>
+                <button class="resume-btn" disabled>
+                  <span class="material-icons">replay_circle_filled</span>
+                </button>
+                <button class="stop-btn" disabled>
+                  <span class="material-icons">stop_circle</span>
+                </button>
+              </td>
+            </tr>
+            
+            <tr>
+              <th colspan="5" class="th">
+                  <%= image_tag(favorite.blog.image.url) if favorite.blog.image && favorite.blog.image.url %>
+              </th>
+            </tr>
 
-                <% if favorite.blog.user_id == current_user.id %>
-                <%= link_to 'Edit', edit_blog_path(favorite.blog.id), class:"link_blog" %>
-                <%= link_to 'Delete', @blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %> 
-                <% else %>
-                <% end %>
-            </td>
-          </tr>
-     
-        </table>
-      </div>
-    <% end %>
+            <tr class="option">            
+              <td colspan="5" >
+                  <div class = "link_count">
+                    <%= favorite.blog.favorites.size %> 
+                  </div>
+                  <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>
+                  <%= link_to 'Dislike', favorite_path(id: favorite.id, blog_id: favorite.blog.id), class:'link_icon', method: :delete %>              
+                  <%= link_to 'Comment', blog_path(favorite.blog.id), class:'link_icon' %>
+
+                  <% if favorite.blog.user_id == current_user.id %>
+                  <%= link_to 'Edit', edit_blog_path(favorite.blog.id), class:"link_blog" %>
+                  <%= link_to 'Delete', @blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% else %>
+                  <% end %>
+              </td>
+            </tr>
+      
+          </table>
+        </div>
+      <% end %>
+    <% else %>
+      <%= "There are no post here." %>
+    <% end %> 
 
     <div class="pagination">
       <% if @favorites.present? %>    

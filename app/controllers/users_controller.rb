@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  # before_action :authenticate_user!, only: [:mypage, :edit, :update]
   
   def mypage
     redirect_to user_path(current_user.id)

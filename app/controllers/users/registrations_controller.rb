@@ -1,15 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  
+
   def build_resource(hash={})    
     hash[:uid] = User.create_unique_string
     super
   end
 
   # POST /users
-  def create
-    
+  def create    
     super
   end
 
@@ -19,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # PUT /users
-  def update
+  def update    
     super
   end
 
@@ -32,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def new
+  def new 
     super
   end
 

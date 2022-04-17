@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    flash[:notice] = "You have successfully logged in."
+    flash[:notice] = "Hello #{@user.name}! You have successfully logged in."
     blogs_path    
   end
 
