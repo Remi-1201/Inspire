@@ -31,7 +31,7 @@ $ rails s
 ## 8. ER図
 - [こちらのURLをご覧ください。](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=ER%20Original%20app#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1aX4atW1n96IQXvBbuZ6wfXlapIzF23Xa%26export%3Ddownload)
 
-![ER Original app drawio (7)](https://user-images.githubusercontent.com/97021497/160573594-876d2847-f7ce-46c9-9ad0-aa152284bf67.png)
+![ER Original app drawio](https://user-images.githubusercontent.com/97021497/163712667-8da98d9a-dcf7-442c-9530-d3261cbe4e1f.png)
 
 ## 9. 画面遷移図
 - [こちらのURLをご覧ください。](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Screen%20transition.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1QocrwVhzZFXcjohijY77hXFF1Rsk_I3t%26export%3Ddownload)
