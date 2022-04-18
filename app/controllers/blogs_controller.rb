@@ -39,7 +39,7 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.user_id = current_user.id 
         @blog.update(blog_params)
-        format.html { redirect_back fallback_location: root_path, notice: "Blog was successfully updated." }
+        format.html { redirect_to blogs_path, notice: "Blog was successfully updated." }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit, status: :unprocessable_entity }

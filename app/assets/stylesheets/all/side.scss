@@ -10,7 +10,7 @@
 #list{
   text-align: left;
   justify-content: left;  
-  width: fit-content;
+  overflow-wrap: break-word;
 }
 #open{
   font-size: smaller;

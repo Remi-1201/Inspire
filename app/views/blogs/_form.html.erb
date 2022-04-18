@@ -19,10 +19,10 @@
       </div><br>
 
       <%= form.label :title %><br>
-      <%= form.text_area :title %><br>
+      <%= form.text_area :title, size:"30x1" %><br>
 
       <%= form.label :detail %><br>
-      <%= form.text_area :detail %><br>
+      <%= form.text_area :detail, size:"30x5" %><br>
 
       <%= form.label :image %><br>
       <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br>
