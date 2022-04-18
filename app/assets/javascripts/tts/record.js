@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  window.addEventListener("DOMContentLoaded",function(){
+window.addEventListener("DOMContentLoaded",function(){
     newRec=new Rec(
      document.getElementById("Control"),
      document.getElementById("MicOn"),
@@ -81,5 +81,5 @@ document.addEventListener('DOMContentLoaded', () => {
     this.recStopBtn.addEventListener("click",function(){
       this.mediaRecorder.stop();      
     }.bind(this));
-  }
+  }  
  }); 

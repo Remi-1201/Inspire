@@ -120,15 +120,14 @@
             <% end %>
           </table>          
         </div>
-        <div class="pagination">
-          <% if @blogs.present? %>
+        
+
+        <% else %>
+          <%= "Your search didn't match any results" %>        
+        <% end %>    
+<div class="pagination">
             <%= paginate @blogs %>    
-          <% end %>          
-
-          <% else %>
-            <%= "Your search didn't match any results" %>        
-          <% end %>    
-
+            </div>
     </div>
   </div>
   
