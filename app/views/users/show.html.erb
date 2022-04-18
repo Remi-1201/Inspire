@@ -1,5 +1,9 @@
 <br>
-<h1><%= @user.name %>'s page</h1><br>
+<% if @user.name.present? %>
+  <h1><%= @user.name %>'s page</h1><br>
+<% else %>
+  <h1>Guest's page</h1><br>
+<% end %>
 
 <div class = "user_line"><%= button_to "Update my profile", edit_user_registration_path , method: :get,class:'new_blog' %> &nbsp;
 <%= button_to "My favorites", favorites_path , method: :get, class:'new_blog' %></div> <br>

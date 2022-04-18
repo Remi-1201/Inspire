@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener("DOMContentLoaded",function(){
+    newRec=new Rec(
+     document.getElementById("Control"),
+     document.getElementById("MicOn"),
+     document.getElementById("RecStart"),
+     document.getElementById("RecStop"),
+     document.getElementById("RecMime")
+   );
+ });
   var Rec=function(control,micOnBtn,recStartBtn,recStopBtn,recMime){
     this.control=control;
-    this.micOnBtn   =micOnBtn;
+    this.micOnBtn=micOnBtn;
     this.recStartBtn=recStartBtn;
     this.recStopBtn =recStopBtn;
     this.recMime = recMime;
@@ -9,19 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
     this.stream=null;
     this.mediaRecorder=null;
     this.chunks=[];
+    this.micOnBtn.setAttribute("enabled",true);
     this.recStartBtn.setAttribute("disabled",true);
     this.recStopBtn.setAttribute("disabled",true);
     this.type=null;
     
     this.micOnBtn.addEventListener("click",function(){
+
       if(navigator.mediaDevices==undefined){
         alert('Your browser does not support this function or you are not connected to the internet.');
         return;
       }
+
       navigator.mediaDevices.getUserMedia({audio:true})
       .then(function(stream){
-        this.stream=stream;
-        
+        this.stream=stream;        
         this.mediaRecorder=new MediaRecorder(this.stream);
         this.mediaRecorder.addEventListener("dataavailable",function(event){
           this.chunks.push(event.data);
@@ -71,13 +82,4 @@ document.addEventListener('DOMContentLoaded', () => {
       this.mediaRecorder.stop();      
     }.bind(this));
   }
-  window.addEventListener("DOMContentLoaded",function(){
-    mamMicRec=new Rec(
-      document.getElementById("Control"),
-      document.getElementById("MicOn"),
-      document.getElementById("RecStart"),
-      document.getElementById("RecStop"),
-      document.getElementById("RecMime")
-    );
-  });
-});
+ }); 
