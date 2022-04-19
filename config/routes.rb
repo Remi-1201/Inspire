@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'categories/english' => 'categories#english'
   get 'categories/japanese' => 'categories#japanese'
   get '/mypage' => 'users#mypage'
+  get 'oauth/guidance' => 'oauth#guidance'
 
   resources :categories
 
