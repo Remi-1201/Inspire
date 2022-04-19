@@ -7,18 +7,18 @@
   <div id="notice02"><%= notice %></div>
 </div>
 
-<div class="contents">
+<div class="form-group">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="field">
         <%= f.label :name %><br>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: " Your nickname" %>
       </div><br>
 
       <div class="field">
         <%= f.label :email %><br>
-        <%= f.email_field :email %>
+        <%= f.email_field :email, placeholder: " abc@wyz.com" %>
       </div><br>
 
       <div class="field">
@@ -26,12 +26,12 @@
         <% if @validatable %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: " At least 6 characters" %>
       </div><br>
 
       <div class="field">
         <%= f.label :password_confirmation %><br>
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: " At least 6 characters" %>
       </div><br>
 
       <div class="field">

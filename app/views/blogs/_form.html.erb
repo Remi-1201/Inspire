@@ -14,15 +14,15 @@
     <div class="field">
       <%= form.label :Category %><br>
         <%= collection_check_boxes(:blog, :category_ids, Category.all, :id, :name) do |cb| %>
-        <%= cb.label { cb.check_box + ' ' + cb.text  } %>
+        <%= cb.label { cb.check_box + ' ' + cb.text  + ' ' } %>
         <% end %>
-      </div><br>
-
-      <%= form.label :title %><br>
-      <%= form.text_area :title, size:"30x1" %><br>
+      </div><br>      
 
       <%= form.label :detail %><br>
-      <%= form.text_area :detail, size:"30x5" %><br>
+      <%= form.text_area :detail, size:"30x6" , placeholder: " Ex. A quote said by someone", class:"text_area" %><br>
+
+      <%= form.label :title %><br>
+      <%= form.text_area :title, size:"30x2", placeholder: " Ex. The person who said the quote above.", class:"text_area" %><br>
 
       <%= form.label :image %><br>
       <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br>
