@@ -24,6 +24,7 @@ RSpec.describe 'ブログ管理機能', type: :system do
         it "ブログの内容をあいまい検索できる" do
           login
           visit blogs_path
+          find('#seach_button').hover
           fill_in 'search_detail', with: 'detail1'
           click_on 'Search'
           expect(page).to have_content 'detail1'
@@ -60,7 +61,7 @@ RSpec.describe 'ブログ管理機能', type: :system do
               click_on 'Make new Post'
               fill_in 'blog[title]', with: 'Harry Potter'
               fill_in 'blog[detail]', with: 'Hogwards'
-              click_on 'Create Blog'
+              click_on 'Submit'
               visit mypage_path
               expect(page).to have_content 'Hogwards'
             end
