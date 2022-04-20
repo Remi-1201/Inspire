@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'ユーザー登録機能', type: :model do
   it 'emailが空ならバリデーションが通らない' do
     user = User.new(
+      name:'aaa',
       email: '',
       password: 'password',
     )
@@ -11,7 +12,7 @@ RSpec.describe 'ユーザー登録機能', type: :model do
 
   it 'passwordが空ならバリデーションが通らない' do
     user = User.new(
-      name:'aaa'
+      name:'aaa',
       email: 'aaa@aaa.com',
       password: '',
     )
