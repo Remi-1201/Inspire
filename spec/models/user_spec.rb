@@ -11,6 +11,7 @@ RSpec.describe 'ユーザー登録機能', type: :model do
 
   it 'passwordが空ならバリデーションが通らない' do
     user = User.new(
+      name:'aaa'
       email: 'aaa@aaa.com',
       password: '',
     )
