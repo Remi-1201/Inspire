@@ -1,7 +1,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :file
+  storage :fog
   # storage :fog
   process resize_to_limit: [30, 30] 
 
