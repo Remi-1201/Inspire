@@ -8,42 +8,42 @@
 </div>
 
 <div class="form-group">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name, placeholder: " Your nickname" %>
-      </div><br>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, placeholder: " Your nickname" %>
+    </div><br>
 
-      <div class="field">
-        <%= f.label :email %><br>
-        <%= f.email_field :email, placeholder: " abc@wyz.com" %>
-      </div><br>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.email_field :email, placeholder: " abc@wyz.com" %>
+    </div><br>
 
-      <div class="field">
-        <%= f.label :password %><br>
-        <% if @validatable %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "off", placeholder: " At least 6 characters" %>
-      </div><br>
+    <div class="field">
+      <%= f.label :password %><br>
+      <% if @validatable %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: " At least 6 characters" %>
+    </div><br>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br>
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: " At least 6 characters" %>
-      </div><br>
+    <div class="field">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: " At least 6 characters" %>
+    </div><br>
 
-      <div class="field">
-        <%= f.label :avatar %><br>
-        <%= f.file_field :avatar %><br>
-        <%= f.hidden_field :avatar_cache %>
+    <div class="field">
+      <%= f.label :avatar %><br>
+      <%= f.file_field :avatar %><br>
+      <%= f.hidden_field :avatar_cache %>
 
-        <%= image_tag(@user.avatar.url) if @user.avatar && @user.avatar.url %>
-      </div><br><br>
+      <%= image_tag(@user.avatar.url) if @user.avatar && @user.avatar.url %>
+    </div><br><br>
 
-      <div class="actions">
-        <%= f.submit "Submit", class: "new_blog" %>
-      </div>
-    <% end %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Submit", class: "new_blog" %>
+    </div>
+  <% end %>
+</div>

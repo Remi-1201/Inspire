@@ -18,179 +18,178 @@
   </head>
     
   <body>      
+    <div class = "navigation">
+      <nav id="primary_nav_wrap">
 
-      <div class = "navigation">
-        <nav id="primary_nav_wrap">
+        <ul class="top_menu clearfix">
+          <li class="left">                      
+            <a class="btn" href="<%= blogs_path %>">
+              <span class="material-icons" id="home">home</span>
+            </a>
+          </li>
+          <li class="left"> 
+            <div class = "voice">
+              <span class="material-icons" id="interpreter_mode">interpreter_mode</span>
+              <select id="voice-select"></select>                 
+            </div>
+          </li>
 
-          <ul class="top_menu clearfix">
-            <li class="left">                      
-              <a class="btn" href="<%= blogs_path %>">
-                <span class="material-icons" id="home">home</span>
-              </a>
-            </li>
-            <li class="left"> 
-              <div class = "voice">
-                <span class="material-icons" id="interpreter_mode">interpreter_mode</span>
-                <select id="voice-select"></select>                 
-              </div>
-            </li>
-
-          <div class="b-right">
-            <li class="menu"><span class="material-icons" id="menu">menu</span>
-              <ul>
+        <div class="b-right">
+          <li class="menu"><span class="material-icons" id="menu">menu</span>
+            <ul>
+              <li class="right">
+                <a class="btn" href="<%= root_path %>">
+                  <span class="material-icons" id="root">business</span>
+                </a>
+              </li>
+              <% if user_signed_in? %>
+              <% if current_user.try(:admin?) %>              
                 <li class="right">
-                  <a class="btn" href="<%= root_path %>">
-                    <span class="material-icons" id="root">business</span>
-                  </a>
+                  <%= link_to "Admin", rails_admin_path, class: "link" %>
+                </li>                                    
+                <li class="dir">
+                  <div class = "to_left01">
+                    <span class="material-icons" id="navigate_before">arrow_left</span> Languages
+                  </div>
+                    <ul>
+                      <li>
+                        <%= link_to "English", categories_english_path, class: "link" %>
+                      </li>
+                      <li>
+                        <%= link_to "Japanese", categories_japanese_path, class: "link" %>
+                      </li>
+                    </ul>
                 </li>
-                <% if user_signed_in? %>
-                <% if current_user.try(:admin?) %>              
-                  <li class="right">
-                    <%= link_to "Admin", rails_admin_path, class: "link" %>
-                  </li>                                    
-                  <li class="dir">
-                    <div class = "to_left01">
-                      <span class="material-icons" id="navigate_before">arrow_left</span> Languages
-                    </div>
-                      <ul>
-                        <li>
-                          <%= link_to "English", categories_english_path, class: "link" %>
-                        </li>
-                        <li>
-                          <%= link_to "Japanese", categories_japanese_path, class: "link" %>
-                        </li>
-                      </ul>
-                  </li>
-                  <li class="dir">
-                    <div class = "to_left">
-                      <span class="material-icons" 
-                      id="navigate_before">arrow_left</span> 
-                      <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
-                    </div>
-                      <ul>                        
-                        <li>
-                          <%= link_to "My favorites", favorites_path, class: "link" %>
-                        </li>
-                        <li>
-                          <%= link_to "Update profile", edit_user_registration_path, class: "link" %>
-                        </li>
-                      </ul>
-                  </li>
-                  <li class="right">
-                    <%= link_to "Home Page", blogs_path, class: "link" %>
-                  </li>
-                  <li class="right">
-                    <%= link_to "Guidance", oauth_guidance_path, class: "link" %>
-                  </li>
-                  <li class="right">
-                    <%= link_to "Logout", destroy_user_session_path, class: "link" %>
-                  </li>
-                <% else %>
-                  <li class="right">
-                    <%= link_to "Home Page", blogs_path, class: "link" %>
-                  </li>                  
-                  <li class="dir">
-                    <div class = "to_left01">
-                      <span class="material-icons" id="navigate_before">arrow_left</span> Languages
-                    </div>
-                      <ul>
-                        <li>
-                          <%= link_to "English", categories_english_path, class: "link" %>
-                        </li>
-                        <li>
-                          <%= link_to "Japanese", categories_japanese_path, class: "link" %>
-                        </li>
-                      </ul>
-                  </li>
-                  
-                  <li class="dir">
-                    <div class = "to_left">
-                      <span class="material-icons" 
-                      id="navigate_before">arrow_left</span> 
-                      <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
-                    </div>                    
-                      <ul>
-                        <li>
-                          <%= link_to "My favorites", favorites_path, class: "link" %>
-                        </li>
-                        <li>
-                          <%= link_to "Update profile", edit_user_registration_path, class: "link" %>
-                        </li>
-                      </ul>
-                  </li>
-                  <li class="right">
-                    <%= link_to "Guidance", oauth_guidance_path, class: "link" %>
-                  </li>
-                  <li class="right">
-                    <%= link_to "Logout", destroy_user_session_path, class: "link" %>
-                  </li>              
-                <% end %>
-                <% else %>              
-                  <li class="right">                
-                    <%= link_to "Home Page", blogs_path, class: "link" %>
-                  </li>
-                  <li class="dir">
-                    <div class = "to_left01">
-                      <span class="material-icons" id="navigate_before">arrow_left</span> Languages
-                    </div>
-                      <ul>
-                        <li>
-                          <%= link_to "English", categories_english_path, class: "link" %>
-                        </li>
-                        <li>
-                          <%= link_to "Japanese", categories_japanese_path, class: "link" %>
-                        </li>
-                      </ul>
-                  </li>
-                  <li class="right">              
-                    <%= link_to "Sign up", new_user_registration_path, class: "link" %>
-                  </li>                  
-                  <li class="right">
-                    <%= link_to "Login", new_user_session_path	, class: "link" %>
-                  </li>              
-                  <li class="right">                        
-                    <%= link_to "Login by Google", user_google_omniauth_authorize_path, method: :post, class: "link" %>
-                  </li>
-                  <li class="right">
-                    <%= link_to "Guidance", oauth_guidance_path, class: "link" %>
-                  </li>
-                <% end %>            
-              </ul>
-            </li>
-          </div>
+                <li class="dir">
+                  <div class = "to_left">
+                    <span class="material-icons" 
+                    id="navigate_before">arrow_left</span> 
+                    <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
+                  </div>
+                    <ul>                        
+                      <li>
+                        <%= link_to "My favorites", favorites_path, class: "link" %>
+                      </li>
+                      <li>
+                        <%= link_to "Update profile", edit_user_registration_path, class: "link" %>
+                      </li>
+                    </ul>
+                </li>
+                <li class="right">
+                  <%= link_to "Home Page", blogs_path, class: "link" %>
+                </li>
+                <li class="right">
+                  <%= link_to "Guidance", oauth_guidance_path, class: "link" %>
+                </li>
+                <li class="right">
+                  <%= link_to "Logout", destroy_user_session_path, class: "link" %>
+                </li>
+              <% else %>
+                <li class="right">
+                  <%= link_to "Home Page", blogs_path, class: "link" %>
+                </li>                  
+                <li class="dir">
+                  <div class = "to_left01">
+                    <span class="material-icons" id="navigate_before">arrow_left</span> Languages
+                  </div>
+                    <ul>
+                      <li>
+                        <%= link_to "English", categories_english_path, class: "link" %>
+                      </li>
+                      <li>
+                        <%= link_to "Japanese", categories_japanese_path, class: "link" %>
+                      </li>
+                    </ul>
+                </li>
+                
+                <li class="dir">
+                  <div class = "to_left">
+                    <span class="material-icons" 
+                    id="navigate_before">arrow_left</span> 
+                    <%= link_to "Profile", mypage_path, method: :get, class: "link" %>
+                  </div>                    
+                    <ul>
+                      <li>
+                        <%= link_to "My favorites", favorites_path, class: "link" %>
+                      </li>
+                      <li>
+                        <%= link_to "Update profile", edit_user_registration_path, class: "link" %>
+                      </li>
+                    </ul>
+                </li>
+                <li class="right">
+                  <%= link_to "Guidance", oauth_guidance_path, class: "link" %>
+                </li>
+                <li class="right">
+                  <%= link_to "Logout", destroy_user_session_path, class: "link" %>
+                </li>              
+              <% end %>
+              <% else %>              
+                <li class="right">                
+                  <%= link_to "Home Page", blogs_path, class: "link" %>
+                </li>
+                <li class="dir">
+                  <div class = "to_left01">
+                    <span class="material-icons" id="navigate_before">arrow_left</span> Languages
+                  </div>
+                    <ul>
+                      <li>
+                        <%= link_to "English", categories_english_path, class: "link" %>
+                      </li>
+                      <li>
+                        <%= link_to "Japanese", categories_japanese_path, class: "link" %>
+                      </li>
+                    </ul>
+                </li>
+                <li class="right">              
+                  <%= link_to "Sign up", new_user_registration_path, class: "link" %>
+                </li>                  
+                <li class="right">
+                  <%= link_to "Login", new_user_session_path	, class: "link" %>
+                </li>              
+                <li class="right">                        
+                  <%= link_to "Login by Google", user_google_omniauth_authorize_path, method: :post, class: "link" %>
+                </li>
+                <li class="right">
+                  <%= link_to "Guidance", oauth_guidance_path, class: "link" %>
+                </li>
+              <% end %>            
+            </ul>
+          </li>
+        </div>
 
-        </ul>
-      </nav>
+      </ul>
+    </nav>
+  </div>
+
+  <header class = "header">
+    <div class="sub_context">
+    Learning & sharing with
     </div>
 
-<header class = "header">
-  <div class="sub_context">
-  Learning & sharing with
-  </div>
+    <div class="context">
+      <p class="logo">Inspire</p>
+    </div>
 
-  <div class="context">
-    <p class="logo">Inspire</p>
-  </div>
+    <div class="sub_context02">
+    by many inspiring quotes
+    </div>  
 
-  <div class="sub_context02">
-  by many inspiring quotes
-  </div>  
+    <div class="area" >
+      <ul class="circles">
+        <li></li> <li></li> <li></li> <li></li> <li></li>
+        <li></li> <li></li> <li></li> <li></li> <li></li>
+        <li></li> <li></li> <li></li> <li></li> <li></li>
+        <li></li> <li></li> <li></li> <li></li> <li></li>
+      </ul>
+    </div>
 
-  <div class="area" >
-    <ul class="circles">
-      <li></li> <li></li> <li></li> <li></li> <li></li>
-      <li></li> <li></li> <li></li> <li></li> <li></li>
-      <li></li> <li></li> <li></li> <li></li> <li></li>
-      <li></li> <li></li> <li></li> <li></li> <li></li>
-    </ul>
-  </div>
-
-  <blockquote class ="mainquote">  
-    <p class="best_word">If there were hurting words,<br> there would be <br> <strong>healing words</strong> also.</p>
-    <cite class = "author">Ms.Miyuki Nakajima</cite>
-  </blockquote>
- 
-</header>
+    <blockquote class ="mainquote">  
+      <p class="best_word">If there were hurting words,<br> there would be <br> <strong>healing words</strong> also.</p>
+      <cite class = "author">Ms.Miyuki Nakajima</cite>
+    </blockquote>
+  
+  </header>
 
   <div class = "main-btn">
     <div class="floating-container">
@@ -284,6 +283,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
-    
   </body>    
 </html>

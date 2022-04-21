@@ -1,21 +1,21 @@
-  <%= form_with(model: [blog, comment]) do |form| %>
-    <% if comment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-        <ul>
-        <% comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
-    <div class="field">
-      <%= form.label :"Write new comment" %><br>
-      <%= form.text_area :content, size:"30x3", placeholder: " Tell us your opinion ...", class:"text_area" %>
-    </div><br>
-
-    <div class="actions">
-      <%= form.submit :Submit, class: "new_blog" %>
-    </div><br><br>
+<%= form_with(model: [blog, comment]) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
+
+  <div class="field">
+    <%= form.label :"Write new comment" %><br>
+    <%= form.text_area :content, size:"30x3", placeholder: " Tell us your opinion ...", class:"text_area" %>
+  </div><br>
+
+  <div class="actions">
+    <%= form.submit :Submit, class: "new_blog" %>
+  </div><br><br>
+<% end %>
