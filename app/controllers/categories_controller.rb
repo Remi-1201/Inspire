@@ -12,12 +12,12 @@ class CategoriesController < ApplicationController
   end
 
   def english
-    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page]).per(10)
+    @blogs = Blog.joins(:categories).where(categories: {name: "English"}).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id)
   end
 
   def japanese
-    @blogs = Blog.all.order(created_at: :desc).kaminari(params[:page]).per(10)
+    @blogs = Blog.joins(:categories).where(categories: {name: "Japanese"}).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id)
   end
 
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
 
   private  
   def category_params
-    params.require(:category).permit(:name,:blog_id, :user_id)
+    params.require(:category).permit(:name,:blog_id, :user_id,:blog)
   end
   def set_category
     @category = Category.find(params[:id])
