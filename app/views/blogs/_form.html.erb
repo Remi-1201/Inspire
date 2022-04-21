@@ -25,7 +25,7 @@
       <%= form.text_area :title, size:"30x2", placeholder: " Ex. The person who said the quote above.", class:"text_area" %><br>
 
       <%= form.label :image %><br>
-      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br>
+      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br><br>
       <%= form.file_field :image, class: 'image', id: 'image' %><br>
       <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %><br><br>
 
