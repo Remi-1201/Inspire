@@ -23,7 +23,6 @@ RSpec.describe 'ブログ管理機能', type: :system do
         expect(page).to have_content 'yyy'
       end
     end      
-
     context '検索をした場合' do
       it "ブログの内容をあいまい検索できる" do
         login
@@ -35,7 +34,6 @@ RSpec.describe 'ブログ管理機能', type: :system do
         expect(page).not_to have_content 'detail2'
       end
     end
-
     context 'お気に入り操作をした場合' do
       it "投稿がお気に入り一覧ページに表示される" do
         login

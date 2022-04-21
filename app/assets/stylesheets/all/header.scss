@@ -11,15 +11,16 @@
   width: 100%;
   overflow: hidden;
 
-//   border-bottom-left-radius: 15%;
-//   border-bottom-right-radius: 15%;
+//   border-bottom-left-radius: 5%;
+//   border-bottom-right-radius: 5%;
 
   box-shadow: 0 2px 5px 0 rgba(31, 38, 135, 0.2);
-//   border: 1px solid rgba(255, 255, 255, 0.401);
+  border: 1px solid rgba(255, 255, 255, 0.401);
 
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: cover;  
+
   background-image: url('https://dl.dropboxusercontent.com/s/qbyi6hn0o185v1n/background-2723434_1920.jpg');  
   
 }

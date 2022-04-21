@@ -9,7 +9,6 @@ RSpec.describe 'ユーザー登録機能', type: :model do
     )
     expect(user).not_to be_valid
   end
-
   it 'passwordが空ならバリデーションが通らない' do
     user = User.new(
       name:'aaa',
