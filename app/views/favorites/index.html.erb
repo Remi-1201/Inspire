@@ -9,6 +9,7 @@
   <div class = "new">
     <%= button_to 'Make new Post', new_blog_path, class:"new_blog", method: :get %>
   </div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -93,18 +94,18 @@
 
             <tr class="option">            
               <td colspan="5" >
-                  <div class = "link_count">
-                    <%= favorite.blog.favorites.size %> 
-                  </div>
-                  <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>
-                  <%= link_to 'Dislike', favorite_path(id: favorite.id, blog_id: favorite.blog.id), class:'link_icon', method: :delete %>              
-                  <%= link_to 'Comment', blog_path(favorite.blog.id), class:'link_icon' %>
+                <div class = "link_count">
+                  <%= favorite.blog.favorites.size %> 
+                </div>
+                <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>
+                <%= link_to 'Dislike', favorite_path(id: favorite.id, blog_id: favorite.blog.id), class:'link_icon', method: :delete %>              
+                <%= link_to 'Comment', blog_path(favorite.blog.id), class:'link_icon' %>
 
-                  <% if favorite.blog.user_id == current_user.id %>
-                  <%= link_to 'Edit', edit_blog_path(favorite.blog.id), class:"link_blog" %>
-                  <%= link_to 'Delete', @blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %> 
-                  <% else %>
-                  <% end %>
+                <% if favorite.blog.user_id == current_user.id %>
+                <%= link_to 'Edit', edit_blog_path(favorite.blog.id), class:"link_blog" %>
+                <%= link_to 'Delete', @blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %> 
+                <% else %>
+                <% end %>
               </td>
             </tr>
       

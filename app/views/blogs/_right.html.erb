@@ -1,42 +1,42 @@
 <div class="col-xs-12 col-sm-4 col-md-3 order-3 order-md-3" id="sticky-sidebar">
-      <div class="sticky-top">
-        <div class="card border-secondary mb-3" style="max-width: 18rem;">
-          <div class = "col3">
+  <div class="sticky-top">
+    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+      <div class = "col3">
 
-            <div class="card-header">Informations</div>
-              <div class="card-body text-secondary">
-                <h5 class="card-title">                
-                  <span class="material-icons">auto_awesome</span>
-                  Lastest posts
-                </h5>
-                  <ul class="list-group list-group-flush">
-                  <% if @blogs.present? %>
-                    <% @blogs.each.with_index(1) do |blog, idx| %> 
-                      <li class="list-group-item" id="list">
-                        <div class ="list_title">                          
-                          <%= idx %>
-                          <a class="btn" href="<%= blog_path(blog) %>">
-                            <span class="material-icons" id="open">open_in_new</span>
-                          </a>
-                          <span class = "title"><%= blog.title %></span>
-                          <span class="link-text02"> by </span>
-                          <% if blog.user.name.present? %>
-                            <%= blog.user.name %>
-                          <% else %>
-                            <%= "Guest" %>
-                          <% end %><span class="link-text02"> at <%= blog.created_at.to_s(:datetime) %></span>
-                        </div>
-                      </li>
-                    <% end %>
-                    <% else %>
-                    You haven't post anything yet.
-                    <% end %>
-                  </ul>                  
-                </div>
-                
-              </div>
+        <div class="card-header">Informations</div>
+          <div class="card-body text-secondary">
+            <h5 class="card-title">                
+              <span class="material-icons">auto_awesome</span>
+              Lastest posts
+            </h5>
+              <ul class="list-group list-group-flush">
+              <% if @blogs.present? %>
+                <% @blogs.each.with_index(1) do |blog, idx| %> 
+                  <li class="list-group-item" id="list">
+                    <div class ="list_title">                          
+                      <%= idx %>
+                      <a class="btn" href="<%= blog_path(blog) %>">
+                        <span class="material-icons" id="open">open_in_new</span>
+                      </a>
+                      <span class = "title"><%= blog.title %></span>
+                      <span class="link-text02"> by </span>
+                      <% if blog.user.name.present? %>
+                        <%= blog.user.name %>
+                      <% else %>
+                        <%= "Guest" %>
+                      <% end %><span class="link-text02"> at <%= blog.created_at.to_s(:datetime) %></span>
+                    </div>
+                  </li>
+                <% end %>
+                <% else %>
+                You haven't post anything yet.
+                <% end %>
+              </ul>                  
             </div>
+            
           </div>
         </div>
-   
+      </div>
+    </div>
+
         

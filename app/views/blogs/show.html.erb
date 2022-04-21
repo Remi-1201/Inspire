@@ -5,8 +5,6 @@
   <div id="notice02"><%= notice %></div>
 </div>
 
-
-
 <div class="container">
   <div class="row">
 
@@ -106,15 +104,14 @@
         <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>    
       </div>
 
-        <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
-    
-        <%= link_to 'Edit post', edit_blog_path(@blog), class:'btn btn-light' %>
-        &nbsp;
-        <%= link_to 'Delete post', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-light' %>
-        &nbsp;
-        <%= link_to 'Back', blogs_path, class:'btn btn-light' %>
-
-        <br><br><br>
+      <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+  
+      <%= link_to 'Edit post', edit_blog_path(@blog), class:'btn btn-light' %>
+      &nbsp;
+      <%= link_to 'Delete post', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-light' %>
+      &nbsp;
+      <%= link_to 'Back', blogs_path, class:'btn btn-light' %> <br><br><br>
+      
       </div>
     </div>
   </div>
