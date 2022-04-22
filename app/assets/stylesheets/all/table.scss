@@ -4,7 +4,8 @@
   word-wrap: normal;
   margin: 0 auto;
   z-index: 100;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "serif";
+  min-width: 370px;
 }
 
 .table-responsive table{
@@ -17,31 +18,38 @@
   margin-bottom: 30px;
   padding: 15px 15px;
   border-collapse: separate;
-  width: 375px;
 }
 
 .card-header{
   height: fit-content;
 }
+
 .category{
   font-size: 1rem;
-  color:#6c757d; 
+  color: #6c757d; 
   margin: 0 auto;
   text-align: left;
   padding-left: 20px;
   padding-bottom: 5px;
+  display: inline-flexbox;
+  align-items: baseline;
+  min-height: 1rem;
+  min-width: 365px;     
 }
+
 #blog_show{
   font-size: 1rem;
   color:#6c757d; 
-  margin-bottom: 10px;
+  float: right;
 }
+
 .blog_show{
   float: right;
   text-align: right;
   justify-content: right;
   top: 0px;
 }
+
 .th_user {
   text-align: left;
   height: max-content;
@@ -49,10 +57,12 @@
   margin: 5px auto;
   padding-left: 20px;
 }
+
 .user_name{
   font-weight: bold;
   margin-right: 10px;
 }
+
 .card-text{
   margin: 10px auto;
 }
@@ -60,35 +70,37 @@
 #title_main {
   font-weight: lighter;
   padding-top: 0 ;
-  padding-right: 20px;
+  padding-right: 10px;
   padding-bottom: 10px;
   margin: 0 auto;
   text-align: right;
   float:right;
   overflow-wrap: normal;
   width: 365px;
-  font-size: smaller;
+  font-size: 0.9rem; 
 }
 
 .th_detail {
-  font-weight: 350;
-  padding-top: 10px;
+  font-weight: 400;
+  padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   overflow-wrap: normal;
   width: 365px;
   color: black;
   font-size: 1rem;
   font-family: "serif";
 }
+
 .card-body{
   background: white;
   box-shadow: 0 2px 5px 0 rgba(31, 38, 135, 0.2);
   border: 0.5px solid rgba(255, 255, 255, 0.401);
 }
+
 .th{
   padding-top: 5px;
   padding-bottom: 10px;
