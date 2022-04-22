@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
+    @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
   end
 
   def show
@@ -73,6 +74,16 @@ class BlogsController < ApplicationController
       Blog.where('detail LIKE ?', "%#{params[:search_detail]}%").order(created_at: :desc).kaminari(params[:page])
     end
     render :index
+  end
+
+  def sort
+    @blogs =
+      if params[:sort] == 'created_at'
+        Blog.all.order(created_at: :desc)
+      elsif params[:sort] == 'updated_at'
+        Blog.all.order(deadline: :asc)
+      end
+      render :index
   end
 
   private

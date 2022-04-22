@@ -1,29 +1,26 @@
 .gotop{
   display: block;
-  width: 40px;
+  width: 100px;
   height: 40px;
+  font-weight: bolder;
   box-sizing: border-box;
-  background: #FFF;
-  border: 1px solid #999;
+  background: transparent;
    text-align: center;
   letter-spacing: -1px;
-  font-size: 85%;
+  font-size: 100%;
   text-decoration: none;
   color: #333;
-  opacity: 0.3;
+  opacity: 0.2;
   position: fixed;
-  bottom: 85px;
-  right: 55px;
+  bottom: 65px;
+  right: 25px;
   z-index: 10000;
-  border-radius: 40px;
+  border-radius: 15px;
 }
 .gotop::before{
-  content: "";
   display: block;
-  border-top: 2px solid #333;
-  border-right: 2px solid #333;
   width: 25%;
-  height: 25%;
+  height: 5%;
   top: 35%;
   left: 0;
   right: 0;
@@ -33,19 +30,5 @@
 }
 .gotop:hover{
   opacity: 1;
+  text-decoration: none;
 }
-// @media(max-width:750px){
-//   .gotop{
-//       width: 40px;
-//       height: 40px;
-//       text-indent: -9999px;
-//       opacity: 1;
-//       border: none;
-//       background: none;
-//       bottom: 10px;
-//       right: 10px;
-//   }
-//   .gotop::before{
-//       bottom: 0;
-//   }
-// }

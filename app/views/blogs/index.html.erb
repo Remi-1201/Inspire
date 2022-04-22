@@ -6,9 +6,13 @@
 </div>
 
 <div id = "first_line">
-  <div class = "new">
-    <%= button_to 'Make new Post', new_blog_path, class:"new_blog", method: :get %>
-  </div>
+  <div class="sort_search">
+    <%= form_with url: blogs_path, method: :get, local: true do |form| %> 
+      <%= form.select("category_id", Category.pluck(:name, :id), {prompt:"Languages"}, {class: "category_id"}) %> 
+      <%= form.submit 'Sort', name: nil, class:"search-btn" %>
+    <% end %> 
+  </div>  
+</div>
 
 <div class="container">
   <div class="row">

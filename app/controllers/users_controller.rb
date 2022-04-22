@@ -14,8 +14,9 @@ class UsersController < ApplicationController
   def show
     user = User.find(params[:id])
     return redirect_to blogs_path unless current_user.id ==  user.id    
-    @blogs = Blog.where(user_id: nil).or(Blog.where(user_id: current_user.id)).kaminari(params[:page])
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id) 
+
+    @blogs = Blog.where(user_id: nil).or(Blog.where(user_id: current_user.id)).kaminari(params[:page]) 
   end
 
   def update

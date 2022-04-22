@@ -1,5 +1,7 @@
 #first_line{
   margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
 }
 
 .user_line{
@@ -62,4 +64,9 @@
 
 #favorite{
   color:#6c757d;
+}
+
+.category_id{
+  width: 120px;
+  border-radius: 3px;
 }
