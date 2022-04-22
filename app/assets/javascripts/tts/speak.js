@@ -1,4 +1,4 @@
-$(document).on ("turbolinks:load", function(){
+$(document).on('turbolinks:load page:load page:change ready', () => {
 
   const voiceSelect = document.querySelector('#voice-select')
 

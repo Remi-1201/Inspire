@@ -1,7 +1,7 @@
 .table-responsive{
   table-layout: fixed;
-  word-break: break-all;
-  word-wrap: break-all;
+  word-break: normal;
+  word-wrap: normal;
   margin: 0 auto;
   z-index: 100;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,8 +64,8 @@
   margin: 0 auto;
   text-align: right;
   float:right;
-  overflow-wrap: break-word;
-  width: 22em;
+  overflow-wrap: normal;
+  width: 400px;
   font-size: smaller;
 }
 
@@ -77,10 +77,11 @@
   padding-right: 20px;
   margin: 0 auto;
   text-align: left;
-  overflow-wrap: break-word;
-  width: 22em;
+  overflow-wrap: normal;
+  width: 400px;
   color: black;
   font-size: 1rem;
+  font-family: cursive;
 }
 .card-body{
   background: white;
