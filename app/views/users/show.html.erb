@@ -1,8 +1,8 @@
 <br>
 <% if @user.name.present? %>
-  <h1><%= @user.name %>'s page</h1><br>
+  <h1><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> &nbsp; <%= @user.name %>'s page</h1><br>
 <% else %>
-  <h1>{Submit your name}'s page</h1><br>
+  <h1><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> &nbsp; Your page</h1><br>
 <% end %>
 
 <div class = "user_line"><%= button_to "Update my profile", edit_user_registration_path , method: :get,class:'new_blog' %> &nbsp;

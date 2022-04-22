@@ -11,11 +11,11 @@
         </tr>
         <tr>          
           <% if comment.user.name.present? %>
-            <div><%= comment.user.name %>&nbsp;made a comment.
+            <div><%= image_tag (comment.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if comment.user.avatar && comment.user.avatar.url %> &nbsp; <%= comment.user.name %> &nbsp;made a comment.
             </div>
           <% else %>
             <div>            
-            <%='Guest made a comment.'%>
+            <%= image_tag (comment.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if comment.user.avatar && comment.user.avatar.url %> &nbsp; <%='Guest made a comment.'%>
             </div>
           <% end %>
         </tr>
