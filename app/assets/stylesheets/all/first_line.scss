@@ -3,7 +3,11 @@
 }
 
 .user_line{
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1rem;
 }
  
 .new_blog{
@@ -50,4 +54,12 @@
   transform: translatex(5px);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+}
+
+#manage_accounts{
+  color:#6c757d;
+}
+
+#favorite{
+  color:#6c757d;
 }

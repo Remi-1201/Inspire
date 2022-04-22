@@ -1,12 +1,20 @@
 <br>
 <% if @user.name.present? %>
-  <h1><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> &nbsp; <%= @user.name %>'s page</h1><br>
+  <h1><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> <%= @user.name %>'s page</h1><br>
 <% else %>
   <h1><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> &nbsp; Your page</h1><br>
 <% end %>
 
-<div class = "user_line"><%= button_to "Update my profile", edit_user_registration_path , method: :get,class:'new_blog' %> &nbsp;
-<%= button_to "My favorites", favorites_path , method: :get, class:'new_blog' %></div> <br>
+<div class = "user_line">
+  <a class="manage_accounts" href="<%= edit_user_registration_path %>">
+    <span class="material-icons" id="manage_accounts">manage_accounts</span>
+  </a> &nbsp; 
+      <%= link_to "Update my profile",  edit_user_registration_path , method: :get,class:"link_icon" %> &nbsp;  &nbsp;
+  <a class="favorite" href="<%= favorites_path %>"> 
+    <span class="material-icons" id="favorite">favorite</span>
+  </a> &nbsp;
+      <%= link_to "My favorites", favorites_path , method: :get, class:"link_icon" %>
+</div> <br>
 
 <div class="alert alert-light" role="alert">
   <div id="notice02"><%= notice %></div>
