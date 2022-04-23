@@ -6,8 +6,7 @@
 - Ruby 3.0.1
 - Rails 6.0.3
 ## 2. 就業Termの技術
-- Devide
-- Oauth認証
+- ユーザー管理機能: Devise, Oauth認証, gem rails-admin, gem cancancan
 - Ajaxを使ったコメント機能
 - お気に入り機能
 ## 3. カリキュラム外の技術
