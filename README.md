@@ -6,9 +6,16 @@
 - Ruby 3.0.1
 - Rails 6.0.3
 ## 2. 就業Termの技術
-- ユーザー管理機能: Devise, Oauth認証, gem rails-admin, gem cancancan
+### 2.1 ユーザー管理機能
+- Devise
+- Oauth認証
+- gem rails-admin
+- gem cancancan
+### 2.2 その他
 - Ajaxを使ったコメント機能
 - お気に入り機能
+### 2.3 インフラー
+- ストレージ: Amazon S3
 ## 3. カリキュラム外の技術
 - [Web Speech API](https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API)
 - [MediaStream Recording API
