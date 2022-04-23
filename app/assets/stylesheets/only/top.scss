@@ -1,7 +1,5 @@
-// tile
 h1 {
-  margin: 0;
-  padding-bottom: 1rem;
+  margin-top: 10px;
   grid-column: 1;
   grid-row: 1;
   color: rgb(255, 255, 255);
@@ -50,7 +48,7 @@ h1 {
   display:inline-block;
   overflow:hidden;
   white-space:nowrap;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color:white;
   font-weight:lighter;
   text-align: center;
@@ -97,23 +95,25 @@ h1 {
 .fw-light {
   font-weight:lighter;
   color:white ;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0 10px;
   overflow-wrap: break-word;
   line-height: 2rem;
+  margin: 0 20px;
 }
 
 .more_detail{
-  opacity: 0.8;
+  opacity: 0.7;
   font-weight:lighter;
   color:white ;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0 30px;
   overflow-wrap: break-word;
-  line-height: 1.5rem;
+  line-height: 1rem;
 }
 
 .more_detail02{
+  margin-top: 10px;
   opacity: 0.5;
   font-weight:lighter;
   color:white ;

@@ -16,8 +16,7 @@
     <div class="layer"></div>
     
     <div class="d-flex flex-column justify-content-center w-100 h-100">      
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <br> 
+      <div class="d-flex flex-column justify-content-center align-items-center">        
           <h1>Inspire</h1>
             <h2 class ="login_title">Login</h2><br>          
 
@@ -39,30 +38,30 @@
                 
                 <div class="field">
                   <%= f.label :email %><br>
-                  <%= f.email_field :email, autofocus: true, placeholder: " abc@xyz.com" %>
+                  <%= f.email_field :email, autofocus: true, placeholder: " abc@xyz.com", class: "session_textfield" %>
                 </div><br>
 
                 <div class="field">
                   <%= f.label :password %><br>
-                  <%= f.password_field :password, autocomplete: "off" , placeholder: " At least 6 characters" %>
+                  <%= f.password_field :password, autocomplete: "off" , placeholder: " At least 6 characters", class: "session_textfield" %>
                 </div><br>
 
                 <% if devise_mapping.rememberable? -%>
                   <div class="field">
                     <%= f.label :remember_me %><br>
-                    <%= f.check_box :remember_me %>
+                    <%= f.check_box :remember_me ,class: "check_box"%>
                   </div>
                 <% end -%><br>
 
                 <div class="actions">
                   <%= f.submit "Log in" , class: "search-btn"%>
-                </div><br>
-              <% end %>
+                </div> 
+              <% end %><br>
 
             <div class="login_button">
               <table>
                 <tr>
-                  <%= link_to 'Back to top', root_path, method: :get , class:"new_session" %> &nbsp;
+                  <%= link_to 'Back to top', root_path, method: :get , class:"new_session" %>
                 </tr>
               </table>
             </div>
