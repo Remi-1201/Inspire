@@ -29,8 +29,11 @@
           </div>
         </tr>
         <tr>                  
-          <%= link_to "Edit", edit_blog_comment_path(blog, comment),class:'link_blog', remote: true %> &nbsp;
-          <%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), class:'link_blog', method: :delete, remote: true, data: { confirm: "Are you sure"} %>                      
+          <% if comment.user_id == current_user.id %>
+            <%= link_to "Edit", edit_blog_comment_path(blog, comment),class:'link_blog', remote: true %> &nbsp;
+            <%= link_to "Delete", blog_comment_path(comment.blog_id, comment.id), class:'link_blog', method: :delete, remote: true, data: { confirm: "Are you sure"} %>
+          <% else %>
+          <% end %>                      
         </tr>        
       </div><br>
     <% end %>

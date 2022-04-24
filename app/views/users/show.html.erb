@@ -5,16 +5,19 @@
   <h1><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> &nbsp; Your page</h1><br>
 <% end %>
 
-<div class = "user_line">
-  <a class="btn" href="<%= edit_user_registration_path %>">
-    <span class="material-icons" id="manage_accounts">manage_accounts</span>
-  </a> &nbsp; 
-      <%= link_to "Update my profile",  edit_user_registration_path , method: :get,class:"link_icon" %> &nbsp;  &nbsp;
-  <a class="favorite" href="<%= favorites_path %>"> 
-    <span class="material-icons" id="favorite">favorite</span>
-  </a> &nbsp;
-      <%= link_to "My favorites", favorites_path , method: :get, class:"link_icon" %>
-</div> <br>
+<% if @user.id == current_user.id %>
+  <div class = "user_line">
+    <a class="btn" href="<%= edit_user_registration_path %>">
+      <span class="material-icons" id="manage_accounts">manage_accounts</span>
+    </a> &nbsp; 
+        <%= link_to "Update my profile",  edit_user_registration_path , method: :get,class:"link_icon" %> &nbsp;  &nbsp;
+    <a class="favorite" href="<%= favorites_path %>"> 
+      <span class="material-icons" id="favorite">favorite</span>
+    </a> &nbsp;
+        <%= link_to "My favorites", favorites_path , method: :get, class:"link_icon" %>
+  </div> <br>
+<% else %>
+<% end %>
 
 <div class="alert alert-light" role="alert">
   <div id="notice02"><%= notice %></div>

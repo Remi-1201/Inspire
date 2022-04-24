@@ -21,9 +21,13 @@
           <tr>
             <th colspan="5" class="th_user">
               <p class="card-text">
-                <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto" if blog.user.avatar && blog.user.avatar.url %>
+                <a class="btn" href="<%= user_path(blog.user_id) %>">
+                  <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto" if blog.user.avatar && blog.user.avatar.url %>
+                </a>
               <span class = "user_name">
-                <%= blog.user.name %>
+                <a class="link_icon" href="<%= user_path(blog.user_id) %>">
+                  <%= blog.user.name %>
+                </a>
               </span>
                 <%= blog.created_at.to_s(:datetime) %>                    
               </p>
@@ -32,11 +36,13 @@
       
           <tr>
             <th colspan="5" class="th_detail">
-              <blockquote class="quote-card">
-                <p>
-                  <%= blog.detail %>
-                </p>
-              </blockquote>
+              <a class="blog_detail" href="<%= blog_path(blog) %>">
+                <blockquote class="quote-card">
+                  <p>
+                    <%= blog.detail %>
+                  </p>
+                </blockquote>
+              </a>
             <th>
           </tr>
 
@@ -69,7 +75,9 @@
           
           <tr>
             <th colspan="5" class="th">
+              <a class="blog_detail" href="<%= blog_path(blog) %>">
                 <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
+              </a>
             </th>
           <tr>
 
