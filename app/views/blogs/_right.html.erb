@@ -2,8 +2,7 @@
   <div class="sticky-top">
     <div class="card border-secondary mb-3" style="max-width: 18rem;">
       <div class = "col3">
-
-        <div class="card-header">Informations</div>
+        <div class="card-header01">Informations</div>
           <div class="card-body text-secondary">
             <h5 class="card-title">                
               <span class="material-icons">auto_awesome</span>
@@ -21,7 +20,9 @@
                       <span class = "title"><%= blog.title %></span>
                       <span class="link-text02"> by </span>
                       <% if blog.user.name.present? %>
-                        <%= blog.user.name %>
+                        <a class="btn-side" href="<%= user_path(blog.user_id) %>">
+                          <%= blog.user.name %>
+                        </a>
                       <% else %>
                         <%= "Guest" %>
                       <% end %><span class="link-text02"> at <%= blog.created_at.to_s(:datetime) %></span>
