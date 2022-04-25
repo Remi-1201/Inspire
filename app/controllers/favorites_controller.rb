@@ -16,19 +16,24 @@ class FavoritesController < ApplicationController
   def create
     @blog = Blog.find(params[:blog_id])
     favorite = current_user.favorites.create(blog_id: params[:blog_id])
-    if @blog.user.name.present?
-      redirect_back fallback_location: root_path, notice: "You liked #{@blog.user.name}'s post."
-    else
-      redirect_back fallback_location: root_path, notice: "You liked guest's post."
-    end
+    # if @blog.user.name.present?
+    #   redirect_back fallback_location: root_path, notice: "You liked #{@blog.user.name}'s post."
+    # else
+    #   redirect_back fallback_location: root_path, notice: "You liked guest's post."
+    # end
   end
 
   def destroy
     if current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id).present?
       favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id).destroy
-      redirect_back fallback_location: root_path,  notice: "Post was disliked!"
+      # redirect_back fallback_location: root_path,  notice: "Post was disliked!"
     else
-      redirect_back fallback_location: root_path, notice: "Permission denied!"
+      # redirect_back fallback_location: root_path, notice: "Permission denied!"
     end
+  end
+
+  private
+  def set_blog
+    @blog = Blog.find(params[:blog_id])
   end
 end
