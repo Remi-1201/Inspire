@@ -2,7 +2,7 @@
 - 「Inspire」は、英語や日本語の名言を共有するための、
 シャドーイングというメソッドに基づいた外国語の学習サポートアプリです。
 - オリジナルアプリケーションであり、2022年4月28日に公開する予定です。
-- https://inspire-myworld.com/ 
+- https://inspire-learning.herokuapp.com/
 ## 1. 開発環境
 - Ruby 3.0.1
 - Rails 6.0.3
@@ -18,8 +18,6 @@
 ### 2.3 インフラー
 - プラットフォーム: Heroku
 - ストレージ: Amazon S3
-- ドメイン: Amazon Route53
-- SSL化: AMC, CloudFront
 ## 3. カリキュラム外の技術
 - [Web Speech API](https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API)
 - [MediaStream Recording API
