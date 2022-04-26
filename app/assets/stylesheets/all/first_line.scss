@@ -1,12 +1,21 @@
 .notice{
   text-align: center;
   margin: 0 auto;
+  border: none !important;
+  outline: none !important;  
+}
+
+#notice02{
+  border: none !important;
+  outline: none !important;  
 }
 
 #first_line{
   margin: 0 auto;
   display: inline-flex;
   align-items: center;
+  border: none !important;
+  outline: none !important;  
 }
 
 .user_line{
@@ -15,6 +24,8 @@
   margin: 0 auto;
   text-align: center;
   font-size: 1rem;
+  border: none !important;
+  outline: none !important;  
 }
  
 .new_blog{
