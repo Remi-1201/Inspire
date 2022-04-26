@@ -9,7 +9,13 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :favorites
+  resources :favorites do
+    collection do      
+      post :sort
+      get :search
+    end
+  end
+
   resources :blogs do
     collection do      
       post :sort

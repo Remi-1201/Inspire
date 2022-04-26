@@ -4,7 +4,7 @@
       <%= blog.favorites.size %> 
     </div>
       <%= button_to(blog_favorite_path(id: blog.id, blog_id: blog.id), class:"favorite", method: :delete, remote: true) do %>
-        <span class="material-icons" id="dislike">favorite_border</span>      
+        <span class="material-icons pink" id="dislike">favorite</span>      
         <div class="sub">Unlike</div>
       <% end %>    
   <% else %>    

@@ -27,13 +27,6 @@ class FavoritesController < ApplicationController
   end
 
   private
-
-  def set_blog
-    @blog = Blog.find(params[:blog_id])
-
-  end
-
-  private
   def set_blog
     @blog = Blog.find(params[:blog_id])
   end
