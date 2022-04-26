@@ -34,3 +34,35 @@ a.scroll{
   text-decoration:none;
 }
  
+.btn{
+  color:#6c757d;
+  display: inline-flex;
+  align-items: center;
+}
+
+.comment_btn{
+  color:#6c757d;
+  display: inline-flex;
+  align-items: center;
+}
+.comment_btn:hover{
+  color:black;
+  text-decoration: none;
+}
+
+.many_option{
+  justify-content: space-evenly;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sub{
+  font-size: xx-small;
+  color:#6c757d;
+  margin: 0 2px;
+}
+
+.favorite{
+  display: flex;
+  align-items: center;
+}

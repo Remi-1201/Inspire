@@ -1,0 +1,19 @@
+<div class = "favorite">
+  <% if current_user.favorited_by?(blog) %>
+    <div class = "link_count">
+      <%= blog.favorites.size %> 
+    </div>
+      <%= button_to(blog_favorite_path(id: blog.id, blog_id: blog.id), class:"favorite", method: :delete, remote: true) do %>
+        <span class="material-icons" id="dislike">favorite_border</span>      
+        <div class="sub">Unlike</div>
+      <% end %>    
+  <% else %>    
+    <div class = "link_count">
+      <%= blog.favorites.size %> 
+    </div>
+    <%= button_to(favorites_path(blog_id: blog.id),class:"favorite", method: :post, remote: true) do %>
+      <span class="material-icons" id="like">favorite_border</span>      
+    <% end %>
+    <div class="sub">Like</div>
+  <% end %>
+</div>

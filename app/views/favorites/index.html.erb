@@ -39,10 +39,14 @@
 
             <tr>
               <th colspan="5" class="th_user">
-                <p class="card-text">
-                  <%= image_tag (favorite.blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if favorite.blog.user.avatar && favorite.blog.user.avatar.url %>
-                <span class = "user_name">            
-                  <%= favorite.blog.user.name %>
+                <p class="card-text">                  
+                  <a class="btn" href="<%= user_path(favorite.blog.user_id) %>">
+                    <%= image_tag (favorite.blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if favorite.blog.user.avatar && favorite.blog.user.avatar.url %>
+                  </a>
+                <span class = "user_name">                              
+                  <a class="link_icon" href="<%= user_path(favorite.blog.user_id) %>">
+                    <%= favorite.blog.user.name %>
+                  </a>
                 </span>
                   <%= favorite.blog.created_at.to_s(:datetime) %>
                 </p>
@@ -50,12 +54,14 @@
             </tr>
 
             <tr>
-              <th colspan="5" class="th_detail">
-                <blockquote class="quote-card">
-                  <p>
-                    <%= favorite.blog.detail %>
-                  </p>
-                </blockquote>
+              <th colspan="5" class="th_detail">                
+                <a class="blog_detail" href="<%= blog_path(favorite.blog.id) %>">
+                  <blockquote class="quote-card">
+                    <p>
+                      <%= favorite.blog.detail %>
+                    </p>
+                  </blockquote>
+                </a>
               <th>
             </tr>        
 
@@ -90,20 +96,29 @@
               <th colspan="5" class="th">
                   <%= image_tag(favorite.blog.image.url) if favorite.blog.image && favorite.blog.image.url %>
               </th>
-            </tr>
+            </tr>            
 
             <tr class="option">            
-              <td colspan="5" >
-                <div class = "link_count">
-                  <%= favorite.blog.favorites.size %> 
-                </div>
-                <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>
-                <%= link_to 'Dislike', favorite_path(id: favorite.id, blog_id: favorite.blog.id), class:'link_icon', method: :delete %>              
-                <%= link_to 'Comment', blog_path(favorite.blog.id), class:'link_icon' %>
-
+              <td colspan="5" class="many_option">
+                <div id="favorites_buttons_<%= favorite.blog.id %>">
+                    <%= render partial: 'favorites/favorite', locals: { blog: favorite.blog} %>
+                  </div>                  
+                  <div class = "comment_count">
+                    <%= favorite.blog.comments.size %> 
+                  </div>
+                  <a class="comment_btn" href="<%= blog_path(favorite.blog.id) %>">
+                    <span class="material-icons" id="chat_bubble_outline">insert_comment</span>
+                    <div class="sub">Comment</div>
+                  </a>
                 <% if favorite.blog.user_id == current_user.id %>
-                <%= link_to 'Edit', edit_blog_path(favorite.blog.id), class:"link_blog" %>
-                <%= link_to 'Delete', @blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <a class="btn" href="<%= edit_blog_path(favorite.blog.id) %>">
+                    <span class="material-icons" id="edit_note">edit_note</span>
+                    <div class="sub">Edit</div>
+                  </a>                 
+                  <%= button_to(blog_path(id: favorite.blog.id, blog_id: favorite.blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                    <span class="material-icons" id="delete">delete</span>
+                    <div class="sub">Delete</div>
+                  <% end %>
                 <% else %>
                 <% end %>
               </td>
