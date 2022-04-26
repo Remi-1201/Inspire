@@ -104,31 +104,31 @@
               <tr>
 
               <tr class="option">            
-                <td colspan="5" >                
-                  <% if current_user.favorited_by?(blog)  %>
-                    <div class = "link_count">
-                      <%= blog.favorites.size %> 
+                <td colspan="5" class="many_option">
+                  <div id="favorites_buttons_<%= blog.id %>">
+                      <%= render partial: 'favorites/favorite', locals: { blog: blog} %>
                     </div>                  
-                    <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>                    
-                    <%= link_to 'Dislike', blog_favorite_path(id: blog.id, blog_id: blog.id), class:'link_icon', method: :delete %>
-                  <% else %>
-                    <div class = "link_count">
-                      <%= blog.favorites.size %> 
-                    </div>
-                    <i class="fa fa-heart" style="font-size:24px;color:hotpink"></i>                     
-                    <%= link_to 'Like', favorites_path(blog_id: blog.id), class:'link_icon', method: :post %>
-                  <% end %>
-                    <div class = "link_count">
+                    <div class = "comment_count">
                       <%= blog.comments.size %> 
                     </div>
-                    <%= link_to 'Comment', blog, class:'link_icon' %>
+                    <a class="comment_btn" href="<%= blog_path(blog) %>">
+                      <span class="material-icons" id="chat_bubble_outline">insert_comment</span>
+                      <div class="sub">Comment</div>
+                    </a>
                   <% if blog.user_id == current_user.id %>
-                    <%= link_to 'Edit', edit_blog_path(blog), class:"link_blog" %>
-                    <%= link_to 'Delete', blog, class:'link_blog', method: :delete, data: { confirm: 'Are you sure?' } %>                    
+                    <a class="btn" href="<%= edit_blog_path(blog) %>">
+                      <span class="material-icons" id="edit_note">edit_note</span>
+                      <div class="sub">Edit</div>
+                    </a>                 
+                    <%= button_to(blog_path(id: blog.id, blog_id: blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                      <span class="material-icons" id="delete">delete</span>
+                      <div class="sub">Delete</div>
+                    <% end %>
                   <% else %>
                   <% end %>
                 </td>
               </tr>
+
             <% end %>
           </table>          
         </div>             

@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     end
   end  
 
+  def favorited_by?(blog_id)
+    favorites.where(blog_id: blog_id ).exists?
+  end
+
   private
   
   def set_user
