@@ -1,0 +1,32 @@
+<br>
+<h1>New Tag</h1>
+<br>
+
+<div class="alert alert-light" role="alert">
+  <div id="notice02"><%= notice %></div>
+</div>
+
+<% if @tag.errors.any? %>
+	<div id="error_explanation">
+    <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this blog from being saved:</h2>
+      <ul>
+        <% @tag.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+	</div>
+<% end %>
+
+<div class="login">
+  <%= form_with(model: @tag, local: true ) do |f| %>
+    <form class="login-container">
+      <%= f.label "Tag's name" %><br>
+      <%= f.text_field :name %><br>
+      <%= f.submit "Submit" %>
+    </form>
+    <% end %>
+    <br>
+</div>
+
+<%= link_to 'Back', blogs_path, class:'btn btn-outline-secondary' %>
+<br><br><br><br><br>

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy, foreign_key: :user_id
   has_many :blogs, dependent: :destroy, foreign_key: :user_id
   has_many :comments, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable, omniauth_providers: %i(google)

@@ -9,6 +9,7 @@ class BlogsController < ApplicationController
     @blogs = Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
     @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
+    @tag = @blog.taggings.build
   end
 
   def show
@@ -93,7 +94,7 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []} )
+    params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []}, tag_ids: [])
   end
 end
 

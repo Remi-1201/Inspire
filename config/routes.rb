@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tags/new'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'  
   root 'oauth#index'
 
@@ -8,7 +9,8 @@ Rails.application.routes.draw do
   get 'oauth/guidance' => 'oauth#guidance'
 
   resources :categories
-
+  resources :tags
+  
   resources :favorites do
     collection do      
       post :sort
