@@ -15,9 +15,8 @@
       <%= form.label :Category , class:"from_label" %><br>
         <%= collection_check_boxes(:blog, :category_ids, Category.all, :id, :name) do |cb| %>
         <%= cb.label { cb.check_box + ' ' + cb.text  + ' ' } %>
-        <% end %>
-      </div><br>      
-
+        <% end %> <br>
+ 
       <%= form.label :detail , class:"from_label"  %><br>
       <%= form.text_area :detail, size:"30x6" , placeholder: " Ex. A quote said by someone", class:"text_area" %><br>
 
@@ -28,18 +27,19 @@
       <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br> 
       <%= form.file_field :image, class: 'image', id: 'image' %><br>
       <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %><br> 
-
-    <%= form.label :tag , class:"from_label"  %> <br>
-    <% @tags.each do |tag| %>
-      <div class="field">
-        <%= form.check_box :tag_ids, { multiple: true, checked: tag[:checked], disabled: tag[:disabled], include_hidden: false }, tag[:id], class: 'tags'  %> <br>
-        <%= tag.name %> <br>
-        <% end %> 
-      </div> <br>
+      
+      <%= form.label :tag , class:"from_label" %><br>
+        <div id = "tag_list">
+          <%= collection_check_boxes(:blog, :tag_ids, Tag.all, :id, :name) do |cb| %>
+          <%= cb.label { cb.check_box + ' ' + cb.text  + ' ' } %> &nbsp;
+          <% end %> <br> 
+        </div>
+        <%= form.text_area :name, size:"30x1", placeholder: "Add new tags ... ", value: @tag_list, class:"from_tag"%><br> <br>  
 
       <div class="actions">
         <%= form.submit :Submit, class: "new_blog" %>
       </div><br>
     <% end %>
   </div>
+</div>
 

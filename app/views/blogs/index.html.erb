@@ -6,11 +6,7 @@
 </div>
 
 <div id = "first_line">
-  <%= render partial: 'blogs/sort', locals: { blog: @blog } %>
-  <%= render partial: 'blogs/sorts', locals: { blog: @blog } %>
-  <%= render partial: 'blogs/tag', locals: { blog: @blog } %>
-  <%= link_to 'Make new tag', new_tag_path, class: 'new_blog'%>
-    
+  <%= render partial: 'blogs/sort', locals: { blog: @blog } %> 
 </div>
 
 <div class="container">
@@ -104,11 +100,10 @@
 
               <tr>
                 <th colspan="5" class="tag">
-                  <% @tag_list.each do |list|%>
-                    <%=list.name %>
-                    <%="(#{list.blogs.count})" %>
+                  <% @taggings.each do |tag| %>
+                    <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+                    <%="(#{tag.blogs.count})" %>
                   <% end %>
-                  <i class="fas fa-tag"><%= blog.tags.map(&:name).join(', ') %></i>
                 </th>
               </tr>
 
@@ -151,5 +146,3 @@
       </div>
     </div>
   </div>
-  
-

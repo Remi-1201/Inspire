@@ -11,7 +11,7 @@ class TagsController < ApplicationController
     else
       render :new
     end
-  end
+  end  
 
   private
   def tag_params

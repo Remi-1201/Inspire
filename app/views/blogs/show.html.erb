@@ -86,8 +86,7 @@
           <tr>
             <th colspan="5" class="tag">
               <% @taggings.each do |tag| %>
-                <%=tag.name%>
-                <%="(#{tag.blogs.count})" %>
+                <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.blogs.count})" %>
               <% end %>
             </th>
           </tr>

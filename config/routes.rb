@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'categories/japanese' => 'categories#japanese'
   get '/mypage' => 'users#mypage'
   get 'oauth/guidance' => 'oauth#guidance'
+  get "search_tag" => 'blogs#search_tag'
 
   resources :categories
   resources :tags
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
   registrations: "users/registrations",
   sessions: "users/sessions",
   omniauth_callbacks: "users/omniauth_callbacks"
-}
+  }
 
   devise_scope :user do
     post 'users/sign_in/guest', to: 'users/sessions#guest_sign_in'

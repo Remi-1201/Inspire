@@ -46,5 +46,4 @@ class User < ApplicationRecord
   def favorited_by?(blog)
     favorites.where(blog_id: blog.id ).exists?
   end 
-
 end

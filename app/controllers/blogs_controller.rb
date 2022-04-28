@@ -13,6 +13,7 @@ class BlogsController < ApplicationController
     @blogs = @blogs.joins(:tags).where(tags: { id: params[:tag_id] }) if params[:tag_id].present?    
     @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
     @tag_list=Tag.all
+    @taggings =  @blogs.tags
   end
   
   def new
@@ -49,12 +50,22 @@ class BlogsController < ApplicationController
 
   def edit
     @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
+    @tag_list=@blog.tags.pluck(:name).join(',')
   end
 
   def update
+    tag_list=params[:blog][:name].split(',')
     respond_to do |format|
       if @blog.user_id = current_user.id 
         @blog.update(blog_params)
+
+        @old_relations=Tagging.where(blog_id: @blog.id)
+        @old_relations.each do |relation|
+          relation.delete
+        end            
+
+        @blog.save_tag(tag_list)
+
         format.html { redirect_to blogs_path, notice: "Blog was successfully updated." }
         format.json { render :show, status: :ok, location: @blog }
       else
@@ -99,8 +110,15 @@ class BlogsController < ApplicationController
     @blogs = @blogs.sorted
     @search_tag = session[:search]['tag']
     @search_detail = session[:search]['detail']
+    @tag_list=Tag.all
     render :index
   end  
+
+  def search_tag
+    @tag_list=Tag.all
+    @tag=Tag.find(params[:tag_id])
+    @blogs=@tag.blogs.page(params[:page]).per(10)
+  end
 
   private
   def set_blog

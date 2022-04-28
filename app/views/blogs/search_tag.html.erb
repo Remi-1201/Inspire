@@ -1,0 +1,28 @@
+<div class="container">
+<h5>タグが<%=@tag.name%>の投稿一覧</h5>
+
+<!--タグリスト-->
+<% @tag_list.each do |list|%>
+<%=link_to list.name,search_tag_path(tag_id: list.id) %>
+<%="(#{list.blogs.count})" %><% end %>
+<% @blogs.each do |blog| %>
+<!--投稿はカードで囲む-->
+<div class="card">
+  <div class="card-body">
+    <!--タイトル表示される文字数は２５文字までにしてます-->
+    <h6 class="card-title">
+      <%=link_to blog_path(blog.id) do %><%= blog.title.truncate(25) %>
+      <% end %>
+    </h6>
+    <!--お気に入り、コメント数、投稿者は部分テンプレ-->
+      <div id="<%=blog.id %>"><%= render 'favorites/favorite', blog: blog %></div>
+
+
+  </div>
+</div>
+<% end %>
+
+<div class="pagination pagination-sm justify-content-center">
+  <%= paginate @blogs %></div>
+</div>
+ 

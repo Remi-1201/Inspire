@@ -1,6 +1,0 @@
-<div class="sort_tag">
-  <%= form_with url: blogs_path, method: :get, local: true do |form| %>
-    <%= form.select("tag_id", Tag.pluck(:name, :id), { include_blank: true }) %>
-    <%= form.submit 'Tags', name: nil %>
-  <% end %> 
-</div> 
