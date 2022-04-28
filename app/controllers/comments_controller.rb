@@ -26,8 +26,8 @@ class CommentsController < ApplicationController
 
   def edit
     @comment= current_user.comments.find_by(blog_id: @blog.id)
-      respond_to do |format|
-        if  @comment.user_id = current_user.id  
+    respond_to do |format|
+      if  @comment.user_id = current_user.id  
         flash.now[:notice] = 'Editing ...'
         format.js { render :edit }
       else
@@ -66,5 +66,4 @@ class CommentsController < ApplicationController
   def set_blog
     @blog = Blog.find(params[:blog_id])
   end
-
 end
