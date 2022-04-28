@@ -12,22 +12,30 @@
 
   <div class="form-group">
     <div class="field">
-      <%= form.label :Category %><br>
+      <%= form.label :Category , class:"from_label" %><br>
         <%= collection_check_boxes(:blog, :category_ids, Category.all, :id, :name) do |cb| %>
         <%= cb.label { cb.check_box + ' ' + cb.text  + ' ' } %>
         <% end %>
       </div><br>      
 
-      <%= form.label :detail %><br>
+      <%= form.label :detail , class:"from_label"  %><br>
       <%= form.text_area :detail, size:"30x6" , placeholder: " Ex. A quote said by someone", class:"text_area" %><br>
 
-      <%= form.label :title %><br>
+      <%= form.label :title , class:"from_label"  %><br>
       <%= form.text_area :title, size:"30x2", placeholder: " Ex. The person who said the quote above.", class:"text_area" %><br>
 
-      <%= form.label :image %><br>
-      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br><br>
+      <%= form.label :image , class:"from_label"  %><br>
+      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %><br> 
       <%= form.file_field :image, class: 'image', id: 'image' %><br>
-      <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %><br><br>
+      <%= form.hidden_field :image_cache, class: 'image' , id: 'image' %><br> 
+
+    <%= form.label :tag , class:"from_label"  %> <br>
+    <% @tags.each do |tag| %>
+      <div class="field">
+        <%= form.check_box :tag_ids, { multiple: true, checked: tag[:checked], disabled: tag[:disabled], include_hidden: false }, tag[:id], class: 'tags'  %> <br>
+        <%= tag.name %> <br>
+        <% end %> 
+      </div> <br>
 
       <div class="actions">
         <%= form.submit :Submit, class: "new_blog" %>

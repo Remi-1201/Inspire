@@ -83,6 +83,15 @@
             </th>
           <tr>
 
+          <tr>
+            <th colspan="5" class="tag">
+              <% @taggings.each do |tag| %>
+                <%=tag.name%>
+                <%="(#{tag.blogs.count})" %>
+              <% end %>
+            </th>
+          </tr>
+
           <tr class="option">            
             <td colspan="5" class="many_option">
               <div id="favorites_buttons_<%= @blog.id %>">
