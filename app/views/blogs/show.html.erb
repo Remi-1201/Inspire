@@ -83,7 +83,16 @@
             </th>
           <tr>
 
-          <tr class="option">            
+          <tr>
+            <th colspan="5" class="tag">
+              <% @taggings.each do |tag| %>
+                <%="#"%>
+                <%= link_to tag.name,search_tag_path(tag_id: tag.id)%> 
+              <% end %>
+            </th>
+          </tr>
+
+          <tr class="option"> 
             <td colspan="5" class="many_option">
               <div id="favorites_buttons_<%= @blog.id %>">
                   <%= render partial: 'favorites/favorite', locals: { blog: @blog} %>

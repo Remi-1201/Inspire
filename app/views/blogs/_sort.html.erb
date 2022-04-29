@@ -1,4 +1,4 @@
-<div class="sort_search">
+<div class="sort_category">
   <%= form_with url: blogs_path, method: :get, local: true do |form| %> 
     <%= form.select("category_id", Category.pluck(:name, :id), {prompt:"Languages"}, {class: "category_id"}) %> 
     <%= form.submit 'Sort', name: nil, class:"search-btn" %>
