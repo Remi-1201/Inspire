@@ -1,0 +1,23 @@
+<tr>
+  <th colspan="5" class="tag">
+    <% @taggings.each do |tag| %>
+      <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.blogs.count})" %>
+    <% end %>
+  </th>
+</tr>
+
+<tr>
+  <th colspan="5" class="tag">
+    <% @tag_list.each do |list| %>
+      <%=list.name %>
+      <%="(#{list.blogs.count})" %>
+      <% end %>
+  </th>
+</tr>
+
+<div id = "tag_list">
+          <%= collection_check_boxes(:blog, :tag_ids, Tag.all, :id, :name) do |cb| %>
+          <%= cb.label { cb.check_box + ' ' + cb.text  + ' ' } %> &nbsp;
+          <% end %> <br> 
+        </div>
+        <%= form.text_area :name, size:"30x1", placeholder: "Add new tags ... ", value: @tag_list, class:"from_tag"%><br> <br>  

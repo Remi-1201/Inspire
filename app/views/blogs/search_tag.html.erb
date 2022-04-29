@@ -1,28 +1,162 @@
+<br>
+<h5>Posts included #<%= link_to @tag.name, search_tag_path(tag_id: @tag.id) %></h5>
+
 <div class="container">
-<h5>タグが<%=@tag.name%>の投稿一覧</h5>
+  <div class="row">
 
-<!--タグリスト-->
-<% @tag_list.each do |list|%>
-<%=link_to list.name,search_tag_path(tag_id: list.id) %>
-<%="(#{list.blogs.count})" %><% end %>
-<% @blogs.each do |blog| %>
-<!--投稿はカードで囲む-->
-<div class="card">
-  <div class="card-body">
-    <!--タイトル表示される文字数は２５文字までにしてます-->
-    <h6 class="card-title">
-      <%=link_to blog_path(blog.id) do %><%= blog.title.truncate(25) %>
-      <% end %>
-    </h6>
-    <!--お気に入り、コメント数、投稿者は部分テンプレ-->
-      <div id="<%=blog.id %>"><%= render 'favorites/favorite', blog: blog %></div>
+  <%= render partial: 'blogs/left', locals: { blog: @blog } %> 
 
+  <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
+    <% @blogs.each do |blog| %>
+        <div class = "table-responsive">
+            <table >
+              <tr class="category">
+                <th colspan="5" >
+                  <div class="card-header">
+                    <% blog.categories.each do |category| %>
+                      <%= category.try(:name) || "Others" %>                 
+                    <% end %>
+                    <div class="blog_show">
+                      <a class="btn" href="<%= blog_path(blog) %>">
+                        <span class="material-icons" id = "blog_show">open_in_new</span>
+                      </a>
+                    </div>
+                  </div>
+                </th>
+              </tr>
 
-  </div>
-</div>
-<% end %>
+              <tr>
+                <th colspan="5" class="th_user">
+                  <p class="card-text">
+                    <a class="btn" href="<%= user_path(blog.user_id) %>">
+                      <%= image_tag (blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto" if blog.user.avatar && blog.user.avatar.url %>
+                    </a>
+                    <span class = "user_name">
+                      <a class="link_icon" href="<%= user_path(blog.user_id) %>">
+                        <%= blog.user.name %>
+                      </a>
+                    </span>
+                    <%= blog.created_at.to_s(:datetime) %>                    
+                  </p>
+                </th>
+              </tr>         
+          
+              <tr>
+                <th colspan="5" class="th_detail">
+                  <a class="blog_detail" href="<%= blog_path(blog) %>">
+                    <blockquote class="quote-card">
+                      <p>
+                        <%= blog.detail %>
+                      </p>
+                    </blockquote>
+                  </a>
+                <th>
+              </tr>
 
-<div class="pagination pagination-sm justify-content-center">
-  <%= paginate @blogs %></div>
-</div>
+              <tr>
+                <th colspan="5" class="th_title">
+                  <blockquote class="blockquote mb-0">
+                    <cite title="Source Title" id="title_main">
+                        ～ by <%= blog.title %>
+                      </cite>
+                  </blockquote>
+                </th>
+              </tr>
+
+              <tr>
+                <td colspan="5" class="spk">
+                  <button class="speak-btn" data-blog="<%= blog.detail %>">
+                    <span class="material-icons">play_circle</span>
+                  </button>
+                  <button class="pause-btn" disabled>
+                    <span class="material-icons">pause</span>
+                  </button>
+                  <button class="resume-btn" disabled>
+                    <span class="material-icons">replay_circle_filled</span>
+                  </button>
+                  <button class="stop-btn" disabled>
+                    <span class="material-icons">stop_circle</span>
+                  </button>
+                </td>
+              </tr>
+              
+              <tr>
+                <th colspan="5" class="th">
+                  <a class="blog_detail" href="<%= blog_path(blog) %>">
+                    <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
+                  </a>
+                </th>
+              <tr>
+
+              <tr>
+                <th colspan="5" class="tag">
+                  <% blog.tags.each do |tag| %>
+                    <%="#"%>
+                    <%= link_to tag.name, search_tag_path(tag_id: tag.id)%> 
+                  <% end %>
+                </th>
+              </tr>
+
+              <tr class="option">            
+                <td colspan="5" class="many_option">
+                  <div id="favorites_buttons_<%= blog.id %>">
+                    <%= render partial: 'favorites/favorite', locals: { blog: blog} %>
+                  </div>                  
+                  <div class = "comment_count">
+                    <%= blog.comments.size %> 
+                  </div>
+                  <a class="comment_btn" href="<%= blog_path(blog) %>">
+                    <span class="material-icons" id="chat_bubble_outline">insert_comment</span>
+                    <div class="sub">Comment</div>
+                  </a>
+                  <% if blog.user_id == current_user.id %>
+                    <a class="btn" href="<%= edit_blog_path(blog) %>">
+                      <span class="material-icons" id="edit_note">edit_note</span>
+                      <div class="sub">Edit</div>
+                    </a>                 
+                    <%= button_to(blog_path(id: blog.id, blog_id: blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                      <span class="material-icons" id="delete">delete</span>
+                      <div class="sub">Delete</div>
+                    <% end %>
+                  <% else %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>          
+        </div> 
  
+    <div class="pagination pagination-sm justify-content-center">
+      <%= paginate @blogs %>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-4 col-md-3 order-3 order-md-3" id="sticky-sidebar">
+    <div class="sticky-top">
+      <div class="card border-secondary mb-3" style="max-width: 18rem;">
+        <div class = "col3">
+          <div class="card-header01">Informations</div>
+            <div class="card-body text-secondary">
+              <h5 class="card-title">                
+                <span class="material-icons">auto_awesome</span>
+                All tags
+              </h5>
+                <ul class="list-group list-group-flush">
+                  <% @tag_list.each do |list|%>
+                    <li class="list-group-item" id="list">                                    
+                      <div class ="list_title">                                       
+                        <span class="link-text02">
+                          <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+                          <%="(#{list.blogs.count})" %> 
+                        </span>
+                      </div>
+                    </li>
+                  <% end %> 
+                </ul> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

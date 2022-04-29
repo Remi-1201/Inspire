@@ -21,7 +21,7 @@ class Blog < ApplicationRecord
   # seach by detail/word
   scope :search_sort, -> (search_detail){ where('detail LIKE ?', "%#{search_detail}%") }  
   # scope :current_user_sort, -> (current_user_id){ where(user_id: current_user_id) }
-
+ 
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
