@@ -118,7 +118,7 @@ class BlogsController < ApplicationController
   def search_tag
     @tag_list=Tag.all
     @tag=Tag.find(params[:tag_id])
-    @blogs=@tag.blogs.page(params[:page]).per(10)
+    @blogs = Blog.joins(:tags).where(tags: { name: @tag.name }).order('created_at desc').kaminari(params[:page]).per(10)
   end
 
   private

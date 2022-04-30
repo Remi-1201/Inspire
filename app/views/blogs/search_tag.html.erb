@@ -131,32 +131,7 @@
     </div>
   </div>
 
-  <div class="col-xs-12 col-sm-4 col-md-3 order-3 order-md-3" id="sticky-sidebar">
-    <div class="sticky-top">
-      <div class="card border-secondary mb-3" style="max-width: 18rem;">
-        <div class = "col3">
-          <div class="card-header01">Informations</div>
-            <div class="card-body text-secondary">
-              <h5 class="card-title">                
-                <span class="material-icons">auto_awesome</span>
-                All tags
-              </h5>
-                <ul class="list-group list-group-flush">
-                  <% @tag_list.each do |list|%>
-                    <li class="list-group-item" id="list">                                    
-                      <div class ="list_title">                                       
-                        <span class="link-text02">
-                          <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-                          <%="(#{list.blogs.count})" %> 
-                        </span>
-                      </div>
-                    </li>
-                  <% end %> 
-                </ul> 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <%= render partial: 'blogs/right', locals: { blog: @blog } %> 
+
     </div>
   </div>
