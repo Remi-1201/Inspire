@@ -13,7 +13,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "tts/speak.js" %>
     <%= javascript_include_tag "tts/record.js" %>
-    <%= javascript_include_tag "tts/remove.js" %>
+    <%= javascript_include_tag "move/remove.js" %>
+    <%= javascript_include_tag "move/scroll.js" %>
     
   </head>
     
@@ -223,7 +224,7 @@
       </div>
     </div>
 
-  <a href="#" class="gotop">Go Top</a>
+  <button class="gotop" onclick="scroll2({ offset: 0 })">Go Top</button>
 
   <footer>
     <div class="foot-wrap">
