@@ -58,16 +58,27 @@
   align-items: center;
 }
 
+.follow{
+  margin:0 10px;
+  display: flex; 
+  align-items: center; 
+  margin-left: 20px;
+}
+
 .follow-btn{
   color:#6c757d;
   border: none !important;
   outline: none !important;    
-  background-color: transparent; 
+  background-color: transparent;   
+  display: flex; 
+  align-items: center; 
 }
 
 .unfollow-btn{
   color:#6c757d;
   border: none !important;
   outline: none !important;  
-  background-color: transparent; 
+  background-color: transparent;   
+  display: flex; 
+  align-items: center; 
 }

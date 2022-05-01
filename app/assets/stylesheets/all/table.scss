@@ -72,10 +72,8 @@
 
 .card-text{
   margin: 10px auto;  
-}
-
-.follow{
-  margin:0 10px;
+  display: inline-flex; 
+  align-items: center;
 }
 
 #title_main {

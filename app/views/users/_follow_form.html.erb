@@ -1,12 +1,19 @@
 <div class="follow" id="follow_form_<%= user.id %>">
   <% unless current_user.following?(user) %>
     <%= form_with(model: current_user.active_relationships.build(followed_id: user.id)) do |f| %>
-      <%= f.hidden_field :followed_id %>
-      <%= f.submit "Follow", class: "follow-btn"%>
+      <%= f.hidden_field :followed_id %> 
+      <%= button_to(relationships_create_path(model: current_user.active_relationships.find_by(followed_id: user.id)),class:"follow-btn", method: :post, remote: true) do %>
+        <span class="material-icons">group_add</span> &nbsp; 
+        <div class="sub">Follow</div>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id), method: :delete ) do |f| %>
-      <%= f.submit "Unfollow", class: "unfollow-btn"%>
+    <% else %>
+      <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id), method: :delete ) do |f| %> 
+        <%= button_to(relationships_destroy_path(model: current_user.active_relationships.find_by(followed_id: user.id)),class:"unfollow-btn", method: :post, remote: true) do %>
+        <span class="material-icons">group_remove</span> &nbsp; 
+        <div class="sub">Unfollow</div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
+
