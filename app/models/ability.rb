@@ -1,6 +1,6 @@
 class Ability
   include CanCan::Ability
-  def initialize(user)
+  def initialize(user) 
     can :read, Blog
     if user.present?  
       can :manage, Blog, user_id: user.id 

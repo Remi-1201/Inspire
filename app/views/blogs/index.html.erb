@@ -119,7 +119,7 @@
                       <span class="material-icons" id="chat_bubble_outline">insert_comment</span>
                       <div class="sub">Comment</div>
                     </a>
-                  <% if blog.user_id == current_user.id %>
+                  <% if current_user.present? && blog.user_id == current_user.id %>
                     <a class="btn" href="<%= edit_blog_path(blog) %>">
                       <span class="material-icons" id="edit_note">edit_note</span>
                       <div class="sub">Edit</div>
