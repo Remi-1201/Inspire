@@ -46,7 +46,8 @@
                       <%= blog.user.name %>
                     </a>                    
                   </span>
-                    <%= blog.created_at.to_s(:datetime) %>                    
+                    <%= blog.created_at.to_s(:datetime) %>
+                    <%= render 'users/follow_form', user: blog.user %>                                        
                   </p>
                 </th>
               </tr>         

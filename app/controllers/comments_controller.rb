@@ -65,5 +65,6 @@ class CommentsController < ApplicationController
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])
+    @users = User.all
   end
 end

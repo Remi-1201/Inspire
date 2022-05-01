@@ -11,12 +11,12 @@ class CategoriesController < ApplicationController
   def show    
   end
 
-  def english
+  def english 
     @blogs = Blog.joins(:categories).where(categories: {name: "English"}).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id)
   end
 
-  def japanese
+  def japanese 
     @blogs = Blog.joins(:categories).where(categories: {name: "Japanese"}).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id)
   end
@@ -32,6 +32,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @blog = Blog.find(params[:blog_id])
     @user = User.find_by(id: session[:user_id]) 
+    @users = User.all
   end
 end
 

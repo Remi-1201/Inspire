@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   get 'tags/new'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'  
   root 'oauth#index'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :tags
+  resources :relationships, only: [:create, :destroy]
   
   resources :favorites do
     collection do      

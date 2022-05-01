@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user! 
 
   def index
+    @users = User.all
     @blogs = Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
     @favorite = current_user.favorites.find_by(blog_id: params[:blog_id]) 
     @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
@@ -40,6 +41,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @users = User.all
     @blogs = Blog.all.includes(:user)
     @comments = @blog.comments
     @comment = @blog.comments.build    

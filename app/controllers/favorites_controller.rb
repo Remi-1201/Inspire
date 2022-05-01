@@ -29,5 +29,6 @@ class FavoritesController < ApplicationController
   private
   def set_blog
     @blog = Blog.find(params[:blog_id])
+    @users = User.all
   end
 end
