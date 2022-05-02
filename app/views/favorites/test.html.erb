@@ -1,0 +1,11 @@
+ <% if favorite.blog.user_id == current_user.id %>
+                  <a class="btn" href="<%= edit_blog_path(favorite.blog.id) %>">
+                    <span class="material-icons" id="edit_note">edit_note</span>
+                    <div class="sub">Edit</div>
+                  </a>                 
+                  <%= button_to(blog_path(id: favorite.blog.id, blog_id: favorite.blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                    <span class="material-icons" id="delete">delete</span>
+                    <div class="sub">Delete</div>
+                  <% end %>
+                <% else %>
+                <% end %>

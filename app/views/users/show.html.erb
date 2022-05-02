@@ -8,7 +8,7 @@
 <% if @user.id == current_user.id %>
   <div class = "user_line">
     <a class="btn" href="<%= edit_user_registration_path %>">
-      <span class="material-icons" id="manage_accounts">manage_accounts</span>
+      <span class="material-icons" id="manage_accounts">manage_accounts</span> 
     </a> &nbsp; 
         <%= link_to "Update my profile",  edit_user_registration_path , method: :get,class:"link_icon" %> &nbsp;  &nbsp;
     <a class="favorite" href="<%= favorites_path %>"> 
