@@ -5,10 +5,25 @@
   <h1><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> &nbsp; Your page</h1><br>
 <% end %>
 
+<div class = "first_line_follow">
+  Followed: &nbsp;
+  <strong> 
+    <a class="btn_follow" href="<%= user_followings_path(@user.id) %>">
+      <%= @user.following.count %> 
+    </a>
+  </strong> &nbsp; &nbsp;
+  Followers: &nbsp; 
+  <strong> 
+    <a class="btn_follow" href="<%= user_followers_path(@user.id) %>">
+      <%= @user.followers.count %> 
+    </a>
+  </strong> 
+</div> <br> <br>
+
 <% if @user.id == current_user.id %>
   <div class = "user_line">
     <a class="btn" href="<%= edit_user_registration_path %>">
-      <span class="material-icons" id="manage_accounts">manage_accounts</span>
+      <span class="material-icons" id="manage_accounts">manage_accounts</span> 
     </a> &nbsp; 
         <%= link_to "Update my profile",  edit_user_registration_path , method: :get,class:"link_icon" %> &nbsp;  &nbsp;
     <a class="favorite" href="<%= favorites_path %>"> 

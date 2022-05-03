@@ -20,5 +20,6 @@ class TagsController < ApplicationController
 
   def set_tag
     @tag = Tag.find(params[:id])
+    @users = User.all
   end
 end

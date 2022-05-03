@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:index, :show, :edit, :update ]
   
-  def mypage
+  def mypage     
     redirect_to user_path(current_user.id)
   end
 
@@ -10,13 +10,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     end
   end
-
-  def show
-    user = User.find(params[:id])
-    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: user.id) 
-    @blogs = Blog.where(user_id: nil).or(Blog.where(user_id: user.id)).kaminari(params[:page]) 
-  end
-
+ 
   def update
   if current_user.update(user_params)
       redirect_to user_path(current_user)
@@ -29,10 +23,16 @@ class UsersController < ApplicationController
     favorites.where(blog_id: blog_id ).exists?
   end
 
+  def show 
+    user = User.find(params[:id])
+    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: user.id) 
+    @blogs = Blog.where(user_id: nil).or(Blog.where(user_id: user.id)).kaminari(params[:page]) 
+  end
+
   private
   
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) 
   end
 
   def user_params

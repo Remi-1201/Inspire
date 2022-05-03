@@ -50,26 +50,58 @@
   justify-content: right;
   top: 0px;
 }
-
-.th_user {
-  text-align: left;
-  height: max-content;
+ 
+.card-text{
+  margin: 10px auto;       
+  line-height: fit-content;
   font-weight: 200;
-  margin: 5px auto;
   padding-left: 20px;
   font-size: 0.85rem; 
-  padding-top: 5px;
+ }
+
+.card-text{	
+  // display: inline-block;
+  align-items: center; 
+  float: left;
+  width: 100%;
+}   
+ 
+.card-text:after {
+	content: ""; 
+	clear: both;
+}   
+
+.user_informations { 
+  float: left;
+}
+
+.user_informations02{
+  float: left;
+  font-size: smaller;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .user_name{
+  display: inline-block;  
+  align-items: center;  
   font-weight: bold;
   margin-right: 10px;
-  font-size: 0.85rem; 
+  font-size: 0.85rem;    
 }
 
-.card-text{
-  margin: 10px auto;
+.b-right{
+  display: flex;  
+  align-items: center;  
+  float: right;
 }
+
+.user_follow{ 
+  display: flex;  
+  align-items: center; 
+  float: right;
+  text-align: right;
+} 
 
 #title_main {
   font-weight: lighter;

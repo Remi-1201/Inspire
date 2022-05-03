@@ -1,4 +1,4 @@
-<div class = "favorite">
+<div class = "favorite">  
   <% if current_user.favorited_by?(blog) %>
     <div class = "link_count">
       <%= blog.favorites.size %> 
@@ -15,5 +15,5 @@
       <span class="material-icons" id="like">favorite_border</span>      
     <% end %>
     <div class="sub">Like</div>
-  <% end %>
+  <% end %> 
 </div>

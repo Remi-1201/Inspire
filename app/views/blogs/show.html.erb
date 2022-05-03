@@ -11,100 +11,116 @@
   <%= render partial: 'blogs/left', locals: { blog: @blog } %>
   <%= render partial: 'blogs/right', locals: { comment: @comment }%>
 
-    <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
-      <div class = "table-responsive">
-        <table >
-          <tr class="category">
-            <th colspan="5" >
-              <div class="card-header">
-                <% @blog.categories.each do |category| %>
-                  <%= category.try(:name) || "Others" %>                 
-                <% end %>                    
-              </div>
-            </th>
-          </tr>
+  <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
+    <div class = "table-responsive">
+      <table >
+        <tr class="category">
+          <th colspan="5" >
+            <div class="card-header">
+              <% @blog.categories.each do |category| %>
+                <%= category.try(:name) || "Others" %>                 
+              <% end %>                    
+            </div>
+          </th>
+        </tr>
 
-          <tr>
-            <th colspan="5" class="th_user">
-              <p class="card-text">
+        <tr>
+          <th colspan="5" class="th_user">
+            <div class="card-text"> 
+              <div class = "user_informations">
                 <a class="btn" href="<%= user_path(@blog.user_id) %>">
                   <%= image_tag (@blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto" if @blog.user.avatar && @blog.user.avatar.url %>
-                </a>
-              <span class = "user_name">
-                <a class="link_icon" href="<%= user_path(@blog.user_id) %>">
-                  <%= @blog.user.name %>
-                </a>
-              </span>
-                <%= @blog.created_at.to_s(:datetime) %>                    
-              </p>
-            </th>
-          </tr>         
-      
-          <tr>
-            <th colspan="5" class="th_detail">
-              <blockquote class="quote-card">
-                <p>
-                  <%= @blog.detail %>
-                </p>
-              </blockquote>
-            <th>
-          </tr>
-
-          <tr>
-            <th colspan="5" class="th_title">
-              <blockquote class="blockquote mb-0">
-                <cite title="Source Title" id="title_main">
-                    ～ by <%= @blog.title %>
-                  </cite>
-              </blockquote>
-            </th>
-          </tr>
-
-          <tr>
-            <td colspan="5" class="spk">
-              <button class="speak-btn" data-blog="<%= @blog.detail%>">
-                <span class="material-icons">play_circle</span>
-              </button>
-              <button class="pause-btn" disabled>
-                <span class="material-icons">pause</span>
-              </button>
-              <button class="resume-btn" disabled>
-                <span class="material-icons">replay_circle_filled</span>
-              </button>
-              <button class="stop-btn" disabled>
-                <span class="material-icons">stop_circle</span>
-              </button>
-            </td>
-          </tr>
-          
-          <tr>
-            <th colspan="5" class="th">
-                <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-            </th>
-          <tr>
-
-          <tr>
-            <th colspan="5" class="tag">
-              <% @taggings.each do |tag| %>
-                <%="#"%>
-                <%= link_to tag.name,search_tag_path(tag_id: tag.id)%> 
-              <% end %>
-            </th>
-          </tr>
-
-          <tr class="option"> 
-            <td colspan="5" class="many_option">
-              <div id="favorites_buttons_<%= @blog.id %>">
-                  <%= render partial: 'favorites/favorite', locals: { blog: @blog} %>
-                </div>                  
-                <div class = "comment_count">
-                  <%= @blog.comments.size - 1 %> 
+                </a> 
+                <span class = "user_name">
+                  <a class="link_icon" href="<%= user_path(@blog.user_id) %>">
+                    <%= @blog.user.name %>
+                  </a>
+                </span> 
+                <%= @blog.created_at.to_s(:datetime) %>
+              </div>
+              <div class="b-right">
+                <div class="user_follow">
+                  <%= render 'users/follow_form', user: @blog.user %>
                 </div>
-                <a class="comment_btn" href="<%= blog_path(@blog) %>">
-                  <span class="material-icons" id="chat_bubble_outline">insert_comment</span>
-                  <div class="sub">Comment</div>
-                </a>
-              <% if @blog.user_id == current_user.id %>
+              </div> 
+            </div>
+          </th>
+        </tr>         
+    
+        <tr>
+          <th colspan="5" class="th_detail">
+            <blockquote class="quote-card">
+              <p>
+                <%= @blog.detail %>
+              </p>
+            </blockquote>
+          <th>
+        </tr>
+
+        <tr>
+          <th colspan="5" class="th_title">
+            <blockquote class="blockquote mb-0">
+              <cite title="Source Title" id="title_main">
+                  ～ by <%= @blog.title %>
+                </cite>
+            </blockquote>
+          </th>
+        </tr>
+
+        <tr>
+          <td colspan="5" class="spk">
+            <button class="speak-btn" data-blog="<%= @blog.detail%>">
+              <span class="material-icons">play_circle</span>
+            </button>
+            <button class="pause-btn" disabled>
+              <span class="material-icons">pause</span>
+            </button>
+            <button class="resume-btn" disabled>
+              <span class="material-icons">replay_circle_filled</span>
+            </button>
+            <button class="stop-btn" disabled>
+              <span class="material-icons">stop_circle</span>
+            </button>
+          </td>
+        </tr>
+        
+        <tr>
+          <th colspan="5" class="th">
+              <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+          </th>
+        <tr>
+
+        <tr>
+          <th colspan="5" class="tag">
+            <% @taggings.each do |tag| %>
+              <%="#"%>
+              <%= link_to tag.name,search_tag_path(tag_id: tag.id)%> 
+            <% end %>
+          </th>
+        </tr>
+
+        <tr class="option"> 
+          <td colspan="5" class="many_option">
+            <div id="favorites_buttons_<%= @blog.id %>">
+                <%= render partial: 'favorites/favorite', locals: { blog: @blog} %>
+              </div>                  
+              <div class = "comment_count">
+                <%= @blog.comments.size - 1 %> 
+              </div>
+              <a class="comment_btn" href="<%= blog_path(@blog) %>">
+                <span class="material-icons" id="chat_bubble_outline">insert_comment</span>
+                <div class="sub">Comment</div>
+              </a>
+            <% if current_user.present? && current_user.try(:admin?) %>
+              <a class="btn" href="<%= edit_blog_path(@blog) %>">
+                <span class="material-icons" id="edit_note">edit_note</span>
+                <div class="sub">Edit</div>
+              </a>                 
+              <%= button_to(blog_path(id: @blog.id, blog_id: @blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                <span class="material-icons" id="delete">delete</span>
+                <div class="sub">Delete</div>
+            <% end %>
+              <% elsif current_user.present? && @blog.user_id == current_user.id %>
                 <a class="btn" href="<%= edit_blog_path(@blog) %>">
                   <span class="material-icons" id="edit_note">edit_note</span>
                   <div class="sub">Edit</div>
@@ -112,22 +128,23 @@
                 <%= button_to(blog_path(id: @blog.id, blog_id: @blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
                   <span class="material-icons" id="delete">delete</span>
                   <div class="sub">Delete</div>
-                <% end %>
-              <% else %>
               <% end %>
-            </td>
-          </tr>
+            <% else %>
+            <% end %>
+          </td>
+        </tr>
       </table>
      
       <%= link_to 'Back', blogs_path, class:'btn btn-light' %> <br> <br>      
     
       <p class="font-weight-bold">All comments ( <%= @blog.comments.size - 1%> ) </p>      
+      
       <div id="comments_area">
         <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>    
       </div>
 
       <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>  
-      
+
       </div>
     </div>
   </div>

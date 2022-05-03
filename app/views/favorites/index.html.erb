@@ -16,7 +16,7 @@
   
   <%= render partial: 'blogs/left', locals: { blog: @blog } %>
   <%= render partial: 'blogs/right', locals: { blog: @blog }%>
-
+  
   <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
     <% if @favorites.present? %>
       <% @favorites.each do |favorite| %>
@@ -39,18 +39,25 @@
 
             <tr>
               <th colspan="5" class="th_user">
-                <p class="card-text">                  
-                  <a class="btn" href="<%= user_path(favorite.blog.user_id) %>">
-                    <%= image_tag (favorite.blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if favorite.blog.user.avatar && favorite.blog.user.avatar.url %>
-                  </a>
-                <span class = "user_name">                              
-                  <a class="link_icon" href="<%= user_path(favorite.blog.user_id) %>">
-                    <%= favorite.blog.user.name %>
-                  </a>
-                </span>
-                  <%= favorite.blog.created_at.to_s(:datetime) %>
-                </p>
-              </th>            
+                <div class="card-text"> 
+                  <div class = "user_informations">
+                    <a class="btn" href="<%= user_path(favorite.blog.user_id) %>">
+                      <%= image_tag (favorite.blog.user.avatar.url), class: "avatar-index rounded-circle mx-auto" if favorite.blog.user.avatar && favorite.blog.user.avatar.url %>
+                    </a> 
+                    <span class = "user_name">
+                      <a class="link_icon" href="<%= user_path(favorite.blog.user_id) %>">
+                        <%= favorite.blog.user.name %>
+                      </a>
+                    </span> 
+                    <%= favorite.blog.created_at.to_s(:datetime) %>
+                  </div>
+                  <div class="b-right">
+                    <div class="user_follow">
+                      <%= render 'users/follow_form', user: favorite.blog.user %>
+                    </div>
+                  </div> 
+                </div>
+              </th>
             </tr>
 
             <tr>
@@ -119,20 +126,29 @@
                     <span class="material-icons" id="chat_bubble_outline">insert_comment</span>
                     <div class="sub">Comment</div>
                   </a>
-                <% if favorite.blog.user_id == current_user.id %>
-                  <a class="btn" href="<%= edit_blog_path(favorite.blog.id) %>">
+                <% if current_user.present? && current_user.try(:admin?) %>
+                <a class="btn" href="<%= edit_blog_path(favorite.blog) %>">
+                  <span class="material-icons" id="edit_note">edit_note</span>
+                  <div class="sub">Edit</div>
+                </a>                 
+                <%= button_to(blog_path(id: favorite.blog.id, blog_id: favorite.blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                  <span class="material-icons" id="delete">delete</span>
+                  <div class="sub">Delete</div>
+              <% end %>
+                <% elsif current_user.present? && favorite.blog.user_id == current_user.id %>
+                  <a class="btn" href="<%= edit_blog_path(favorite.blog) %>">
                     <span class="material-icons" id="edit_note">edit_note</span>
                     <div class="sub">Edit</div>
                   </a>                 
                   <%= button_to(blog_path(id: favorite.blog.id, blog_id: favorite.blog.id), class:"btn", method: :delete, data: { confirm: 'Are you sure?' }) do %>
                     <span class="material-icons" id="delete">delete</span>
                     <div class="sub">Delete</div>
-                  <% end %>
-                <% else %>
                 <% end %>
+              <% else %>
+              <% end %>
               </td>
-            </tr>
-      
+            </tr>      
+            
           </table>
         </div>
       <% end %>
@@ -145,8 +161,8 @@
         <%= paginate @favorites %>    
       <% end %>      
     </div>
-
-    </div>
+  </div>
+  
   </div>
 </div>
 

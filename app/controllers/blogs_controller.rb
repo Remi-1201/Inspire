@@ -6,12 +6,13 @@ class BlogsController < ApplicationController
   before_action :authenticate_user! 
 
   def index
+    @users = User.all
     @blogs = Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
-    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id])
+    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id]) 
     @blogs = @blogs.joins(:categories).where(categories: { id: params[:category_id] }) if params[:category_id].present?
     @blogs = @blogs.joins(:tags).where(tags: { id: params[:tag_id] }) if params[:tag_id].present?    
     
-    @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
+    @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))  
     @tag_list= Tag.all 
   end
   
@@ -40,6 +41,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @users = User.all
     @blogs = Blog.all.includes(:user)
     @comments = @blog.comments
     @comment = @blog.comments.build    

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy' 
+
   get 'tags/new'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'  
   root 'oauth#index'
@@ -8,9 +11,11 @@ Rails.application.routes.draw do
   get '/mypage' => 'users#mypage'
   get 'oauth/guidance' => 'oauth#guidance'
   get "search_tag" => 'blogs#search_tag'
+  get 'users/list' => 'users#list'
 
   resources :categories
   resources :tags
+  resources :relationships, only: [:create, :destroy, :show]
   
   resources :favorites do
     collection do      
@@ -32,9 +37,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: {
-  registrations: "users/registrations",
-  sessions: "users/sessions",
-  omniauth_callbacks: "users/omniauth_callbacks"
+    registrations: "users/registrations",
+    sessions: "users/sessions",
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   devise_scope :user do
@@ -42,8 +47,13 @@ Rails.application.routes.draw do
     post 'users/sign_in/admin_guest', to: 'users/sessions#admin_guest_sign_in'
   end
 
-  resources :users, only: [:show, :edit, :update] do
-    get :favorites, on: :collection
+  resources :users, only: [:index, :show, :edit, :update] do
+    get :favorites, on: :collection 
+  end 
+
+  resources :users do
+    resource :relationships, only: [:create, :destroy, :show]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
-  
 end
