@@ -60,7 +60,7 @@
  }
 
 .card-text{	
-  display: inline-block;
+  // display: inline-block;
   align-items: center; 
   float: left;
   width: 100%;
@@ -73,6 +73,13 @@
 
 .user_informations { 
   float: left;
+}
+
+.user_informations02{
+  float: left;
+  font-size: smaller;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .user_name{

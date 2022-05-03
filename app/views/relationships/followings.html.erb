@@ -1,0 +1,72 @@
+<br>
+<% if @user.name.present? %>
+  <h3><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> <%= @user.name %>'s following list</h3><br>
+<% else %>
+  <h3><%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto"  if @user.avatar && @user.avatar.url %> &nbsp; Your following list</h3><br>
+<% end %>
+
+<div class="container">
+  <div class="row">
+  
+    <%= render partial: 'blogs/left', locals: { blog: @blog } %> <br> 
+
+    <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2" id="relationship_show">
+      <% if @followings.exists? %>
+        <% @followings.each do |user| %>
+
+          <div class = "table-responsive">      
+            <table>
+              <tr>          
+                <th class="th_user">
+                  <div class="card-text"> 
+                    <div class = "user_informations02">
+                      <a class="btn" href="<%= user_path(user.id) %>">
+                        <%= image_tag (user.avatar.url), class: "avatar-index rounded-circle mx-auto" if user.avatar && user.avatar.url %>
+                      </a> 
+                      <span class = "user_name">
+                        <a class="link_icon" href="<%= user_path(user.id) %>">
+                          <%= user.name %>
+                        </a>
+                      </span> 
+                      Followed: 
+                        <a class="btn_follow" href="<%= user_followings_path(user.id) %>">
+                          <%= user.following.count %> 
+                        </a>  &nbsp;
+                      Followers: 
+                        <a class="btn_follow" href="<%= user_followers_path(user.id) %>">
+                          <%= user.followers.count %> 
+                        </a>
+                    </div>
+
+                    <div class="b-right">
+                      <div class="user_follow">   
+                        <div class="follow" id="follow_form_<%= user.id %>">
+                          <% unless @user.following?(user) %>
+                            <%= form_with(model: @user.active_relationships.build(followed_id: user.id)) do |f| %>
+                              <%= f.hidden_field :followed_id %> 
+                              <%= button_to(relationships_create_path(model: @user.active_relationships.find_by(followed_id: user.id)),class:"follow-btn", method: :post, remote: true) do %>
+                                <span class="material-icons">group_add</span> &nbsp; 
+                                <div class="sub">Follow</div>
+                              <% end %>
+                            <% end %>
+                          <% else %>
+                            <%= form_with(model: @user.active_relationships.find_by(followed_id: user.id), method: :delete ) do |f| %> 
+                              <%= button_to(relationships_destroy_path(model: @user.active_relationships.find_by(followed_id: user.id)),class:"unfollow-btn", method: :post, remote: true) do %>
+                                <span class="material-icons">group_remove</span> &nbsp; 
+                                <div class="sub">Unfollow</div>
+                              <% end %>
+                            <% end %>
+                          <% end %> 
+                        </div>
+                      </div>                 
+                    </th>
+                  </tr>
+                </table>
+              </div>
+              
+            <% end %> 
+          <% end %>  
+        </div>
+
+  </div>
+</div>

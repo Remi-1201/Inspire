@@ -8,17 +8,18 @@ class FavoritesController < ApplicationController
   end
 
   def show
-    @comments = @blog.comments
-    @comment = @blog.comments.build    
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @favorite = current_user.favorites.find_by(blog_id: @blog)
     @blogs = Blog.all.includes(:user)
+  end
+
+  def list
   end
 
   def create
     @blog = Blog.find(params[:blog_id])
     favorite = current_user.favorites.build(blog_id: params[:blog_id])
     favorite.save 
-  end
+  end 
 
   def destroy
     @blog = Blog.find(params[:blog_id])
