@@ -39,8 +39,11 @@
                 <%= @blog.created_at.to_s(:datetime) %>
               </div>
               <div class="b-right">
-                <div class="user_follow">
-                  <%= render 'users/follow_form', user: @blog.user %>
+                <div class="user_follow"> 
+                  <% if current_user.id != @blog.user_id %>
+                    <%= render 'users/follow_form', user: @blog.user %>
+                  <% else %>
+                  <% end %>
                 </div>
               </div> 
             </div>

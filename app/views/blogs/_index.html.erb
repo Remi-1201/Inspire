@@ -34,7 +34,10 @@
                 </div>
                 <div class="b-right">
                   <div class="user_follow">
-                    <%= render 'users/follow_form', user: blog.user %>
+                    <% if current_user.id != blog.user_id %>
+                      <%= render 'users/follow_form', user: blog.user %>
+                    <% else %>
+                    <% end %>
                   </div>
                 </div> 
               </div>
