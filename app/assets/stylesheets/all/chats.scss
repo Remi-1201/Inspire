@@ -1,0 +1,44 @@
+.chat-table{
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  height: 150px;
+  overflow: scroll;
+}
+
+.chat_col{
+  display: inline-flex;
+  align-items: center;
+}
+
+.chat-input{
+  display: inline-flexbox; 
+  overflow-wrap: normal;
+  text-align: center;
+  align-items: center;
+  padding: 15px 0;  
+}
+
+.chat-message{
+  border-radius: 3px; 
+  border: 0.1px solid rgb(115, 115, 115);
+}
+
+.chat-text{
+  padding: 5px 50px;
+  overflow-wrap: normal;  
+}
+
+.chat-time-left{
+  float:left;
+  font-size: xx-small;
+}
+
+.chat-time-right{
+  float:right;
+  font-size: xx-small;
+}
+
+.user-name{
+  padding: 0 10px;
+}

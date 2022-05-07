@@ -40,10 +40,20 @@
               </div>
               <div class="b-right">
                 <div class="user_follow"> 
-                  <% if current_user.id != @blog.user_id %>
-                    <%= render 'users/follow_form', user: @blog.user %>
-                  <% else %>
-                  <% end %>
+                  <div class="dropdown" style="float:right;">
+                    <% if current_user.id != @blog.user_id %>
+                      <button class="dropbtn">
+                        <span class="material-icons">
+                          more_horiz
+                        </span>
+                      </button>
+                        <div class="dropdown-content"> 
+                          <%= render 'users/follow_form', user: @blog.user %>  
+                          <%= link_to "Chat", chat_path(@blog.user.id) %> 
+                        </div>
+                      <% else %>
+                    <% end %>
+                  </div>
                 </div>
               </div> 
             </div>

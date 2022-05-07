@@ -1,0 +1,16 @@
+<br>
+<h2>Chat with <%= image_tag (@user.avatar.url), class: "avatar-index rounded-circle mx-auto" if @user.avatar && @user.avatar.url %>&nbsp;<%= @user.name %></h2>
+
+<div class="alert alert-light" role="alert">
+  <div id="notice02"><%= notice %></div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+  <%= render partial: 'blogs/left', locals: { blog: @blog } %>
+  <%= render partial: 'blogs/right' %>
+  <%= render partial: 'chats/form' %>
+
+  </div>
+</div>

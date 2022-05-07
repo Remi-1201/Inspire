@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :tags
   resources :relationships, only: [:create, :destroy, :show]
+  resources :chats, only: [:show, :create]
   
   resources :favorites do
     collection do      

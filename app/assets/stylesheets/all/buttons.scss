@@ -59,30 +59,19 @@
 }
 
 .follow{
-  margin:0 10px;
-  display: flex; 
-  align-items: center; 
-  margin-left: 20px;
-}
+  margin:10px 15px; 
+} 
 
-.follow-btn{
-  color:#6c757d;
+.follow-btn{ 
   border: none !important;
   outline: none !important;    
-  background-color: transparent;   
-  display: flex; 
-  align-items: center; 
+  background-color: transparent;    
+  text-align: right;
 }
-
-#follow-btn{
-  color:#a1acb7;
-  font-size: 1.2rem;
-}
-.unfollow-btn{
-  color:#6c757d;
+ 
+.unfollow-btn{ 
   border: none !important;
   outline: none !important;  
-  background-color: transparent;   
-  display: flex; 
-  align-items: center; 
+  background-color: transparent;    
+  text-align: right;
 }
