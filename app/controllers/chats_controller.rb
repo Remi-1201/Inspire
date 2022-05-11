@@ -35,8 +35,8 @@ class ChatsController < ApplicationController
         # create.js.erbが呼び出される
       else
         format.html { render :show } 
-        # HTMLで返す場合、show.html.erbを表示
         format.js { render :errors } 
+        # HTMLで返す場合、show.html.erbを表示
         # 一番最後に実装の解説があります
       end
     end

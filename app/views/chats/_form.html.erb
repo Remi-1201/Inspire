@@ -4,7 +4,7 @@
       <tr >
         <td class="chat-input">   
           <%= form_with model: @chat, class: "js-form" do |f| %>  
-          <%= f.text_area :message, size:"20x1", class:"chat-message" %>
+          <%= f.text_area :message, size:"35x1", class:"chat-message" %>
           <%= f.hidden_field :room_id %> <br>
           <%= f.submit "Send", class:"new_blog" %>
           <% end %>
@@ -12,9 +12,9 @@
       </tr>
 
       <% @chats.each do |chat| %> 
-        <% if chat.user_id == current_user.id %> 
-          <tr >
-            <td class="chat-text">               
+        <% if chat.user_id == current_user.id %>  
+          <tr class="chat-content">
+            <td class="chat-text">
               <p style="text-align: left;">
                 <a class="btn" href="<%= user_path(current_user.id) %>">
                   <%= image_tag (current_user.avatar.url), class: "avatar-index rounded-circle mx-auto" if current_user.avatar && current_user.avatar.url %>
@@ -23,8 +23,10 @@
                   <a class="link_icon" href="<%= user_path(current_user.id) %>">
                     <%= current_user.name %>
                   </a>
-                </span>  
-                <%= chat.message %>              
+                </span>                 
+                <span>
+                  <%= chat.message %>
+                </span>
               </p>
               <span class = "chat-time-left">
                 <%= chat.created_at.to_s(:datetime) %>
