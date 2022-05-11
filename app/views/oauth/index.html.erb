@@ -21,18 +21,19 @@
               <span>by sharing the words touched your heart</span>
             </div>
             
-            <div id="notice"><%= notice %></div>
+            <div id="notice"><%= notice %></div> 
 
               <% if user_signed_in? %>
                 <div class="btn-group my-5">
-                  <a href="/blogs" class="btn btn-outline-light" aria-current="page">INDEX</a>
-                  <a href="/users/sign_out/" class="btn btn-outline-light">LOGOUT</a>
+                  <%= link_to "MY PAGE", mypage_path, method: :get, class: "btn btn-outline-light", id:"top-btn" %>
+                  <%= link_to "HOME PAGE", blogs_path, method: :get, class:"btn btn-outline-light", id:"top-btn"%>
+                  <a href="/users/sign_out/" class="btn btn-outline-light" id="top-btn">LOGOUT</a>
                 </div>
               <% else %>      
                 <div class="btn-group my-5">
-                  <a href="/users/sign_up" class="btn btn-outline-light" aria-current="page">SIGNUP</a>                                   
-                  <%= link_to "LOGIN BY GOOGLE", user_google_omniauth_authorize_path, method: :post, class: "btn btn-outline-light" %>
-                  <a href="/users/sign_in" class="btn btn-outline-light">LOGIN</a>                
+                  <a href="/users/sign_up" class="btn btn-outline-light" aria-current="page" id="top-btn">SIGNUP</a>                                   
+                  <%= link_to "HOME PAGE", blogs_path, method: :get, class:"btn btn-outline-light", id:"top-btn" %>
+                  <a href="/users/sign_in" class="btn btn-outline-light" id="top-btn">LOGIN</a>                
                 </div>                
             <% end %>
 
@@ -48,7 +49,7 @@
         </div>
       </div>
     </div>
-   
+    
     <div class="col-xs-12 col-sm-4 col-md-3 order-3 order-md-3">
     </div>
 

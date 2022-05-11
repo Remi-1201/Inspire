@@ -65,6 +65,10 @@ class CommentsController < ApplicationController
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])
-    @users = User.all
+    if current_user.present?
+      @users = User.all 
+    else
+      redirect_back fallback_location: root_path, notice: "Please sign up or login to write a comment!"
+    end
   end
 end

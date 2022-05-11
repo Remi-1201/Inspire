@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:index, :show, :edit, :update ]
   
   def mypage     
-    redirect_to user_path(current_user.id)
+    if current_user.present?
+      redirect_to user_path(current_user.id)
+    else
+      redirect_back fallback_location: root_path, notice: "Please sign up or login first!"
+    end
   end
 
   def edit
@@ -25,7 +29,7 @@ class UsersController < ApplicationController
 
   def show 
     user = User.find(params[:id])
-    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: user.id) 
+    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: user.id) if current_user.present?
     @blogs = Blog.where(user_id: nil).or(Blog.where(user_id: user.id)).kaminari(params[:page]) 
   end
 

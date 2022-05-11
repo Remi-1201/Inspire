@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
 
   def index
   end
@@ -13,12 +12,12 @@ class CategoriesController < ApplicationController
 
   def english 
     @blogs = Blog.joins(:categories).where(categories: {name: "English"}).kaminari(params[:page]).per(10)
-    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id)
+    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id) if current_user.present?
   end
 
   def japanese 
     @blogs = Blog.joins(:categories).where(categories: {name: "Japanese"}).kaminari(params[:page]).per(10)
-    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id)
+    @favorite = current_user.favorites.find_by(blog_id: params[:blog_id], user_id: current_user.id) if current_user.present?
   end
 
   def create

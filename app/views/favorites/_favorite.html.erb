@@ -1,5 +1,5 @@
 <div class = "favorite">  
-  <% if current_user.favorited_by?(blog) %>
+  <% if current_user.present? &&  current_user.favorited_by?(blog) %>
     <div class = "link_count">
       <%= blog.favorites.size %> 
     </div>

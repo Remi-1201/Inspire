@@ -20,7 +20,7 @@
   </strong> 
 </div> <br> <br>
 
-<% if @user.id == current_user.id %>
+<% if current_user.present? && @user.id == current_user.id %>
   <div class = "user_line">
     <a class="btn" href="<%= edit_user_registration_path %>">
       <span class="material-icons" id="manage_accounts">manage_accounts</span> 
