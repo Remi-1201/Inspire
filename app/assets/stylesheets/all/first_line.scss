@@ -61,7 +61,8 @@
 
 .search_container{
   border-radius: 10px;
-
+  display: inline-flex;
+  align-items: center;
 }
 .search-btn{
   border: none !important;
@@ -83,6 +84,11 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
+.search_form{
+  display: flexbox;
+  align-items: center;
+  margin: 5px auto;
+} 
 
 #manage_accounts{
   color:#6c757d;

@@ -15,7 +15,7 @@ class Blog < ApplicationRecord
   scope :kaminari, -> (kaminari_page){ page(kaminari_page).per(10) }
   
   # sort by created_at
-  scope :sorted, -> { order(created_at: :desc) }
+  scope :sorted, -> { order(created_at: :desc) } 
   # sort by category
   scope :category_sort, -> (search_category){ where(category: search_category) }
   # seach by detail/word
