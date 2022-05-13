@@ -233,18 +233,10 @@
         <span class="drop-up">
           <span class="drop-up-item">
             <button type="button">
-              <span class="material-icons" id="seach_button">search</span>
-            </button>
-              <span class="drop-up-sub-nav">
-                <span class="drop-up-item">
-                  <div class ="search">
-                    <%= form_with(url: search_blogs_path, class: "search_container", method: :get, local: true) do %>
-                      <%= submit_tag "Search", class: "search-btn" %>
-                      <%= text_field_tag :search_detail %> 
-                    <% end %> 
-                  </div>
-                </span>      
-              </span>
+              <a class="btn" href="<%= blogs_path %>">
+                <span class="material-icons" id="seach_button">search</span>
+              </a>
+            </button> 
           </span>
         </span>
       <ul class="foot-left">

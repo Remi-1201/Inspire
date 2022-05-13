@@ -6,10 +6,8 @@
 </div>
 
 <div id = "first_line">
-  <div class = "new">
-    <%= button_to 'Make new Post', new_blog_path, class:"new_blog", method: :get %>
-  </div>
-</div><br>
+  <%= render partial: 'blogs/search', locals: { blog: @blog } %> 
+</div>
 
 <div class="container">
   <div class="row">

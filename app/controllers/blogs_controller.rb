@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   protect_from_forgery with: :exception, only: :create
   before_action :set_blog, only: %i[ show edit update destroy ]
-
+  
   def index
     @users = User.all
     @blogs = Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
     @blogs = @blogs.joins(:tags).where(tags: { id: params[:tag_id] }) if params[:tag_id].present?    
     
     @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id)) if current_user.present? 
-    @tag_list= Tag.all 
+    @tag_list= Tag.all  
   end
   
   def new
@@ -87,33 +87,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  def sort
-    @blogs = searched
-    @search_detail = session[:search]['detail']  if session[:search].present?
-    @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
-    @blogs =
-      if params[:sort] == 'created_at'
-        @blogs.sorted
-      elsif params[:sort] == 'category'
-        @blogs.category_sorted
-      elsif params[:sort] == 'tag'
-        @blogs.tag_sort          
-      end
-    session[:search] = nil
-    render :index
-  end
-
-  def search
-    session[:search] = {'detail' => params[:search_detail], 'category' => params[:search_category], 'tag' => params[:search_tag]}
-    @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
-    @blogs = searched
-    @blogs = @blogs.sorted
-    @search_tag = session[:search]['tag']
-    @search_detail = session[:search]['detail']
-    @tag_list=Tag.all
-    render :index
-  end  
-
   def search_tag
     @tag_list=Tag.all
     @tag=Tag.find(params[:tag_id])
@@ -129,58 +102,4 @@ class BlogsController < ApplicationController
     params.require(:blog).permit(:detail, :title,  :image_cache, :image,{ category_ids: []}, tag_ids: [])
   end
 
-  def searched 
-    @blogs = @blogs.page(params[:page])
-    if session[:search].present?
-      # all blank
-      if session[:search]['detail'].blank? && session[:search]['category'].blank? && session[:search]['tag'].blank?
-        Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
-
-        # detail = present
-        elsif session[:search]['detail'].present?
-          # category & tag = present 
-          if session[:search]['category'].present? && session[:search]['tag'].present?
-            Blog.search_sort(session[:search]['detail']).category_sort(session[:search]['category']).tag_sort(session[:search]['tag']).kaminari(params[:page])          
-          # category  = present
-          elsif session[:search]['category'].present?
-            Blog.search_sort(session[:search]['detail']).category_sort(session[:search]['category']).kaminari(params[:page])          
-          # tag  = present
-          elsif session[:search]['tag'].present?
-            Blog.search_sort(session[:search]['detail']).tag_sort(session[:search]['tag']).kaminari(params[:page])           
-        # else only detail  = present 
-        else
-          Blog.search_sort(session[:search]['detail']).kaminari(params[:page])
-        end
-
-        # category = present
-        elsif session[:search]['category'].present?
-          # tag = present 
-          if session[:search]['tag'].present?
-            Blog.category_sort(session[:search]['category']).tag_sort(session[:search]['tag']).kaminari(params[:page]) 
-            # tag = blank 
-          elsif session[:search]['tag'].blank?
-            Blog.category_sort(session[:search]['category']).kaminari(params[:page])
-        # else only category = present 
-        else
-          Blog.category_sort(session[:search]['category']).kaminari(params[:page])
-        end
-
-        # tag = present
-        elsif session[:search]['tag'].present?
-          # category = present 
-          if session[:search]['category'].present?
-            Blog.category_sort(session[:search]['category']).tag_sort(session[:search]['tag']).kaminari(params[:page])          
-          # category = blank
-          elsif session[:search]['category'].blank?
-            Blog.tag_sort(session[:search]['tag']).kaminari(params[:page]) 
-        # else only tag = present 
-        else
-          Blog.tag_sort(session[:search]['tag']).kaminari(params[:page]) 
-        end
-      
-      else
-        Blog.all.includes(:user).order(created_at: :desc).kaminari(params[:page]).per(10)
-      end
-    end
-  end
 end

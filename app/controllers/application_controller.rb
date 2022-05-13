@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_current_user
+  before_action :set_q, only: [:index, :search] 
+  before_action :set_search
+
+  def set_search 
+    @search = Blog.ransack(params[:q]) 
+    @search_articles = @search.result.page(params[:page])
+  end
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_back fallback_location: root_path, notice: "Permission denied!"
@@ -19,8 +26,16 @@ class ApplicationController < ActionController::Base
     blogs_path    
   end 
 
+  def search
+    @results = @q.result.order('created_at desc').kaminari(params[:page]).per(10)
+  end
+
   private
   def set_current_user 
     @current_user = User.find_by(id: session[:user_id]) 
+  end
+
+  def set_q
+    @q = Blog.ransack(params[:q]) 
   end
 end

@@ -1,13 +1,12 @@
-<div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
-  <% if @blogs.present? %>
+<div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2"> 
     <% @blogs.each do |blog| %>
       <div class = "table-responsive">
         <table >
           <tr class="category">
             <th colspan="5" >
               <div class="card-header">
-                <% blog.categories.each do |category| %>
-                  <%= category.try(:name) || "Others" %>                 
+                <% blog.categories.each do |category| %> 
+                  <%= category.try(:name)%>   
                 <% end %>
                 <div class="blog_show">
                   <a class="link_icon" href="<%= blog_path(blog) %>">
@@ -136,10 +135,6 @@
         <% end %>
       </table>          
     </div>             
-
-    <% else %>
-      <%= "Your search didn't match any results" %>        
-    <% end %>        
 
   <div class="pagination">
     <%= paginate @blogs %>    

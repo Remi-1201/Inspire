@@ -40,6 +40,8 @@ gem 'pry-rails'
 gem 'fog-aws'
 gem "aws-sdk-s3", require: false 
 
+gem 'ransack'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
     # for rspec
