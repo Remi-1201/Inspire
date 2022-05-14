@@ -228,44 +228,37 @@
 
   <footer>
     <div class="foot-wrap">
-      <div class="menu-left">
-        
-        <span class="drop-up">
-          <span class="drop-up-item">
-            <button type="button">
-              <a class="btn" href="<%= blogs_path %>">
-                <span class="material-icons" id="seach_button">search</span>
-              </a>
-            </button> 
-          </span>
-        </span>
-      <ul class="foot-left">
-      </ul>
-    </div>
+      <div class="menu-left">         
+        <a class="btn" href="<%= blogs_path %>">
+          <span class="material-icons" id="seach_button">search</span>
+        </a> 
+        <ul class="foot-left">
+        </ul> 
+      </div>
 
-    <div class="menu-center">
-      <div id="Control">
-        <div id="RecMime">
+      <div class="menu-center">
+        <div id="Control">
+          <div id="RecMime">
+          </div>
+        </div>     
+      <div id ="visible">
+        <div id ="player" onclick="showbox()">
+          <span class="material-icons" id="visibility">visibility</span>
         </div>
-      </div>     
-    <div id ="visible">
-      <div id ="player" onclick="showbox()">
-        <span class="material-icons" id="visibility">visibility</span>
+        <div id ="player" onclick="hidebox()">
+          <span class="material-icons" id="visibility_off">visibility_off</span>
+        </div>
       </div>
-      <div id ="player" onclick="hidebox()">
-        <span class="material-icons" id="visibility_off">visibility_off</span>
+        <ul class="foot-center">
+        </ul>
       </div>
-    </div>
-      <ul class="foot-center">
-      </ul>
-    </div>
 
-    <div class="menu-right">         
+      <div class="menu-right">         
         <a class="btn" href="<%= new_blog_path %>">
           <span class="material-icons" id="new_footer">post_add</span>
         </a>        
-          <ul class="foot-right">
-          </ul>        
+        <ul class="foot-right">
+        </ul>        
       </div>
     </div>
     

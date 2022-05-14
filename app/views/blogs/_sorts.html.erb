@@ -1,6 +1,0 @@
-<div class="sort_many">
-  <%= form_with(url: sort_blogs_path, local: true) do |f| %>
-    <%= select_tag :sort, options_for_select([["Sort by created time","created_at"],["Sort by category","category"],["Sort by tag","tag"]]), { class: 'sort_select' } %>
-    <%= submit_tag "Many" %>
-  <% end %> 
-</div>

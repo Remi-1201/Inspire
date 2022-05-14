@@ -6,11 +6,7 @@ class CategoriesController < ApplicationController
 
   def new
   end
-
-  def search
-    @results = @q.result.order('created_at desc').kaminari(params[:page]).per(10)
-  end
-
+ 
   def show    
   end
 

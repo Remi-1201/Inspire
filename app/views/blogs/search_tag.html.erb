@@ -1,6 +1,8 @@
 <br>
 <h5>Posts included #<%= link_to @tag.name, search_tag_path(tag_id: @tag.id) %></h5>
 
+<%= link_to 'Back', blogs_path, class:'btn btn-light' %> 
+
 <div class="container">
   <div class="row">
 

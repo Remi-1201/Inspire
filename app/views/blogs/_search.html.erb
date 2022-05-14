@@ -1,9 +1,7 @@
 <div class ="search">
-  <%= search_form_for @search, class:'search', url: search_blogs_path do |f| %>    
-    <%= f.select :categories_id_eq, options_from_collection_for_select(Category.all, "id", "name"), size:"10x1", prompt: 'Category', class:"search_form" %> 
-    <%= f.select :tags_name_eq, options_from_collection_for_select(Tag.all, "name", "name"), size:"10x1", prompt: 'Tag', class:"search_form"  %>     
-    <%= f.search_field :detail_cont, size:"10x1", placeholder: "Content", class:"search_form" %> 
-    <%= f.search_field :title_cont, size:"10x1", placeholder: "Title", class:"search_form" %>  
+  <%= search_form_for @search_blog, class:'search', url: search_blogs_path do |f| %>    
+    <%= f.select :categories_id_eq, options_from_collection_for_select(Category.all, "id", "name"), size:"10x1", prompt: 'Category', include_blank: true, class:"search_form" %>  
+    <%= f.search_field :detail_or_title_cont, size:"10x1", placeholder: "Keywords", class:"search_form" %>  
     <%= f.submit 'Search', class: "search-btn"  %>
   <% end %>
 </div>

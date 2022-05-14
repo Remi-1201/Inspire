@@ -3,11 +3,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_current_user
   before_action :set_q, only: [:index, :search] 
-  before_action :set_search
+  before_action :search
 
-  def set_search 
-    @search = Blog.ransack(params[:q]) 
-    @search_articles = @search.result.page(params[:page])
+  def search
+    @search_blog = Blog.ransack(params[:q]) 
+    @search_blogs = @search_blog.result.page(params[:page]) 
+    @results = @search_blog.result.order('created_at desc').kaminari(params[:page]).per(10)
   end
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -25,10 +26,6 @@ class ApplicationController < ActionController::Base
     flash[:notice] = "Hello #{@user.name}! You have successfully logged in."
     blogs_path    
   end 
-
-  def search
-    @results = @q.result.order('created_at desc').kaminari(params[:page]).per(10)
-  end
 
   private
   def set_current_user 
