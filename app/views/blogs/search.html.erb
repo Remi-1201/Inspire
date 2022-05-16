@@ -11,10 +11,10 @@
   <div class="row">
 
   <%= render partial: 'blogs/left', locals: { blog: @blog } %>
- 
+
   <div class="col-xs-6 col-sm-4 col-md-6 order-1 order-md-2">
-    <% if @results.present? %>
-      <% @results.each do |blog| %>
+    <% if @search_blogs.present? %>
+      <% @search_blogs.each do |blog| %>
         <div class = "table-responsive">
           <table >
             <tr class="category">
@@ -156,7 +156,7 @@
       <% end %>        
 
     <div class="pagination"> 
-      <%= paginate @results %>
+      <%= paginate @search_blogs %>
     </div>
   </div>
 
