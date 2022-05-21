@@ -14,22 +14,28 @@ class BlogsController < ApplicationController
   end
   
   def new
-    @blog = Blog.new
-    @blog.categorizings.build
-    @tag = @blog.taggings.build
-    @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
+    if current_user.present?
+      @blog = Blog.new
+      @blog.categorizings.build
+      @tag = @blog.taggings.build
+      
+      @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))      
+    else
+      redirect_back fallback_location: root_path, notice: "Please sign up or login to post!"
+    end
   end
 
   def create
     @categories = Category.all.map{ |c| [c.name, c.id] }
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id  
+
     tag_list = params[:blog][:name].split(',') 
     respond_to do |format|
       if @blog.save
         @blog.save_tag(tag_list)
         format.html { redirect_to blogs_path, notice: "Blog was successfully created." }
-        format.json { render :show, status: :created, location: @blog }
+        format.json { render :show, status: :created, location: @blog } 
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @blog.errors, status: :unprocessable_entity }

@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
 
   def search
     @search_blog = Blog.ransack(params[:blog_q])  
-    @search_blogs = @search_blog.result.order('created_at desc').kaminari(params[:page]).per(10)
+    @search_blogs = @search_blog.result.joins(:user).includes(:user).includes(:tags).kaminari(params[:page]).per(10) 
+    @search_user = User.ransack(params[:user_q])  
+    @search_users = @search_user.result(distinct: true) 
   end
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -32,6 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_q
-    @blog_q = Blog.ransack(params[:blog_q], search_key: :blog_q) 
+    @blog_q = Blog.ransack(params[:blog_q], search_key: :blog_q)  
+    @user_q = User.ransack(params[:user_q], search_key: :user_q)  
   end
 end
