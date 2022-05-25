@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_01_010618) do
+ActiveRecord::Schema.define(version: 2022_05_05_084155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 2022_05_01_010618) do
     t.index ["category_id"], name: "index_categorizings_on_category_id"
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "blog_id", null: false
     t.text "content"
@@ -69,6 +77,13 @@ ActiveRecord::Schema.define(version: 2022_05_01_010618) do
     t.bigint "user_id", null: false
     t.index ["blog_id"], name: "index_comments_on_blog_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -80,6 +95,17 @@ ActiveRecord::Schema.define(version: 2022_05_01_010618) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "read", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -88,6 +114,11 @@ ActiveRecord::Schema.define(version: 2022_05_01_010618) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -105,6 +136,13 @@ ActiveRecord::Schema.define(version: 2022_05_01_010618) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,6 +176,8 @@ ActiveRecord::Schema.define(version: 2022_05_01_010618) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "blogs"
   add_foreign_key "favorites", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "taggings", "blogs"
   add_foreign_key "taggings", "tags"
   add_foreign_key "tags", "users"

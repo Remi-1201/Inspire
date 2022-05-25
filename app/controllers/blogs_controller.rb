@@ -25,12 +25,16 @@ class BlogsController < ApplicationController
     end
   end
 
+  def strip_all_space!
+    gsub!(/(^[[:space:]]+)|([[:space:]]+$)/, '')
+  end
+
   def create
     @categories = Category.all.map{ |c| [c.name, c.id] }
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id  
 
-    tag_list = params[:blog][:name].split(',') 
+    tag_list = params[:blog][:name].gsub(/[[:space:]]+/, " ").split
     respond_to do |format|
       if @blog.save
         @blog.save_tag(tag_list)
@@ -55,12 +59,12 @@ class BlogsController < ApplicationController
 
   def edit
     @tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
-    @tag_list=@blog.tags.pluck(:name).join(',')
+    @tag_list=@blog.tags.pluck(:name).join(' ')
   end
 
   def update
     @categories = Category.all.map{ |c| [c.name, c.id] }
-    tag_list=params[:blog][:name].split(',')
+    tag_list=params[:blog][:name].gsub(/[[:space:]]+/, " ").split
     respond_to do |format|
       if @blog.user_id = current_user.id 
         @blog.update(blog_params)
