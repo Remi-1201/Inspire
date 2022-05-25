@@ -1,8 +1,12 @@
-<div class ="search">
-  <%= search_form_for @search_blog, as: :blog_q, class:'search', url: search_blogs_path do |f| %>    
-    <%= f.select :categories_id_eq, options_from_collection_for_select(Category.all, "id", "name"), size:"8x1", prompt: 'Category', include_blank: "-----", class:"search_form" %>  
-    <%= f.select :tags_id_eq, options_from_collection_for_select(Tag.all, "id", "name"), size:"10x1", prompt: 'Tag', include_blank: "-----", class:"search_form" %>  
-    <%= f.search_field :detail_or_title_cont, size:"15x1", placeholder: " Keywords", class:"search_form" %>  
-    <%= f.submit 'Search', class: "search-btn"  %>
-  <% end %>
+<div class="row justify-content-md-center ">
+  <div class="col-md-auto">
+    <div class ="search">
+      <%= search_form_for @search_blog, as: :blog_q, class:'search', url: search_blogs_path do |f| %>    
+        <%= f.select :categories_id_eq, options_from_collection_for_select(Category.all, "id", "name"), size:"15x1", prompt: 'Category', include_blank: "-----", class:"search_form" %>   
+        <%= f.select :tags_id_eq, options_from_collection_for_select(Tag.all, "id", "name", params[:tag_id]), size:"15x1", prompt: 'Tag', include_blank: "-----", class:"search_form" %>  <br class="d-sm-none" />
+        <%= f.search_field :detail_or_title_cont, size:"15x1", placeholder: " Keywords", class:"search_form" %>  
+        <%= f.submit 'Search', class: "search-btn"  %>
+      <% end %>
+    </div>
+  </div>
 </div>
